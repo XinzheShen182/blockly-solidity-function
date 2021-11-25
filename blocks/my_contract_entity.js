@@ -83,7 +83,9 @@ Blockly.Blocks['term'] = {
         .appendField(new Blockly.FieldDropdown([["改编抽象IP为作品","ADAPT_ABSTRACT_TO_WORK"], ["创建委员会","CREATE_COMMITTEE"]]), "NAME");
     this.appendValueInput("NAME")
         .setCheck(null)
-        .appendField("关联的条款流程id");
+        .appendField("关联的条款流程ID");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
     this.setColour(230);
  this.setTooltip("");
  this.setHelpUrl("");
