@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>smart editor</title>
+    <script src="./blockly_compressed.js"></script>
+    <script src="./blocks_compressed.js"></script>
+    <script src="./blocks/my_contract_entity.js" charset="UTF-8"></script>
+    <script src="./msg/js/zn-hans.js"></script>
+    <script src="./generators/generate.js"></script>
+    <script src="./jquery-3.4.1.js"></script>
+</head>
+<body>
+    <div id="blocklyDiv" style="height: 1000px; width: 1500px;"></div>
+    
+    <p>
+      <button onclick="showCode()">Show code</button>
+      <button onclick="test()">TEST</button>
+    </p>
+
+    <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+      <category name="合约">
+        <block type="contract"></block>
+      </category>
+      <category name="合约方">
+        <block type="contract_party"></block>
+      </category>
+      <category name="文本">
+        <block type="text"></block>
+      </category>
+      <category name="条款">
+        <block type="term"></block>
+      </category>
+    </xml>
+
+    <script src="workspace.js"></script>
+</body>
+</html>
