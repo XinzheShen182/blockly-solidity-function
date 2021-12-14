@@ -119,7 +119,7 @@ Blockly.codelabGenerator['work_contract_method'] = function (block) {
     //将关联的实体转换为参数
     var param_url = mergeParams(codes);
     var code;
-    var url = 'localhost:8080/assemble?contractName=' + contractName + '&functionName=';
+    var url = 'localhost:8081/api/assemble?contractName=' + contractName + '&functionName=';
     switch (dropdown_method_type) {
         case 'CREATE_NEW_WORK_ID':
             url = url + 'getTokenID' + '&paramList=' + param_url;
@@ -190,7 +190,6 @@ Blockly.codelabGenerator['work_contract_method'] = function (block) {
             url = url + 'set_FromWorkContract' + '&paramList=' + param_url;
             code = sendHttpGet(url);
             break;
-        case 
     }
     // TODO: Assemble JavaScript into code variable.
     console.log('codes:' + codes);
