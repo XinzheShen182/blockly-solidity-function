@@ -52,14 +52,13 @@ var contractName = space_string;
 Blockly.codelabGenerator['contract'] = function (block) {
     var value_contract_name = Blockly.codelabGenerator.valueToCode(block, 'CONTRACT_NAME', Blockly.codelabGenerator.ORDER_ATOMIC);
     contractName = value_contract_name;
-    // var statements_entity = Blockly.codelabGenerator.statementToCode(block, 'ENTITY');
-    var entity_top_block = block.getInputTargetBlock('ENTITY');
-    var entity_code = getAllStatementBlocks(entity_top_block).toString();
     var method_top_block = block.getInputTargetBlock('METHOD');
     var method_code = getAllStatementBlocks(method_top_block).toString();
-    // var statements_method = Blockly.codelabGenerator.statementToCode(block, 'METHOD');
     // TODO: Assemble JavaScript into code variable.
-    var code = 'contract ' + value_contract_name + '{' + entity_code + method_code + '}';
+    var code = 'contract ' + value_contract_name + '{' + method_code + '}';
+    var url = 'http://localhost:9014/api/generate/code?fileIds=' + method_code + '&contractName=' + value_contract_name;
+    var response = sendHttpGet(url);
+    console.log(response);
     return code;
 };
 
@@ -126,19 +125,19 @@ Blockly.codelabGenerator['work_contract_method'] = function (block) {
             console.log('url:' + url)
             code = sendHttpGet(url);
             break;
-        case 'PUBLISH_WORK_WITH_PROJECT' :
+        case 'PUBLISH_WORK_WITH_PROJECT':
             url = url + 'realse_with_project' + '&paramList=' + param_url;
             code = sendHttpGet(url);
             break;
-        case 'PROPOSAL_APPLY_FOR' :
+        case 'PROPOSAL_APPLY_FOR':
             url = url + 'sendProposalRequest' + '&paramList=' + param_url;
             code = sendHttpGet(url);
             break;
-        case 'PUBLISH_WORK_WITHOUT_PROJECT' :
+        case 'PUBLISH_WORK_WITHOUT_PROJECT':
             url = url + 'realse_without_project' + '&paramList=' + param_url;
             code = sendHttpGet(url);
             break;
-        case 'STATE_INFO' :
+        case 'STATE_INFO':
             url = url + 'release_state' + '&paramList=' + param_url;
             code = sendHttpGet(url);
             break;
@@ -154,7 +153,7 @@ Blockly.codelabGenerator['work_contract_method'] = function (block) {
             url = url + 'setProjectId' + '&paramList=' + param_url;
             code = sendHttpGet(url);
             break;
-        case 'GET_PROJECT_ADDRESS': 
+        case 'GET_PROJECT_ADDRESS':
             url = url + 'getProjectContract' + '&paramList=' + param_url;
             code = sendHttpGet(url);
             break;
@@ -195,6 +194,14 @@ Blockly.codelabGenerator['work_contract_method'] = function (block) {
     console.log('codes:' + codes);
     allEntity = new Array();
     return code;
+};
+
+
+Blockly.codelabGenerator['term'] = function (block) {
+    var related_flow_id = Blockly.codelabGenerator.valueToCode(block, 'RETATED_FLOW_ID', Blockly.codelabGenerator.ORDER_ATOMIC);
+    // var related_flow_id = block.getFieldValue('RETATED_FLOW_ID');
+    console.log('related_flow_id:' + related_flow_id);
+    return related_flow_id;
 };
 
 /**获取所有statement的block的代码 */

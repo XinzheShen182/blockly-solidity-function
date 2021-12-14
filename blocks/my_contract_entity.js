@@ -51,9 +51,6 @@ Blockly.Blocks['contract'] = {
     this.appendValueInput("CONTRACT_NAME")
       .setCheck(null)
       .appendField("合约名字");
-    this.appendStatementInput("ENTITY")
-      .setCheck(null)
-      .appendField("合约方");
     this.appendStatementInput("METHOD")
       .setCheck(null)
       .appendField("合约执行条款");
@@ -79,9 +76,7 @@ Blockly.Blocks['contract_party'] = {
 //条款
 Blockly.Blocks['term'] = {
   init: function() {
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["改编抽象IP为作品","ADAPT_ABSTRACT_TO_WORK"], ["创建委员会","CREATE_COMMITTEE"]]), "NAME");
-    this.appendValueInput("NAME")
+    this.appendValueInput("RETATED_FLOW_ID")
         .setCheck(null)
         .appendField("关联的条款流程ID");
     this.setPreviousStatement(true, null);
