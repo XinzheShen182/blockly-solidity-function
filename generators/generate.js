@@ -1,4 +1,3 @@
-
 //定义生成器
 Blockly.codelabGenerator = new Blockly.Generator('Solidity');
 
@@ -40,7 +39,6 @@ Blockly.codelabGenerator.ORDER_COMMA = 17;           // ,
 Blockly.codelabGenerator.ORDER_NONE = 99;            // (...)
 
 
-
 //区分实体类型的map
 // const map=new Map(['价格','mapping(uint256 => uint256)'],['ipfsHash','mapping(uint256 => string)']);
 const type_map = new Map([['NUM_TYPE', 'uint256'], ['CHAR_TYPE', 'string'], ['ADDR_TYPE', 'address'], ['BOOL_TYPE', 'bool']]);
@@ -55,10 +53,16 @@ Blockly.codelabGenerator['contract'] = function (block) {
     var method_top_block = block.getInputTargetBlock('METHOD');
     var method_code = getAllStatementBlocks(method_top_block).toString();
     // TODO: Assemble JavaScript into code variable.
-    var code = 'contract ' + value_contract_name + '{' + method_code + '}';
-    var url = 'http://localhost:9014/api/generate/code?fileIds=' + method_code + '&contractName=' + value_contract_name;
-    var response = sendHttpGet(url);
-    console.log(response);
+    var code = [];
+    var obj = {};
+    obj['contractName'] = value_contract_name;
+    obj['fileIds'] = method_code;
+    code.push(obj);
+    var code = value_contract_name + '@' + method_code;
+    // var url = 'http://localhost:9014/api/generate/code?fileIds=' + method_code + '&contractName=' + value_contract_name;
+    // var response = generateCode(method_code, value_contract_name);
+    // var response = sendHttpGet(url);
+    // console.log("response:" + response);
     return code;
 };
 
@@ -239,9 +243,33 @@ function sendHttpGet(url) {
         if (httpRequest.readyState == 4 && httpRequest.status == 200) {
             var json = httpRequest.responseText;//获取到json字符串，还需解析
             console.log('响应结果:' + json);
+            window["generateCodeData"] = json;
             return json;
         }
     };
+}
+
+function generateCode(fileId, contractName) {
+    let data;
+    //获得basicFunction
+    axios.get('http://localhost:9014/api/generate/code', {
+        params: {
+            fileIds: fileId,
+            contractName: contractName
+        }
+    }).then(response => {
+        if (response.data.code === 200) {
+            let resData = response.data.data;
+            console.info(resData);
+            data = Object.assign({}, resData);
+        } else {
+            alert(response.data.msg)
+        }
+    }).catch(function (error) {
+        console.log(error)
+    });
+    window["generateCodeData"] = data;
+    return data;
 }
 
 function mergeParams(params) {
