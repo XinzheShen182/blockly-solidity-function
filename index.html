@@ -111,7 +111,7 @@
 <div id="login" class="login">
     <header class="tenant-model-header">
         <h4 id="title" class="login-title"  
-        style="margin-left: 20px;padding:5px;font-weight: bold;height: 30px;line-height: 30px;">生成的代码展示</h4>
+        style="margin-left: 20px;padding:5px;font-weight: bold;height: 30px;line-height: 30px;"></h4>
     </header>
     <div class="login-input-content">
         <textarea id="textfield" style="margin-left: 20px;height: 150px;width: 660px;"></textarea>
@@ -125,8 +125,8 @@
 
 <p>
     <button id="link" onclick="showCode()">Show code</button>
-    <button onclick="compile()">compile</button>
-    <button onclick="deploy()">deploy</button>
+    <button id="compile"  onclick="compile()">compile</button>
+    <button id="deploy" onclick="deploy()">deploy</button>
 </p>
 <script>
     var mask=document.querySelector('.login-bg');
@@ -136,7 +136,11 @@
     var sure=document.querySelector('#sure');
     var link=document.querySelector('#link');
     var textId = document.getElementById("textfield");
+    var titleName = document.getElementById("title");
+    var compiles = document.getElementById("compile");
+    var deploys = document.getElementById("deploy");
 link.addEventListener('click',function(){
+    titleName.innerHTML="生成的代码展示";
     mask.style.display='block';
     login.style.display='block';
 })
@@ -144,6 +148,16 @@ cancel.addEventListener('click',function(){
     mask.style.display='none';
     login.style.display='none';
     textId.innerHTML = "";
+})
+compiles.addEventListener('click',function(){
+    titleName.innerHTML="编译结果";
+    mask.style.display='block';
+    login.style.display='block';
+})
+deploys.addEventListener('click',function(){
+    titleName.innerHTML="部署结果";
+    mask.style.display='block';
+    login.style.display='block';
 })
 sure.addEventListener('click',function(){
     var data = textId.innerHTML;//要复制的内容
@@ -202,12 +216,14 @@ httpRequest.onreadystatechange = function () {
         console.log('响应结果:' + json);
         let data = eval("(" + json + ")").data;
         console.log(data);
+        let code = eval("(" + json + ")").code;
+        let msg = eval("(" + json + ")").msg;
         //alert(data);
-        if(data == null){
-            textId.innerHTML = "未找到相关的流程图"
+        if(code==200){
+            textId.innerHTML = data;
         }
         else{
-            textId.innerHTML = data;
+            textId.innerHTML = msg;
         }
         return json;
     }
