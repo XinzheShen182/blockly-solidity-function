@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="格式化index.html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +127,7 @@
       <workItem from="1643174358250" duration="8327000" />
       <workItem from="1643243172634" duration="1257000" />
       <workItem from="1644473138647" duration="283000" />
-      <workItem from="1644583846547" duration="2074000" />
+      <workItem from="1644583846547" duration="2165000" />
     </task>
     <task id="LOCAL-00001" summary="新增编译和部署功能">
       <created>1643186545630</created>
