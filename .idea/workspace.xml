@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="">
+    <list default="true" id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="格式化index.html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/generate.js" beforeDir="false" afterPath="$PROJECT_DIR$/generators/generate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workspace.js" beforeDir="false" afterPath="$PROJECT_DIR$/workspace.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,8 +125,26 @@
       <workItem from="1636768574015" duration="6000" />
       <workItem from="1636768594679" duration="38000" />
       <workItem from="1641997486241" duration="627000" />
-      <workItem from="1643174358250" duration="7418000" />
+      <workItem from="1643174358250" duration="8327000" />
+      <workItem from="1643243172634" duration="1257000" />
+      <workItem from="1644473138647" duration="283000" />
+      <workItem from="1644583846547" duration="2074000" />
     </task>
+    <task id="LOCAL-00001" summary="新增编译和部署功能">
+      <created>1643186545630</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1643186545630</updated>
+    </task>
+    <task id="LOCAL-00002" summary="格式化index.html">
+      <created>1644584901120</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1644584901120</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -169,6 +185,22 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="新增编译和部署功能" />
+    <MESSAGE value="格式化index.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="格式化index.html" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/blocks/text.js">
