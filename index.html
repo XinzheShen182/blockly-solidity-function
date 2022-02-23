@@ -170,6 +170,7 @@
     var titleName = document.getElementById("title");
     var compiles = document.getElementById("compile");
     var deploys = document.getElementById("deploy");
+    var codeData = "";
     link.addEventListener('click', function () {
         titleName.innerHTML = "生成的代码展示";
         mask.style.display = 'block';
@@ -236,7 +237,8 @@
 
     function down(){
         //代码;
-        var datas = textId.innerHTML;
+        var datas = codeData;
+        console.log('========='+datas);
         $.post({
             url:'http://localhost:9014/api/truffle/code/down',
             data:{
@@ -266,6 +268,7 @@
                 //alert(data);
                 if (code == 200) {
                     textId.innerHTML = data;
+                    codeData = data;
                 } else {
                     textId.innerHTML = msg;
                 }
