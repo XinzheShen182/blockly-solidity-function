@@ -45,28 +45,18 @@
 
 /**合约*/
 Blockly.Blocks['contract'] = {
-  init: function () {
-    this.appendDummyInput()
-      .appendField("合约");
-    this.appendValueInput("CONTRACT_NAME")
-      .setCheck(null)
-      .appendField("合约名字");
-    this.appendStatementInput("METHOD")
-      .setCheck(null)
-      .appendField("合约执行条款");
-    this.setColour(30);
-    this.setTooltip("");
-    this.setHelpUrl("");
-  }
-};
-
-//合约方
-Blockly.Blocks['contract_party'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["申请人","PROPOSER"], ["委员会成员","COMMITTEE_MEMBER"]]), "PARTY");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
+        .appendField("合约");
+    this.appendValueInput("CONTRACT_NAME")
+        .setCheck(null)
+        .appendField("合约名字");
+    this.appendValueInput("CONTRACT_DESC")
+        .setCheck(null)
+        .appendField("合约描述");
+    this.appendStatementInput("CONTRACT_TERM")
+        .setCheck(null)
+        .appendField("关联的条款流程ID");
     this.setColour(90);
  this.setTooltip("");
  this.setHelpUrl("");
