@@ -254,9 +254,9 @@
 <div id="bg2" class="login-bg2"></div>
 
 <p>
-    <button id="link" onclick="showCode()">Show code</button>
-    <button id="compile" onclick="compile()">compile</button>
-    <button id="deploy" onclick="deploy()">deploy</button>
+    <button id="link" onclick="showCode()">Show Code</button>
+    <button id="compile" onclick="compile()">Compile and Safety Check</button>
+    <button id="deploy" onclick="deploy()">Deploy</button>
 </p>
 <script>
     var mask = document.querySelector('.login-bg');
@@ -297,7 +297,7 @@
         textId2.innerHTML = "";
     })
     compiles.addEventListener('click', function () {
-        titleName2.innerHTML = "编译结果";
+        titleName2.innerHTML = "编译和安全性检查结果";
         mask2.style.display = 'block';
         login2.style.display = 'block';
     })
@@ -353,6 +353,7 @@
     }
 
     function compile() {
+        //TODO 安全性检查待加入
         var url = 'http://localhost:9014/api/truffle/code/compile';
         var response = sendHttpGet(url);
     }
