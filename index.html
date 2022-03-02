@@ -255,7 +255,7 @@
 
 <p>
     <button id="link" onclick="showCode()">Show Code</button>
-    <button id="compile" onclick="compile()">Compile and Safety Check</button>
+    <button id="compile" onclick="compile()">Compile</button>
     <button id="deploy" onclick="deploy()">Deploy</button>
 </p>
 <script>
@@ -297,7 +297,7 @@
         textId2.innerHTML = "";
     })
     compiles.addEventListener('click', function () {
-        titleName2.innerHTML = "编译和安全性检查结果";
+        titleName2.innerHTML = "编译结果";
         mask2.style.display = 'block';
         login2.style.display = 'block';
     })
@@ -353,7 +353,7 @@
     }
 
     function compile() {
-        var url = 'http://localhost:9014/api/slither/compile';
+        var url = 'http://localhost:9014/api/truffle/code/compile';
         var response = sendHttpGet(url);
     }
 
