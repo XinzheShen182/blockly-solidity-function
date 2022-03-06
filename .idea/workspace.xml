@@ -5,12 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="格式化index.html">
+      <change afterPath="$PROJECT_DIR$/testDialog.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -92,6 +101,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -128,6 +138,11 @@
       <workItem from="1643243172634" duration="1257000" />
       <workItem from="1644473138647" duration="283000" />
       <workItem from="1644583846547" duration="2165000" />
+      <workItem from="1645496868997" duration="1423000" />
+      <workItem from="1645580664367" duration="2649000" />
+      <workItem from="1645619528016" duration="1484000" />
+      <workItem from="1645676380999" duration="644000" />
+      <workItem from="1646547051998" duration="3463000" />
     </task>
     <task id="LOCAL-00001" summary="新增编译和部署功能">
       <created>1643186545630</created>

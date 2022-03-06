@@ -9,6 +9,7 @@
     <script src="./msg/js/zn-hans.js"></script>
     <script src="./generators/generate.js"></script>
     <script src="./jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.7/lib/theme-chalk/index.css">
     <style>
         #login_click {
             margin-top: 32px;
@@ -68,7 +69,7 @@
 
         #cancel {
             text-decoration: none;
-            background:#b7b7b7;
+            background: #b7b7b7;
             color: #ffffff;
 
             padding: 10px 30px 10px 30px;
@@ -87,7 +88,7 @@
 
         #cancel2 {
             text-decoration: none;
-            background:#b7b7b7;
+            background: #b7b7b7;
             color: #ffffff;
 
             padding: 10px 30px 10px 30px;
@@ -104,7 +105,7 @@
 
         }
 
-        #download{
+        #download {
 
             text-decoration: none;
             background: #985f0d;
@@ -143,10 +144,10 @@
             cursor: pointer;
         }
 
-        #download:hover{
+        #download:hover {
             background-color: #95b4ed;
             cursor: pointer;
-            
+
         }
 
         .close-login {
@@ -169,32 +170,32 @@
             cursor: pointer;
         }
 
-        .login{
-            display:none;
-            width:700px;
-            height:700px;
-            position:fixed;
-            border:#ebebeb solid 1px;
-            left:50%;
-            top:50%;
-            background:#ffffff;
-            box-shaow:0px 0px 20px #ddd;
-            z-index:9999;
-            transform:translate(-50%,-50%);
+        .login {
+            display: none;
+            width: 700px;
+            height: 700px;
+            position: fixed;
+            border: #ebebeb solid 1px;
+            left: 50%;
+            top: 50%;
+            background: #ffffff;
+            box-shaow: 0px 0px 20px #ddd;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
         }
 
-        .login2{
-            display:none;
-            width:700px;
-            height:700px;
-            position:fixed;
-            border:#ebebeb solid 1px;
-            left:50%;
-            top:50%;
-            background:#ffffff;
-            box-shaow:0px 0px 20px #ddd;
-            z-index:9999;
-            transform:translate(-50%,-50%);
+        .login2 {
+            display: none;
+            width: 700px;
+            height: 700px;
+            position: fixed;
+            border: #ebebeb solid 1px;
+            left: 50%;
+            top: 50%;
+            background: #ffffff;
+            box-shaow: 0px 0px 20px #ddd;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
         }
 
         .login-bg {
@@ -251,13 +252,56 @@
         <a id="cancel2">取消</a>
     </div>
 </div>
+
 <div id="bg2" class="login-bg2"></div>
 
 <p>
+<div id="app">
     <button id="link" onclick="showCode()">Show code</button>
     <button id="compile" onclick="compile()">compile</button>
     <button id="deploy" onclick="deploy()">deploy</button>
+    <el-button @click="deploy_button()">构造器参数</el-button>
+    <el-dialog title="部署合约构造器参数" :visible.sync="dialogFormVisible_deploy" width="800px">
+        <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="100px" class="demo-dynamic">
+            <el-form-item
+                    prop="email"
+                    label="邮箱"
+                    :rules="[
+      { required: true, message: '请输入邮箱地址', trigger: 'blur' },
+      { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+    ]"
+            >
+                <el-input v-model="dynamicValidateForm.email"></el-input>
+            </el-form-item>
+            <el-form-item
+                    v-for="(domain, index) in dynamicValidateForm.domains"
+                    :label="'域名' + index"
+                    :key="domain.key"
+                    :prop="'domains.' + index + '.value'"
+                    :rules="{
+      required: true, message: '域名不能为空', trigger: 'blur'
+    }"
+            >
+                <el-input v-model="domain.value"></el-input>
+                <el-button @click.prevent="removeDomain(domain)">删除</el-button>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('dynamicValidateForm')">提交</el-button>
+                <el-button @click="addDomain">新增域名</el-button>
+                <el-button @click="resetForm('dynamicValidateForm')">重置</el-button>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="dialogFormVisible_deploy = false">取 消</el-button>
+            <el-button type="primary" @click="dialog_confirm()"
+            >确 定
+            </el-button
+            >
+        </div>
+    </el-dialog>
+</div>
 </p>
+
 <script>
     var mask = document.querySelector('.login-bg');
     var login = document.querySelector('.login');
@@ -278,7 +322,7 @@
     var sure2 = document.querySelector('#sure2');
     var textId2 = document.getElementById("textfield2");
     var titleName2 = document.getElementById("title2");
-     
+
     link.addEventListener('click', function () {
         titleName.innerHTML = "生成的代码展示";
         mask.style.display = 'block';
@@ -290,7 +334,7 @@
         textId.innerHTML = "";
         textId2.innerHTML = "";
     })
-    cancel2.addEventListener('click',function(){
+    cancel2.addEventListener('click', function () {
         mask2.style.display = 'none';
         login2.style.display = 'none';
         textId.innerHTML = "";
@@ -318,7 +362,7 @@
         alert("复制成功");
     })
 
-    sure2.addEventListener('click',function(){
+    sure2.addEventListener('click', function () {
         var data = textId2.innerHTML;//要复制的内容
         var oInput = document.createElement('input');
         oInput.value = data;
@@ -362,16 +406,16 @@
         var response = sendHttpGet(url);
     }
 
-    function down(){
+    function down() {
         //代码;
         var datas = codeData;
-        console.log('========='+datas);
+        console.log('=========' + datas);
         $.post({
-            url:'http://localhost:9014/api/truffle/code/down',
-            data:{
-                "code":datas
+            url: 'http://localhost:9014/api/truffle/code/down',
+            data: {
+                "code": datas
             },
-            success:function(response){
+            success: function (response) {
                 alert(response.msg);
             }
         })
@@ -423,4 +467,60 @@
 
 <script src="workspace.js"></script>
 </body>
+
+<!-- 引入vue组件库 -->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui@2.15.7/lib/index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+    var Main = {
+        data() {
+            return {
+                dynamicValidateForm: {
+                    domains: [{
+                        value: ''
+                    }],
+                    email: ''
+                },
+                dialogFormVisible_deploy: false,
+            };
+        },
+        methods: {
+            dialog_confirm(){
+
+            },
+            deploy_button() {
+                this.dialogFormVisible_deploy = true;
+            },
+            submitForm(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        alert('submit!');
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            },
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
+            },
+            removeDomain(item) {
+                var index = this.dynamicValidateForm.domains.indexOf(item)
+                if (index !== -1) {
+                    this.dynamicValidateForm.domains.splice(index, 1)
+                }
+            },
+            addDomain() {
+                this.dynamicValidateForm.domains.push({
+                    value: '',
+                    key: Date.now()
+                });
+            }
+        }
+    }
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app')
+</script>
 </html>
