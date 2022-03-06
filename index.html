@@ -10,267 +10,28 @@
     <script src="./generators/generate.js"></script>
     <script src="./jquery-3.4.1.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.7/lib/theme-chalk/index.css">
-    <style>
-        #login_click {
-            margin-top: 32px;
-            height: 40px;
-        }
-
-        #login_click2 {
-            margin-top: 32px;
-            height: 40px;
-        }
-
-        .close-login {
-            color: #b7b7b7;
-            font-size: 30px;
-            font-weight: bold;
-            margin-right: 20px;
-            transition: all 0.3s;
-        }
-
-        #sure {
-            text-decoration: none;
-            background: #2f435e;
-            color: #f2f2f2;
-
-            padding: 10px 30px 10px 30px;
-            font-size: 16px;
-            font-family: 微软雅黑, 宋体, Arial, Helvetica, Verdana, sans-serif;
-            font-weight: bold;
-            border-radius: 3px;
-
-            -webkit-transition: all linear 0.30s;
-            -moz-transition: all linear 0.30s;
-            transition: all linear 0.30s;
-            vertical-align: -40px;
-            margin-left: 60px;
-
-        }
-
-        #sure2 {
-            text-decoration: none;
-            background: #2f435e;
-            color: #f2f2f2;
-
-            padding: 10px 30px 10px 30px;
-            font-size: 16px;
-            font-family: 微软雅黑, 宋体, Arial, Helvetica, Verdana, sans-serif;
-            font-weight: bold;
-            border-radius: 3px;
-
-            -webkit-transition: all linear 0.30s;
-            -moz-transition: all linear 0.30s;
-            transition: all linear 0.30s;
-            vertical-align: -40px;
-            margin-left: 60px;
-
-        }
-
-        #cancel {
-            text-decoration: none;
-            background: #b7b7b7;
-            color: #ffffff;
-
-            padding: 10px 30px 10px 30px;
-            font-size: 16px;
-            font-family: 微软雅黑, 宋体, Arial, Helvetica, Verdana, sans-serif;
-            font-weight: bold;
-            border-radius: 3px;
-
-            -webkit-transition: all linear 0.30s;
-            -moz-transition: all linear 0.30s;
-            transition: all linear 0.30s;
-            vertical-align: -40px;
-            margin-left: 145px;
-
-        }
-
-        #cancel2 {
-            text-decoration: none;
-            background: #b7b7b7;
-            color: #ffffff;
-
-            padding: 10px 30px 10px 30px;
-            font-size: 16px;
-            font-family: 微软雅黑, 宋体, Arial, Helvetica, Verdana, sans-serif;
-            font-weight: bold;
-            border-radius: 3px;
-
-            -webkit-transition: all linear 0.30s;
-            -moz-transition: all linear 0.30s;
-            transition: all linear 0.30s;
-            vertical-align: -40px;
-            margin-left: 375px;
-
-        }
-
-        #download {
-
-            text-decoration: none;
-            background: #985f0d;
-            color: #ffffff;
-
-            padding: 10px 30px 10px 30px;
-            font-size: 16px;
-            font-family: 微软雅黑, 宋体, Arial, Helvetica, Verdana, sans-serif;
-            font-weight: bold;
-            border-radius: 3px;
-
-            -webkit-transition: all linear 0.30s;
-            -moz-transition: all linear 0.30s;
-            transition: all linear 0.30s;
-            vertical-align: -40px;
-            margin-left: 145px;
-        }
-
-        #sure:hover {
-            background: #385f9e;
-            cursor: pointer;
-        }
-
-        #cancel:hover {
-            background: #985f0d;
-            cursor: pointer;
-        }
-
-        #sure2:hover {
-            background: #385f9e;
-            cursor: pointer;
-        }
-
-        #cancel2:hover {
-            background: #985f0d;
-            cursor: pointer;
-        }
-
-        #download:hover {
-            background-color: #95b4ed;
-            cursor: pointer;
-
-        }
-
-        .close-login {
-            color: #b7b7b7;
-            font-size: 30px;
-            font-weight: bold;
-            margin-right: 20px;
-            transition: all 0.3s;
-        }
-
-        #closeBtn:hover, #closeBtn:focus {
-            color: #95b4ed;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        #closeBtn2:hover, #closeBtn:focus {
-            color: #95b4ed;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .login {
-            display: none;
-            width: 700px;
-            height: 700px;
-            position: fixed;
-            border: #ebebeb solid 1px;
-            left: 50%;
-            top: 50%;
-            background: #ffffff;
-            box-shaow: 0px 0px 20px #ddd;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-        }
-
-        .login2 {
-            display: none;
-            width: 700px;
-            height: 700px;
-            position: fixed;
-            border: #ebebeb solid 1px;
-            left: 50%;
-            top: 50%;
-            background: #ffffff;
-            box-shaow: 0px 0px 20px #ddd;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-        }
-
-        .login-bg {
-            display: none;
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            background: rgba(0, 0, 0, .3);
-        }
-
-        .login-bg2 {
-            display: none;
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            background: rgba(0, 0, 0, .3);
-        }
-    </style>
 </head>
 <body>
 <div id="blocklyDiv" style="height: 1000px; width: 1500px;"></div>
 
-<!-- 对话框去显示生成的代码内容 -->
-<div id="login" class="login">
-    <header class="tenant-model-header">
-        <h4 id="title" class="login-title"
-            style="margin-left: 20px;padding:5px;font-weight: bold;height: 30px;line-height: 30px;"></h4>
-    </header>
-    <div class="login-input-content">
-        <textarea id="textfield" style="margin-left: 20px;height: 450px;width: 660px;"></textarea>
-    </div>
-    <div id="login_click">
-        <a id="sure">复制</a>
-        <a id="download" onclick="down()">下载</a>
-        <a id="cancel">取消</a>
-    </div>
-</div>
-<div id="bg" class="login-bg"></div>
-
-<div id="login2" class="login2">
-    <header class="tenant-model-header">
-        <h4 id="title2" class="login-title"
-            style="margin-left: 20px;padding:5px;font-weight: bold;height: 30px;line-height: 30px;"></h4>
-    </header>
-    <div class="login-input-content">
-        <textarea id="textfield2" style="margin-left: 20px;height: 450px;width: 660px;"></textarea>
-    </div>
-    <div id="login_click2">
-        <a id="sure2">复制</a>
-        <a id="cancel2">取消</a>
-    </div>
-</div>
-
-<div id="bg2" class="login-bg2"></div>
-
 <p>
+    <!--            <button id="link" onclick="showCode()">Show code</button>-->
+    <!--        <button id="compile" onclick="compile()">compile</button>-->
+    <!--    <button id="deploy" onclick="deploy()">deploy</button>-->
 <div id="app">
-    <button id="link" onclick="showCode()">Show code</button>
-    <button id="compile" onclick="compile()">compile</button>
-    <button id="deploy" onclick="deploy()">deploy</button>
-    <el-button @click="deploy_button()">构造器参数</el-button>
+    <el-button @click="showCode_button()">生成代码（showCode）</el-button>
+    <el-button @click="compile_button()">编译（compile）</el-button>
+    <el-button @click="deploy_button()">部署（deploy）</el-button>
+
     <el-dialog title="部署合约构造器参数" :visible.sync="dialogFormVisible_deploy" width="800px">
         <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="100px" class="demo-dynamic">
             <el-form-item
                     prop="email"
                     label="邮箱"
                     :rules="[
-      { required: true, message: '请输入邮箱地址', trigger: 'blur' },
-      { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
-    ]"
-            >
+                          { required: true, message: '请输入邮箱地址', trigger: 'blur' },
+                          { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+                        ]">
                 <el-input v-model="dynamicValidateForm.email"></el-input>
             </el-form-item>
             <el-form-item
@@ -293,163 +54,38 @@
         </el-form>
         <div slot="footer" class="dialog-footer">
             <el-button @click="dialogFormVisible_deploy = false">取 消</el-button>
-            <el-button type="primary" @click="dialog_confirm()"
-            >确 定
-            </el-button
-            >
+            <el-button type="primary" @click="dialog_deploy_confirm()">确 定</el-button>
+        </div>
+    </el-dialog>
+
+
+    <el-dialog :title="compile_property.title" :visible.sync="dialogFormVisible_compile" width="1200px">
+        <el-form :model="compile_property">
+            <el-form-item prop="codeResult">
+                <el-input type="textarea" autosize v-model="compile_property.code" autocomplete="off"></el-input>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="dialogFormVisible_compile = false">取 消</el-button>
+            <el-button type="primary" @click="dialog_compile_confirm()">确 定</el-button>
+        </div>
+    </el-dialog>
+
+    <el-dialog title="生成代码结果" :visible.sync="dialogFormVisible_showCode" width="1200px">
+        <el-form :model="showCode_property">
+            <el-form-item prop="codeResult">
+                <el-input type="textarea" autosize v-model="showCode_property.code" autocomplete="off"></el-input>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="dialogFormVisible_showCode = false">取 消</el-button>
+            <el-button type="primary" @click="dialog_showCode_confirm()">下载合约</el-button>
         </div>
     </el-dialog>
 </div>
 </p>
 
-<script>
-    var mask = document.querySelector('.login-bg');
-    var login = document.querySelector('.login');
-    var cancel = document.querySelector('#cancel');
-    var closeBtn = document.querySelector('#closeBtn');
-    var sure = document.querySelector('#sure');
-    var link = document.querySelector('#link');
-    var textId = document.getElementById("textfield");
-    var titleName = document.getElementById("title");
-    var compiles = document.getElementById("compile");
-    var deploys = document.getElementById("deploy");
-    var codeData = "";
 
-    var mask2 = document.querySelector('.login-bg2');
-    var login2 = document.querySelector('.login2');
-    var cancel2 = document.querySelector('#cancel2');
-    var closeBtn2 = document.querySelector('#closeBtn2');
-    var sure2 = document.querySelector('#sure2');
-    var textId2 = document.getElementById("textfield2");
-    var titleName2 = document.getElementById("title2");
-
-    link.addEventListener('click', function () {
-        titleName.innerHTML = "生成的代码展示";
-        mask.style.display = 'block';
-        login.style.display = 'block';
-    })
-    cancel.addEventListener('click', function () {
-        mask.style.display = 'none';
-        login.style.display = 'none';
-        textId.innerHTML = "";
-        textId2.innerHTML = "";
-    })
-    cancel2.addEventListener('click', function () {
-        mask2.style.display = 'none';
-        login2.style.display = 'none';
-        textId.innerHTML = "";
-        textId2.innerHTML = "";
-    })
-    compiles.addEventListener('click', function () {
-        titleName2.innerHTML = "编译结果";
-        mask2.style.display = 'block';
-        login2.style.display = 'block';
-    })
-    deploys.addEventListener('click', function () {
-        titleName2.innerHTML = "部署结果";
-        mask2.style.display = 'block';
-        login2.style.display = 'block';
-    })
-    sure.addEventListener('click', function () {
-        var data = textId.innerHTML;//要复制的内容
-        var oInput = document.createElement('input');
-        oInput.value = data;
-        document.body.appendChild(oInput);
-        oInput.select(); // 选择对象
-        document.execCommand("Copy"); // 执行浏览器复制命令document.execCommand此命令牛逼
-        oInput.className = 'oInput';
-        oInput.style.display = 'none';
-        alert("复制成功");
-    })
-
-    sure2.addEventListener('click', function () {
-        var data = textId2.innerHTML;//要复制的内容
-        var oInput = document.createElement('input');
-        oInput.value = data;
-        document.body.appendChild(oInput);
-        oInput.select(); // 选择对象
-        document.execCommand("Copy"); // 执行浏览器复制命令document.execCommand此命令牛逼
-        oInput.className = 'oInput';
-        oInput.style.display = 'none';
-        alert("复制成功");
-    })
-
-    function showCode() {
-
-// Generate JavaScript code and display it.
-        var topBlocks = workspace.getAllBlocks();
-        var codes = [];
-        var contractBlock = workspace.getTopBlocks()[0];
-//console.log('contractBlock' + contractBlock.toString());
-        console.log(topBlocks)
-        for (var i = 0; i < topBlocks.length; i++) {
-            if (topBlocks[i] == contractBlock) {
-                var code = Blockly.codelabGenerator.blockToCode(topBlocks[i]);
-                codes.push(code + '\n');
-            }
-        }
-        console.log(codes);
-        let tmp = codes[0].replace('\n', '').split('@');
-        console.log(tmp);
-        var url = 'http://localhost:9014/api/generate/code?fileIds=' + tmp[1] + '&contractName=' + tmp[0];
-        var response = sendHttpGet(url);
-// alert(response);
-    }
-
-    function compile() {
-        var url = 'http://localhost:9014/api/truffle/code/compile';
-        var response = sendHttpGet(url);
-    }
-
-    function deploy() {
-        var url = 'http://localhost:9014/api/truffle/code/deploy';
-        var response = sendHttpGet(url);
-    }
-
-    function down() {
-        //代码;
-        var datas = codeData;
-        console.log('=========' + datas);
-        $.post({
-            url: 'http://localhost:9014/api/truffle/code/down',
-            data: {
-                "code": datas
-            },
-            success: function (response) {
-                alert(response.msg);
-            }
-        })
-    }
-
-    function sendHttpGet(url) {
-        var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
-        httpRequest.open('GET', url, true);//第二步：打开连接  将请求参数写在url中
-        httpRequest.send();//第三步：发送请求  将请求参数写在URL中
-        /**
-         * 获取数据后的处理程序
-         */
-        httpRequest.onreadystatechange = function () {
-            if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-                var json = httpRequest.responseText;//获取到json字符串，还需解析
-                console.log('响应结果:' + json);
-                let data = eval("(" + json + ")").data;
-                console.log(data);
-                let code = eval("(" + json + ")").code;
-                let msg = eval("(" + json + ")").msg;
-                //alert(data);
-                if (code == 200) {
-                    textId.innerHTML = data;
-                    textId2.innerHTML = data;
-                    codeData = data;
-                } else {
-                    textId.innerHTML = msg;
-                    textId2.innerHTML = msg;
-                }
-                return json;
-            }
-        };
-    }
-</script>
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
     <category name="合约">
         <block type="contract"></block>
@@ -484,10 +120,83 @@
                     email: ''
                 },
                 dialogFormVisible_deploy: false,
+                dialogFormVisible_compile: false,
+                dialogFormVisible_showCode: false,
+                compile_property: {
+                    title: "编译结果",
+                    code: "",
+                },
+                showCode_property: {
+                    code: ""
+                }
+
             };
         },
         methods: {
-            dialog_confirm(){
+            showCode_button() {
+                this.compile_property.code = "";
+                this.dialogFormVisible_showCode = true;
+                // Generate JavaScript code and display it.
+                var topBlocks = workspace.getAllBlocks();
+                var codes = [];
+                var contractBlock = workspace.getTopBlocks()[0];
+                //console.log('contractBlock' + contractBlock.toString());
+                console.log('topBlocks', topBlocks)
+                for (var i = 0; i < topBlocks.length; i++) {
+                    if (topBlocks[i] == contractBlock) {
+                        var code = Blockly.codelabGenerator.blockToCode(topBlocks[i]);
+                        codes.push(code + '\n');
+                    }
+                }
+                console.log('code', codes);
+                let tmp = codes[0].replace('\n', '').split('@');
+                console.log(tmp);
+                // var url = 'http://localhost:9014/api/generate/code?fileIds=' + tmp[1] + '&contractName=' + tmp[0];
+                axios.get('http://localhost:9014/api/generate/code', {
+                    params: {
+                        fileIds: tmp[1],
+                        contractName: tmp[0],
+                    }
+                }).then(res => {
+                    if (res.data.code === 200) {
+                        this.showCode_property.code = res.data.data
+                    } else if (res.data.code === 403) {
+                        this.showCode_property.code = res.data.msg
+                    }
+                }).catch(response => {
+                    this.showCode_property.code = "编译失败" + response.data.msg
+                })
+            },
+            compile_button() {
+                this.compile_property.code = "";
+                axios.get('http://localhost:9014/api/truffle/code/compile').then(res => {
+                    console.log(res);
+                    if (res.data.code === 200) {
+                        this.compile_property.code = res.data.data
+                    } else if (res.data.code === 403) {
+                        this.compile_property.code = res.data.msg
+                    }
+                }).catch(response => {
+                    this.compile_property.code = "编译失败" + response.data.msg;
+                })
+                this.dialogFormVisible_compile = true;
+            },
+            dialog_showCode_confirm() {
+                $.post({
+                    url: 'http://localhost:9014/api/truffle/code/down',
+                    data: {
+                        "code": this.showCode_property.code
+                    },
+                    success: function (response) {
+                        alert(response.msg);
+                    }
+                })
+                this.dialogFormVisible_showCode = false;
+            },
+            dialog_compile_confirm() {
+                this.dialogFormVisible_compile = false;
+            },
+            dialog_deploy_confirm() {
 
             },
             deploy_button() {
@@ -523,4 +232,153 @@
     var Ctor = Vue.extend(Main)
     new Ctor().$mount('#app')
 </script>
+
+<!--<script>-->
+<!--    var mask = document.querySelector('.login-bg');-->
+<!--    var login = document.querySelector('.login');-->
+<!--    var cancel = document.querySelector('#cancel');-->
+<!--    var closeBtn = document.querySelector('#closeBtn');-->
+<!--    var sure = document.querySelector('#sure');-->
+<!--    var link = document.querySelector('#link');-->
+<!--    var textId = document.getElementById("textfield");-->
+<!--    var titleName = document.getElementById("title");-->
+<!--    var compiles = document.getElementById("compile");-->
+<!--    var deploys = document.getElementById("deploy");-->
+<!--    var codeData = "";-->
+
+<!--    var mask2 = document.querySelector('.login-bg2');-->
+<!--    var login2 = document.querySelector('.login2');-->
+<!--    var cancel2 = document.querySelector('#cancel2');-->
+<!--    var closeBtn2 = document.querySelector('#closeBtn2');-->
+<!--    var sure2 = document.querySelector('#sure2');-->
+<!--    var textId2 = document.getElementById("textfield2");-->
+<!--    var titleName2 = document.getElementById("title2");-->
+
+<!--    link.addEventListener('click', function () {-->
+<!--        titleName.innerHTML = "生成的代码展示";-->
+<!--        mask.style.display = 'block';-->
+<!--        login.style.display = 'block';-->
+<!--    })-->
+<!--    cancel.addEventListener('click', function () {-->
+<!--        mask.style.display = 'none';-->
+<!--        login.style.display = 'none';-->
+<!--        textId.innerHTML = "";-->
+<!--        textId2.innerHTML = "";-->
+<!--    })-->
+<!--    cancel2.addEventListener('click', function () {-->
+<!--        mask2.style.display = 'none';-->
+<!--        login2.style.display = 'none';-->
+<!--        textId.innerHTML = "";-->
+<!--        textId2.innerHTML = "";-->
+<!--    })-->
+<!--    compiles.addEventListener('click', function () {-->
+<!--        titleName2.innerHTML = "编译结果";-->
+<!--        mask2.style.display = 'block';-->
+<!--        login2.style.display = 'block';-->
+<!--    })-->
+<!--    deploys.addEventListener('click', function () {-->
+<!--        titleName2.innerHTML = "部署结果";-->
+<!--        mask2.style.display = 'block';-->
+<!--        login2.style.display = 'block';-->
+<!--    })-->
+<!--    sure.addEventListener('click', function () {-->
+<!--        var data = textId.innerHTML;//要复制的内容-->
+<!--        var oInput = document.createElement('input');-->
+<!--        oInput.value = data;-->
+<!--        document.body.appendChild(oInput);-->
+<!--        oInput.select(); // 选择对象-->
+<!--        document.execCommand("Copy"); // 执行浏览器复制命令document.execCommand此命令牛逼-->
+<!--        oInput.className = 'oInput';-->
+<!--        oInput.style.display = 'none';-->
+<!--        alert("复制成功");-->
+<!--    })-->
+
+<!--    sure2.addEventListener('click', function () {-->
+<!--        var data = textId2.innerHTML;//要复制的内容-->
+<!--        var oInput = document.createElement('input');-->
+<!--        oInput.value = data;-->
+<!--        document.body.appendChild(oInput);-->
+<!--        oInput.select(); // 选择对象-->
+<!--        document.execCommand("Copy"); // 执行浏览器复制命令document.execCommand此命令牛逼-->
+<!--        oInput.className = 'oInput';-->
+<!--        oInput.style.display = 'none';-->
+<!--        alert("复制成功");-->
+<!--    })-->
+
+<!--    function showCode() {-->
+
+<!--        // Generate JavaScript code and display it.-->
+<!--        var topBlocks = workspace.getAllBlocks();-->
+<!--        var codes = [];-->
+<!--        var contractBlock = workspace.getTopBlocks()[0];-->
+<!--        //console.log('contractBlock' + contractBlock.toString());-->
+<!--        console.log(topBlocks)-->
+<!--        for (var i = 0; i < topBlocks.length; i++) {-->
+<!--            if (topBlocks[i] == contractBlock) {-->
+<!--                var code = Blockly.codelabGenerator.blockToCode(topBlocks[i]);-->
+<!--                codes.push(code + '\n');-->
+<!--            }-->
+<!--        }-->
+<!--        console.log(codes);-->
+<!--        let tmp = codes[0].replace('\n', '').split('@');-->
+<!--        console.log(tmp);-->
+<!--        var url = 'http://localhost:9014/api/generate/code?fileIds=' + tmp[1] + '&contractName=' + tmp[0];-->
+<!--        var response = sendHttpGet(url);-->
+<!--        // alert(response);-->
+<!--    }-->
+
+<!--    function compile() {-->
+<!--        var url = 'http://localhost:9014/api/truffle/code/compile';-->
+<!--        var response = sendHttpGet(url);-->
+<!--    }-->
+
+<!--    function deploy() {-->
+<!--        var url = 'http://localhost:9014/api/truffle/code/deploy';-->
+<!--        var response = sendHttpGet(url);-->
+<!--    }-->
+
+<!--    function down() {-->
+<!--        //代码;-->
+<!--        var datas = codeData;-->
+<!--        console.log('=========' + datas);-->
+<!--        $.post({-->
+<!--            url: 'http://localhost:9014/api/truffle/code/down',-->
+<!--            data: {-->
+<!--                "code": datas-->
+<!--            },-->
+<!--            success: function (response) {-->
+<!--                alert(response.msg);-->
+<!--            }-->
+<!--        })-->
+<!--    }-->
+
+<!--    function sendHttpGet(url) {-->
+<!--        var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象-->
+<!--        httpRequest.open('GET', url, true);//第二步：打开连接  将请求参数写在url中-->
+<!--        httpRequest.send();//第三步：发送请求  将请求参数写在URL中-->
+<!--        /**-->
+<!--         * 获取数据后的处理程序-->
+<!--         */-->
+<!--        httpRequest.onreadystatechange = function () {-->
+<!--            if (httpRequest.readyState == 4 && httpRequest.status == 200) {-->
+<!--                var json = httpRequest.responseText;//获取到json字符串，还需解析-->
+<!--                console.log('响应结果:' + json);-->
+<!--                let data = eval("(" + json + ")").data;-->
+<!--                console.log(data);-->
+<!--                let code = eval("(" + json + ")").code;-->
+<!--                let msg = eval("(" + json + ")").msg;-->
+<!--                //alert(data);-->
+<!--                if (code == 200) {-->
+<!--                    textId.innerHTML = data;-->
+<!--                    textId2.innerHTML = data;-->
+<!--                    codeData = data;-->
+<!--                } else {-->
+<!--                    textId.innerHTML = msg;-->
+<!--                    textId2.innerHTML = msg;-->
+<!--                }-->
+<!--                return json;-->
+<!--            }-->
+<!--        };-->
+<!--    }-->
+<!--</script>-->
 </html>

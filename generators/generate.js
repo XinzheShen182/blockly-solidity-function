@@ -50,7 +50,7 @@ var contractName = space_string;
 Blockly.codelabGenerator['contract'] = function (block) {
     var value_contract_name = Blockly.codelabGenerator.valueToCode(block, 'CONTRACT_NAME', Blockly.codelabGenerator.ORDER_ATOMIC);
     contractName = value_contract_name;
-    var method_top_block = block.getInputTargetBlock('METHOD');
+    var method_top_block = block.getInputTargetBlock('CONTRACT_TERM');
     var method_code = getAllStatementBlocks(method_top_block).toString();
     // TODO: Assemble JavaScript into code variable.
     var code = [];
