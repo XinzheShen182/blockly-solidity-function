@@ -103,10 +103,7 @@
         data() {
             return {
                 dynamicValidateForm: {
-                    domains: [{
-                        value: '',
-                        name: '1'
-                    },{value: '',name:'2'}],
+                    domains: [],
                 },
                 dialogFormVisible_deploy: false,
                 dialogFormVisible_compile: false,
@@ -213,7 +210,7 @@
                     if (res.data.code === 200) {
                         let data = res.data.data;
                         this.dynamicValidateForm.domains.length = 0;
-                        if(data==null){
+                        if(data.constructorParamNum==null){
                             alert("没有构造器或构造器不需要参数，请直接部署");
                         }
                         else {
