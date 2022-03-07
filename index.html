@@ -26,30 +26,15 @@
     <el-dialog title="部署合约构造器参数" :visible.sync="dialogFormVisible_deploy" width="800px">
         <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="100px" class="demo-dynamic">
             <el-form-item
-                    prop="email"
-                    label="邮箱"
-                    :rules="[
-                          { required: true, message: '请输入邮箱地址', trigger: 'blur' },
-                          { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
-                        ]">
-                <el-input v-model="dynamicValidateForm.email"></el-input>
-            </el-form-item>
-            <el-form-item
                     v-for="(domain, index) in dynamicValidateForm.domains"
-                    :label="'域名' + index"
+                    :label="domain.name"
                     :key="domain.key"
                     :prop="'domains.' + index + '.value'"
                     :rules="{
-      required: true, message: '域名不能为空', trigger: 'blur'
+      required: true, message: '参数名不能为空', trigger: 'blur'
     }"
             >
                 <el-input v-model="domain.value"></el-input>
-                <el-button @click.prevent="removeDomain(domain)">删除</el-button>
-            </el-form-item>
-            <el-form-item>
-                <el-button type="primary" @click="submitForm('dynamicValidateForm')">提交</el-button>
-                <el-button @click="addDomain">新增域名</el-button>
-                <el-button @click="resetForm('dynamicValidateForm')">重置</el-button>
             </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -119,9 +104,9 @@
             return {
                 dynamicValidateForm: {
                     domains: [{
-                        value: ''
-                    }],
-                    email: ''
+                        value: '',
+                        name: '1'
+                    },{value: '',name:'2'}],
                 },
                 dialogFormVisible_deploy: false,
                 dialogFormVisible_compile: false,
@@ -198,13 +183,52 @@
                 this.dialogFormVisible_showCode = false;
             },
             dialog_compile_confirm() {
-                this.dialogFormVisible_compile = false;
+                this.dialogFormVisible_compile = false;这
             },
             dialog_deploy_confirm() {
 
             },
             deploy_button() {
                 this.dialogFormVisible_deploy = true;
+                var topBlocks = workspace.getAllBlocks();
+                var codes = [];
+                var contractBlock = workspace.getTopBlocks()[0];
+                //console.log('contractBlock' + contractBlock.toString());
+                console.log('topBlocks', topBlocks)
+                for (var i = 0; i < topBlocks.length; i++) {
+                    if (topBlocks[i] == contractBlock) {
+                        var code = Blockly.codelabGenerator.blockToCode(topBlocks[i]);
+                        codes.push(code + '\n');
+                    }
+                }
+                console.log('code', codes);
+                let tmp = codes[0].replace('\n', '').split('@');
+                //从后端获取到参数的个数和参数名
+                axios.get('http://localhost:9014/api/query/constructor',{
+                    params: {
+                        "fileIds": tmp[1].toString()
+                    }
+                }).then(res => {
+                    console.log(res);
+                    if (res.data.code === 200) {
+                        let data = res.data.data;
+                        this.dynamicValidateForm.domains.length = 0;
+                        if(data==null){
+                            alert("没有构造器或构造器不需要参数，请直接部署");
+                        }
+                        else {
+                            let constructorParamNum = data.constructorParamNum;
+                            let paramInfos = data.paramInfos;
+                            for (var i = 0; i < constructorParamNum; i++) {
+                                this.dynamicValidateForm.domains.push({value: '', name: paramInfos[i]});
+                            }
+                        }
+                    } else if (res.data.code === 403) {
+                        alert(res.data.msg);
+                    }
+                }).catch(response => {
+                    alert(response.data.msg);
+                })
             },
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
