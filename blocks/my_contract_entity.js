@@ -45,22 +45,25 @@
 
 /**合约*/
 Blockly.Blocks['contract'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("合约");
-    this.appendValueInput("CONTRACT_NAME")
-        .setCheck(null)
-        .appendField("合约名字");
-    this.appendValueInput("CONTRACT_DESC")
-        .setCheck(null)
-        .appendField("合约描述");
-    this.appendStatementInput("CONTRACT_TERM")
-        .setCheck(null)
-        .appendField("关联的条款流程ID");
-    this.setColour(90);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
+    init: function() {
+        this.appendDummyInput()
+            .appendField("合约");
+        this.appendValueInput("CONTRACT_NAME")
+            .setCheck(null)
+            .appendField("合约名字");
+        this.appendValueInput("CONTRACT_DESC")
+            .setCheck(null)
+            .appendField("合约描述");
+        this.appendStatementInput("IF_USE_INHERIT")
+            .setCheck(null)
+            .appendField("是否使用继承的库合约");
+        this.appendStatementInput("CONTRACT_TERM")
+            .setCheck(null)
+            .appendField("关联的条款流程ID");
+        this.setColour(90);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
 };
 
 //条款
@@ -76,7 +79,44 @@ Blockly.Blocks['term'] = {
  this.setHelpUrl("");
   }
 };
-
+//使用继承
+Blockly.Blocks['unuse_inherit'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("否");
+        this.setPreviousStatement(true, null);
+        this.setColour(45);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+Blockly.Blocks['use_inherit'] = {
+    init: function() {
+        this.appendValueInput("USE")
+            .setCheck(null)
+            .appendField("是");
+        this.setPreviousStatement(true, null);
+        this.setColour(20);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+Blockly.Blocks['library'] = {
+    init: function() {
+        this.appendValueInput("LIBRARY_NAME")
+            .setCheck(null)
+            .appendField(new Blockly.FieldDropdown([["ERC1155","@openzeppelin/contracts/token/ERC1155/ERC1155.sol"],
+                ["Ownable","@openzeppelin/contracts/access/Ownable.sol"],
+                ["IERC165","@openzeppelin/contracts/utils/introspection/IERC165.sol"],
+                ["ERC1155Holder","@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol"],
+                ["Address","@openzeppelin/contracts/utils/Address.sol"],
+                ["IERC1155","@openzeppelin/contracts/token/ERC1155/IERC1155.sol"]]), "SMART_CONTRACT_LIBRARY");
+        this.setOutput(true, null);
+        this.setColour(230);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
 /**方法*/
 // Blockly.Blocks['work_contract_method'] = {
 //   init: function () {
