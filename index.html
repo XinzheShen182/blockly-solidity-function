@@ -156,7 +156,8 @@
                     }
                 }
                 console.log('code', codes);
-                let tmp = codes[0].replace('\n', '').split('@');
+                let tmp = codes[0].replace('\n', '').split('￥');
+                //tmp:0是合约名，1是合约描述，2是流程id，3是关联的智能合约库
                 console.log(tmp);
                 // var url = 'http://localhost:9014/api/generate/code?fileIds=' + tmp[1] + '&contractName=' + tmp[0];
                 axios.get('http://localhost:9014/api/generate/code', {

@@ -110,6 +110,8 @@ Blockly.Blocks['library'] = {
                 ["ERC1155Holder","@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol"],
                 ["Address","@openzeppelin/contracts/utils/Address.sol"],
                 ["IERC1155","@openzeppelin/contracts/token/ERC1155/IERC1155.sol"]]), "SMART_CONTRACT_LIBRARY");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
         this.setColour(230);
         this.setTooltip("");
         this.setHelpUrl("");

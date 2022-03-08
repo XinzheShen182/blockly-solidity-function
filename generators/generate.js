@@ -66,7 +66,7 @@ Blockly.codelabGenerator['contract'] = function (block) {
     // obj['fileIds'] = method_code;
     // obj['']
     // code.push(obj);
-    var code = value_contract_name + '@' + value_contract_desc + '@' + method_code+'@'+use_library ;
+    var code = value_contract_name + '￥' + value_contract_desc + '￥' + method_code+'￥'+use_library ;
     // var url = 'http://localhost:9014/api/generate/code?fileIds=' + method_code + '&contractName=' + value_contract_name;
     // var response = generateCode(method_code, value_contract_name);
     // var response = sendHttpGet(url);
@@ -102,14 +102,16 @@ Blockly.codelabGenerator['unuse_inherit'] = function (block){
 }
 
 Blockly.codelabGenerator['use_inherit'] = function (block){
-    var libName = Blockly.codelabGenerator.valueToCode(block, 'USE', Blockly.codelabGenerator.ORDER_ATOMIC);
-    console.log('libName' + libName);
-    return libName;
+    var libName =  block.getInputTargetBlock('USE');
+    var library_names = getAllStatementBlocks(libName).toString();
+    return library_names;
 }
 
 Blockly.codelabGenerator['library'] = function (block){
-    var textValue = block.getFieldValue('LIBRARY_NAME');
-    return [textValue, Blockly.codelabGenerator.ORDER_ATOMIC];
+    var smart_contract_library = block.getFieldValue('SMART_CONTRACT_LIBRARY');
+    console.log("lib:"+smart_contract_library);
+    return smart_contract_library;
+
 }
 
 Blockly.codelabGenerator['map'] = function (block) {
