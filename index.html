@@ -23,7 +23,7 @@
     <el-button @click="compile_button()" :disabled="showButton">编译（compile）</el-button>
     <el-button @click="deploy_button()" :disabled="showButton">部署（deploy）</el-button>
 
-<!--    合约部署参数的弹窗-->
+    <!--    合约部署参数的弹窗-->
     <el-dialog title="部署合约构造器参数" :visible.sync="dialogFormVisible_deploy" width="800px">
         <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="100px" class="demo-dynamic">
             <el-form-item
@@ -45,7 +45,7 @@
         </div>
     </el-dialog>
 
-<!--编译结果的弹窗-->
+    <!--编译结果的弹窗-->
     <el-dialog :title="compile_property.title" :visible.sync="dialogFormVisible_compile" width="1200px">
         <el-form :model="compile_property">
             <el-form-item prop="codeResult">
@@ -71,7 +71,7 @@
         </div>
     </el-dialog>
 
-<!--    生成代码结果-->
+    <!--    生成代码结果-->
     <el-dialog title="生成代码结果" :visible.sync="dialogFormVisible_showCode" width="1200px">
         <el-form :model="showCode_property">
             <el-form-item prop="codeResult">
@@ -132,11 +132,11 @@
                 showCode_property: {
                     code: ""
                 },
-                deploy_property:{
+                deploy_property: {
                     title: "部署结果",
-                    code:""
+                    code: ""
                 },
-                showButton:true,
+                showButton: true,
             };
         },
         methods: {
@@ -228,7 +228,7 @@
                 console.log('code', codes);
                 let tmp = codes[0].replace('\n', '').split('@');
                 //从后端获取到参数的个数和参数名
-                axios.get('http://localhost:9014/api/query/constructor',{
+                axios.get('http://localhost:9014/api/query/constructor', {
                     params: {
                         "fileIds": tmp[1].toString()
                     }
@@ -237,10 +237,9 @@
                     if (res.data.code === 200) {
                         let data = res.data.data;
                         this.dynamicValidateForm.domains.length = 0;
-                        if(data.constructorParamNum==null){
+                        if (data.constructorParamNum == null) {
                             alert("没有构造器或构造器不需要参数，请直接部署");
-                        }
-                        else {
+                        } else {
                             let constructorParamNum = data.constructorParamNum;
                             let paramInfos = data.paramInfos;
                             for (var i = 0; i < constructorParamNum; i++) {

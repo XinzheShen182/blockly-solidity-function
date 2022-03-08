@@ -46,6 +46,7 @@ const space_string = ' ';
 var allEntity = new Array();
 var contractName = space_string;
 
+const separator = '￥';
 /**------------------------合约---------------------------------------- */
 Blockly.codelabGenerator['contract'] = function (block) {
     var value_contract_name = Blockly.codelabGenerator.valueToCode(block, 'CONTRACT_NAME', Blockly.codelabGenerator.ORDER_ATOMIC);
@@ -66,7 +67,7 @@ Blockly.codelabGenerator['contract'] = function (block) {
     // obj['fileIds'] = method_code;
     // obj['']
     // code.push(obj);
-    var code = value_contract_name + '￥' + value_contract_desc + '￥' + method_code+'￥'+use_library ;
+    var code = value_contract_name + separator + value_contract_desc + separator + method_code + separator + use_library;
     // var url = 'http://localhost:9014/api/generate/code?fileIds=' + method_code + '&contractName=' + value_contract_name;
     // var response = generateCode(method_code, value_contract_name);
     // var response = sendHttpGet(url);
@@ -97,19 +98,19 @@ Blockly.codelabGenerator['entity'] = function (block) {
     return code;
 };
 
-Blockly.codelabGenerator['unuse_inherit'] = function (block){
+Blockly.codelabGenerator['unuse_inherit'] = function (block) {
     return "否";
 }
 
-Blockly.codelabGenerator['use_inherit'] = function (block){
-    var libName =  block.getInputTargetBlock('USE');
+Blockly.codelabGenerator['use_inherit'] = function (block) {
+    var libName = block.getInputTargetBlock('USE');
     var library_names = getAllStatementBlocks(libName).toString();
     return library_names;
 }
 
-Blockly.codelabGenerator['library'] = function (block){
+Blockly.codelabGenerator['library'] = function (block) {
     var smart_contract_library = block.getFieldValue('SMART_CONTRACT_LIBRARY');
-    console.log("lib:"+smart_contract_library);
+    console.log("lib:" + smart_contract_library);
     return smart_contract_library;
 
 }
