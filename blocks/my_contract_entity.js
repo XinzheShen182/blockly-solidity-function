@@ -1,4 +1,3 @@
-
 // /**实体*/
 // Blockly.Blocks['entity'] = {
 //   init: function () {
@@ -45,7 +44,7 @@
 
 /**合约*/
 Blockly.Blocks['contract'] = {
-    init: function() {
+    init: function () {
         this.appendDummyInput()
             .appendField("合约");
         this.appendValueInput("CONTRACT_NAME")
@@ -68,20 +67,20 @@ Blockly.Blocks['contract'] = {
 
 //条款
 Blockly.Blocks['term'] = {
-  init: function() {
-    this.appendValueInput("RETATED_FLOW_ID")
-        .setCheck(null)
-        .appendField("关联的条款流程ID");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(230);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
+    init: function () {
+        this.appendValueInput("RETATED_FLOW_ID")
+            .setCheck(null)
+            .appendField("关联的条款流程ID");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(230);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
 };
 //使用继承
 Blockly.Blocks['unuse_inherit'] = {
-    init: function() {
+    init: function () {
         this.appendDummyInput()
             .appendField("否");
         this.setPreviousStatement(true, null);
@@ -91,7 +90,7 @@ Blockly.Blocks['unuse_inherit'] = {
     }
 };
 Blockly.Blocks['use_inherit'] = {
-    init: function() {
+    init: function () {
         this.appendStatementInput("USE")
             .setCheck(null)
             .appendField("是");
@@ -102,14 +101,14 @@ Blockly.Blocks['use_inherit'] = {
     }
 };
 Blockly.Blocks['library'] = {
-    init: function() {
+    init: function () {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown([["ERC1155","@openzeppelin/contracts/token/ERC1155/ERC1155.sol"],
-                ["Ownable","@openzeppelin/contracts/access/Ownable.sol"],
-                ["IERC165","@openzeppelin/contracts/utils/introspection/IERC165.sol"],
-                ["ERC1155Holder","@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol"],
-                ["Address","@openzeppelin/contracts/utils/Address.sol"],
-                ["IERC1155","@openzeppelin/contracts/token/ERC1155/IERC1155.sol"]]), "SMART_CONTRACT_LIBRARY");
+            .appendField(new Blockly.FieldDropdown([["ERC1155", "ERC1155"],
+                ["Ownable", "Ownable"],
+                ["IERC165", "IERC165"],
+                ["ERC1155Holder", "ERC1155Holder"],
+                ["Address", "Address"],
+                ["IERC1155", "IERC1155"]]), "SMART_CONTRACT_LIBRARY");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(230);
