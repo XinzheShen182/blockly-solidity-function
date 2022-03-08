@@ -92,7 +92,7 @@ Blockly.Blocks['unuse_inherit'] = {
 };
 Blockly.Blocks['use_inherit'] = {
     init: function() {
-        this.appendValueInput("USE")
+        this.appendStatementInput("USE")
             .setCheck(null)
             .appendField("是");
         this.setPreviousStatement(true, null);
@@ -103,15 +103,13 @@ Blockly.Blocks['use_inherit'] = {
 };
 Blockly.Blocks['library'] = {
     init: function() {
-        this.appendValueInput("LIBRARY_NAME")
-            .setCheck(null)
+        this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown([["ERC1155","@openzeppelin/contracts/token/ERC1155/ERC1155.sol"],
                 ["Ownable","@openzeppelin/contracts/access/Ownable.sol"],
                 ["IERC165","@openzeppelin/contracts/utils/introspection/IERC165.sol"],
                 ["ERC1155Holder","@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol"],
                 ["Address","@openzeppelin/contracts/utils/Address.sol"],
                 ["IERC1155","@openzeppelin/contracts/token/ERC1155/IERC1155.sol"]]), "SMART_CONTRACT_LIBRARY");
-        this.setOutput(true, null);
         this.setColour(230);
         this.setTooltip("");
         this.setHelpUrl("");

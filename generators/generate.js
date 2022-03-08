@@ -50,15 +50,23 @@ var contractName = space_string;
 Blockly.codelabGenerator['contract'] = function (block) {
     var value_contract_name = Blockly.codelabGenerator.valueToCode(block, 'CONTRACT_NAME', Blockly.codelabGenerator.ORDER_ATOMIC);
     contractName = value_contract_name;
+    var value_contract_desc = Blockly.codelabGenerator.valueToCode(block, 'CONTRACT_DESC', Blockly.codelabGenerator.ORDER_ATOMIC);
+    console.log(value_contract_desc)
+    var if_use = block.getInputTargetBlock('IF_USE_INHERIT');
     var method_top_block = block.getInputTargetBlock('CONTRACT_TERM');
+
+    var use_library = getAllStatementBlocks(if_use).toString();
     var method_code = getAllStatementBlocks(method_top_block).toString();
+
+
     // TODO: Assemble JavaScript into code variable.
-    var code = [];
-    var obj = {};
-    obj['contractName'] = value_contract_name;
-    obj['fileIds'] = method_code;
-    code.push(obj);
-    var code = value_contract_name + '@' + method_code;
+    // var code = [];
+    // var obj = {};
+    // obj['contractName'] = value_contract_name;
+    // obj['fileIds'] = method_code;
+    // obj['']
+    // code.push(obj);
+    var code = value_contract_name + '@' + value_contract_desc + '@' + method_code+'@'+use_library ;
     // var url = 'http://localhost:9014/api/generate/code?fileIds=' + method_code + '&contractName=' + value_contract_name;
     // var response = generateCode(method_code, value_contract_name);
     // var response = sendHttpGet(url);
@@ -88,6 +96,21 @@ Blockly.codelabGenerator['entity'] = function (block) {
     // TODO: Assemble JavaScript into code variable.
     return code;
 };
+
+Blockly.codelabGenerator['unuse_inherit'] = function (block){
+    return "否";
+}
+
+Blockly.codelabGenerator['use_inherit'] = function (block){
+    var libName = Blockly.codelabGenerator.valueToCode(block, 'USE', Blockly.codelabGenerator.ORDER_ATOMIC);
+    console.log('libName' + libName);
+    return libName;
+}
+
+Blockly.codelabGenerator['library'] = function (block){
+    var textValue = block.getFieldValue('LIBRARY_NAME');
+    return [textValue, Blockly.codelabGenerator.ORDER_ATOMIC];
+}
 
 Blockly.codelabGenerator['map'] = function (block) {
     var dropdown_type = block.getFieldValue('TYPE');
