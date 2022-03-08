@@ -23,6 +23,7 @@
     <el-button @click="compile_button()">编译（compile）</el-button>
     <el-button @click="deploy_button()">部署（deploy）</el-button>
 
+<!--    合约部署参数的弹窗-->
     <el-dialog title="部署合约构造器参数" :visible.sync="dialogFormVisible_deploy" width="800px">
         <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="100px" class="demo-dynamic">
             <el-form-item
@@ -43,7 +44,7 @@
         </div>
     </el-dialog>
 
-
+<!--编译结果的弹窗-->
     <el-dialog :title="compile_property.title" :visible.sync="dialogFormVisible_compile" width="1200px">
         <el-form :model="compile_property">
             <el-form-item prop="codeResult">
@@ -56,6 +57,20 @@
         </div>
     </el-dialog>
 
+    <!--部署结果的弹窗-->
+    <el-dialog :title="deploy_property.title" :visible.sync="dialogFormVisible_deploy_result" width="1200px">
+        <el-form :model="deploy_property">
+            <el-form-item prop="codeResult">
+                <el-input type="textarea" autosize v-model="deploy_property.code" autocomplete="off"></el-input>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="dialogFormVisible_deploy_result = false">取 消</el-button>
+            <el-button type="primary" @click="dialog_deploy_result_confirm()">确 定</el-button>
+        </div>
+    </el-dialog>
+
+<!--    生成代码结果-->
     <el-dialog title="生成代码结果" :visible.sync="dialogFormVisible_showCode" width="1200px">
         <el-form :model="showCode_property">
             <el-form-item prop="codeResult">
@@ -108,14 +123,18 @@
                 dialogFormVisible_deploy: false,
                 dialogFormVisible_compile: false,
                 dialogFormVisible_showCode: false,
+                dialogFormVisible_deploy_result: false,
                 compile_property: {
                     title: "编译结果",
                     code: "",
                 },
                 showCode_property: {
                     code: ""
+                },
+                deploy_property:{
+                    title: "部署结果",
+                    code:""
                 }
-
             };
         },
         methods: {
@@ -180,9 +199,13 @@
                 this.dialogFormVisible_showCode = false;
             },
             dialog_compile_confirm() {
-                this.dialogFormVisible_compile = false;这
+                this.dialogFormVisible_compile = false;
             },
+            //点击确定后部署结果弹窗
             dialog_deploy_confirm() {
+                this.dialogFormVisible_deploy_result = true;
+                this.dialogFormVisible_deploy = false;
+
 
             },
             deploy_button() {

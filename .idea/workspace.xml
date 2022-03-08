@@ -153,7 +153,8 @@
       <workItem from="1645619528016" duration="1484000" />
       <workItem from="1645676380999" duration="644000" />
       <workItem from="1646547051998" duration="9393000" />
-      <workItem from="1646659443735" duration="4887000" />
+      <workItem from="1646659443735" duration="6239000" />
+      <workItem from="1646703121860" duration="5008000" />
     </task>
     <task id="LOCAL-00001" summary="新增编译和部署功能">
       <created>1643186545630</created>
@@ -197,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646664215617</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="修改没有构造器参数时的弹窗">
+      <created>1646665050964</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1646665050964</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -256,7 +264,8 @@
     <MESSAGE value="增加弹窗  构造器的参数" />
     <MESSAGE value="添加可继承的智能合约库的块" />
     <MESSAGE value="添加可继承的智能合约库的块,部署合约的构造器参数" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加可继承的智能合约库的块,部署合约的构造器参数" />
+    <MESSAGE value="修改没有构造器参数时的弹窗" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改没有构造器参数时的弹窗" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/blocks/text.js">
