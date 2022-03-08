@@ -23,7 +23,7 @@
     <el-button @click="compile_button()">编译（compile）</el-button>
     <el-button @click="deploy_button()">部署（deploy）</el-button>
 
-<!--    合约部署参数的弹窗-->
+    <!--    合约部署参数的弹窗-->
     <el-dialog title="部署合约构造器参数" :visible.sync="dialogFormVisible_deploy" width="800px">
         <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="100px" class="demo-dynamic">
             <el-form-item
@@ -45,7 +45,7 @@
         </div>
     </el-dialog>
 
-<!--编译结果的弹窗-->
+    <!--编译结果的弹窗-->
     <el-dialog :title="compile_property.title" :visible.sync="dialogFormVisible_compile" width="1200px">
         <el-form :model="compile_property">
             <el-form-item prop="codeResult">
@@ -71,7 +71,7 @@
         </div>
     </el-dialog>
 
-<!--    生成代码结果-->
+    <!--    生成代码结果-->
     <el-dialog title="生成代码结果" :visible.sync="dialogFormVisible_showCode" width="1200px">
         <el-form :model="showCode_property">
             <el-form-item prop="codeResult">
@@ -132,9 +132,9 @@
                 showCode_property: {
                     code: ""
                 },
-                deploy_property:{
+                deploy_property: {
                     title: "部署结果",
-                    code:""
+                    code: ""
                 },
                 showButton:true,
                 code:"",
