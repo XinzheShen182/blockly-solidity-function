@@ -20,19 +20,20 @@
     <!--    <button id="deploy" onclick="deploy()">deploy</button>-->
 <div id="app">
     <el-button @click="showCode_button()">生成代码（showCode）</el-button>
-    <el-button @click="compile_button()">编译（compile）</el-button>
-    <el-button @click="deploy_button()">部署（deploy）</el-button>
+    <el-button @click="compile_button()" :disabled="showButton">编译（compile）</el-button>
+    <el-button @click="deploy_button()" :disabled="showButton">部署（deploy）</el-button>
 
 <!--    合约部署参数的弹窗-->
     <el-dialog title="部署合约构造器参数" :visible.sync="dialogFormVisible_deploy" width="800px">
         <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="100px" class="demo-dynamic">
             <el-form-item
                     v-for="(domain, index) in dynamicValidateForm.domains"
+                    width="200px"
                     :label="domain.name"
                     :key="domain.key"
                     :prop="'domains.' + index + '.value'"
                     :rules="{
-      required: true, message: '参数名不能为空', trigger: 'blur'
+      required: true, message: '参数不能为空', trigger: 'blur'
     }"
             >
                 <el-input v-model="domain.value"></el-input>
@@ -134,7 +135,8 @@
                 deploy_property:{
                     title: "部署结果",
                     code:""
-                }
+                },
+                showButton:true,
             };
         },
         methods: {
@@ -187,6 +189,7 @@
                 this.dialogFormVisible_compile = true;
             },
             dialog_showCode_confirm() {
+                this.showButton = false;
                 $.post({
                     url: 'http://localhost:9014/api/truffle/code/down',
                     data: {
