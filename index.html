@@ -144,6 +144,7 @@
                 contractDesc: "",
                 paramValues: [],
                 extendAgreements: [],
+                generateContractTypeEnum:""
 
             };
         },
@@ -166,20 +167,22 @@
                 console.log('code', codes);
                 let tmp = codes[0].replace('\n', '').split('￥');
 
-                //tmp:0是合约名，1是合约描述，2是流程id，3是关联的智能合约库
-                this.contractName = tmp[0];
-                if (tmp[3] === "否") {
+                //tmp:0是类型，1是合约名，2是合约描述，3是流程id，4是关联的智能合约库
+                this.generateContractTypeEnum = tmp[0];
+                this.contractName = tmp[1];
+                if (tmp[4] === "否") {
                     this.extendAgreements = null;
                 } else {
-                    this.extendAgreements = tmp[3].split(',');
+                    this.extendAgreements = tmp[4].split(',');
                 }
-                this.fieldIds = tmp[2].split(',');
-                this.contractDesc = tmp[1];
+                this.fieldIds = tmp[3].split(',');
+                this.contractDesc = tmp[2];
                 console.log(tmp);
                 // var url = 'http://localhost:9014/api/generate/code?fileIds=' + tmp[1] + '&contractName=' + tmp[0];
                 axios.post('http://localhost:9014/api/generate/code', {
+                    generateContractTypeEnum:this.generateContractTypeEnum,
                     fileIds: this.fieldIds,
-                    contractName: tmp[0],
+                    contractName: this.contractName,
                     extendAgreements: this.extendAgreements
                 }).then(res => {
                     if (res.data.code === 200) {
