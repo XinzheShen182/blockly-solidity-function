@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="修改library块的 id">
+    <list default="true" id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/generate.js" beforeDir="false" afterPath="$PROJECT_DIR$/generators/generate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +155,7 @@
       <workItem from="1646547051998" duration="9393000" />
       <workItem from="1646659443735" duration="6239000" />
       <workItem from="1646703121860" duration="13839000" />
+      <workItem from="1646790586699" duration="4695000" />
     </task>
     <task id="LOCAL-00001" summary="新增编译和部署功能">
       <created>1643186545630</created>
@@ -240,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646745071129</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="完成生成代码展示和部署的交互">
+      <created>1646760935221</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1646760935221</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -305,7 +313,8 @@
     <MESSAGE value="调整构造器参数的间距" />
     <MESSAGE value="修改块的构造" />
     <MESSAGE value="修改library块的 id" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改library块的 id" />
+    <MESSAGE value="完成生成代码展示和部署的交互" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成生成代码展示和部署的交互" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/blocks/text.js">

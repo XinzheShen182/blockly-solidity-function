@@ -59,15 +59,15 @@
     </el-dialog>
 
     <!--部署结果的弹窗-->
-    <el-dialog :title="deploy_property.title" :visible.sync="dialogFormVisible_deploy_result" width="1200px">
+    <el-dialog title="部署结果" :visible.sync="dialogFormVisible_deploy_result" width="1200px">
         <el-form :model="deploy_property">
             <el-form-item prop="codeResult">
-                <el-input type="textarea" autosize v-model="deploy_property.code" autocomplete="off"></el-input>
+                <el-input type="textarea" id="deployres" autosize v-model="deploy_property.code" autocomplete="off"></el-input>
             </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
             <el-button @click="dialogFormVisible_deploy_result = false">取 消</el-button>
-            <el-button type="primary" @click="dialog_deploy_result_confirm()">确 定</el-button>
+            <el-button type="primary" @click="dialogFormVisible_deploy_result = false">确 定</el-button>
         </div>
     </el-dialog>
 
@@ -133,7 +133,6 @@
                     code: ""
                 },
                 deploy_property: {
-                    title: "部署结果",
                     code: ""
                 },
                 showButton:true,
@@ -226,11 +225,13 @@
             dialog_deploy_confirm() {
                 this.dialogFormVisible_deploy_result = true;
                 this.dialogFormVisible_deploy = false;
+                this.paramValues.length = 0;
                 for(var i=0;i<this.dynamicValidateForm.domains.length;i++){
                     this.paramValues.push(this.dynamicValidateForm.domains[i].value);
                 }
                 console.log(this.paramValues)
                 //TODO 需要向后端发送数据
+                var that = this;
                 axios.post('http://localhost:9014/api/truffle/code/deploy', {
                     // private String code;
                     // private String contractName;
@@ -246,7 +247,8 @@
                     extendAgreements:this.extendAgreements
                 }).then(function (response) {
                     if (response.data.code === 200) {
-                        this.deploy_property.code = response.data.data;
+                        console.log(response.data.data);
+                        that.deploy_property.code = response.data.data;
                     } else {
                         alert(response.data.msg)
                     }
