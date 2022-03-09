@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/my_contract_entity.js" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/my_contract_entity.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,7 +156,7 @@
       <workItem from="1646547051998" duration="9393000" />
       <workItem from="1646659443735" duration="6239000" />
       <workItem from="1646703121860" duration="13839000" />
-      <workItem from="1646790586699" duration="4695000" />
+      <workItem from="1646790586699" duration="6695000" />
     </task>
     <task id="LOCAL-00001" summary="新增编译和部署功能">
       <created>1643186545630</created>
@@ -248,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646760935221</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="测试完成">
+      <created>1646796632509</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1646796632509</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -314,7 +322,8 @@
     <MESSAGE value="修改块的构造" />
     <MESSAGE value="修改library块的 id" />
     <MESSAGE value="完成生成代码展示和部署的交互" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成生成代码展示和部署的交互" />
+    <MESSAGE value="测试完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="测试完成" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/blocks/text.js">

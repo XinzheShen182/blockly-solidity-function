@@ -40,7 +40,28 @@
 //     this.setHelpUrl("");
 //   }
 // };
-
+/**接口**/
+Blockly.Blocks['interface'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("接口");
+        this.appendValueInput("INTERFACE_NAME")
+            .setCheck(null)
+            .appendField("接口名字");
+        this.appendValueInput("INTERFACE_DESC")
+            .setCheck(null)
+            .appendField("接口描述");
+        this.appendStatementInput("IF_USE_INHERIT")
+            .setCheck(null)
+            .appendField("是否使用继承的库合约");
+        this.appendStatementInput("CONTRACT_TERM")
+            .setCheck(null)
+            .appendField("关联的条款流程ID");
+        this.setColour(230);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
 
 /**合约*/
 Blockly.Blocks['contract'] = {
