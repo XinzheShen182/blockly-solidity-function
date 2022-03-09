@@ -89,7 +89,7 @@ Blockly.Blocks['contract'] = {
 //条款
 Blockly.Blocks['term'] = {
     init: function () {
-        this.appendValueInput("RETATED_FLOW_ID")
+        this.appendValueInput("RELATED_FLOW_ID")
             .setCheck(null)
             .appendField("关联的条款流程ID");
         this.setPreviousStatement(true, null);

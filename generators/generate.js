@@ -61,17 +61,24 @@ Blockly.codelabGenerator['contract'] = function (block) {
 
 
     // TODO: Assemble JavaScript into code variable.
-    // var code = [];
-    // var obj = {};
-    // obj['contractName'] = value_contract_name;
-    // obj['fileIds'] = method_code;
-    // obj['']
-    // code.push(obj);
     var code = value_contract_name + separator + value_contract_desc + separator + method_code + separator + use_library;
-    // var url = 'http://localhost:9014/api/generate/code?fileIds=' + method_code + '&contractName=' + value_contract_name;
-    // var response = generateCode(method_code, value_contract_name);
-    // var response = sendHttpGet(url);
-    // console.log("response:" + response);
+    return code;
+};
+// 接口
+Blockly.codelabGenerator['interface'] = function (block) {
+    var value_interface_name = Blockly.codelabGenerator.valueToCode(block, 'INTERFACE_NAME', Blockly.codelabGenerator.ORDER_ATOMIC);
+    contractName = value_interface_name;
+    var value_interface_desc = Blockly.codelabGenerator.valueToCode(block, 'INTERFACE_DESC', Blockly.codelabGenerator.ORDER_ATOMIC);
+    console.log(value_interface_desc)
+    var if_use = block.getInputTargetBlock('IF_USE_INHERIT');
+    var method_top_block = block.getInputTargetBlock('CONTRACT_TERM');
+
+    var use_library = getAllStatementBlocks(if_use).toString();
+    var method_code = getAllStatementBlocks(method_top_block).toString();
+
+
+    // TODO: Assemble JavaScript into code variable.
+    var code = value_interface_name + separator + value_interface_desc + separator + method_code + separator + use_library;
     return code;
 };
 
@@ -228,7 +235,7 @@ Blockly.codelabGenerator['work_contract_method'] = function (block) {
 
 
 Blockly.codelabGenerator['term'] = function (block) {
-    var related_flow_id = Blockly.codelabGenerator.valueToCode(block, 'RETATED_FLOW_ID', Blockly.codelabGenerator.ORDER_ATOMIC);
+    var related_flow_id = Blockly.codelabGenerator.valueToCode(block, 'RELATED_FLOW_ID', Blockly.codelabGenerator.ORDER_ATOMIC);
     // var related_flow_id = block.getFieldValue('RETATED_FLOW_ID');
     console.log('related_flow_id:' + related_flow_id);
     return related_flow_id;

@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_7_9_23__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_7_9_23__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_8_21_12__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_8_21_12__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_8_21_12__Default_Changelist_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_8_21_12__Default_Changelist_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    <list default="true" id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="修改axios请求">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/my_contract_entity.js" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/my_contract_entity.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generators/generate.js" beforeDir="false" afterPath="$PROJECT_DIR$/generators/generate.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646760935221</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="修改axios请求">
+      <created>1646808612988</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1646808612988</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -316,7 +322,8 @@
     <MESSAGE value="修改块的构造" />
     <MESSAGE value="修改library块的 id" />
     <MESSAGE value="完成生成代码展示和部署的交互" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成生成代码展示和部署的交互" />
+    <MESSAGE value="修改axios请求" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改axios请求" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/blocks/text.js">
