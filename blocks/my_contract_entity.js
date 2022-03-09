@@ -57,7 +57,7 @@ Blockly.Blocks['interface'] = {
         this.appendStatementInput("CONTRACT_TERM")
             .setCheck(null)
             .appendField("关联的条款流程ID");
-        this.setColour(230);
+        this.setColour(290);
         this.setTooltip("");
         this.setHelpUrl("");
     }

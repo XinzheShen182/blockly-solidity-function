@@ -61,7 +61,7 @@ Blockly.codelabGenerator['contract'] = function (block) {
 
 
     // TODO: Assemble JavaScript into code variable.
-    var code = value_contract_name + separator + value_contract_desc + separator + method_code + separator + use_library;
+    var code = "CONTRACT" + separator + value_contract_name + separator + value_contract_desc + separator + method_code + separator + use_library;
     return code;
 };
 // 接口
@@ -78,7 +78,7 @@ Blockly.codelabGenerator['interface'] = function (block) {
 
 
     // TODO: Assemble JavaScript into code variable.
-    var code = value_interface_name + separator + value_interface_desc + separator + method_code + separator + use_library;
+    var code = "INTERFACE" + separator +value_interface_name + separator + value_interface_desc + separator + method_code + separator + use_library;
     return code;
 };
 
