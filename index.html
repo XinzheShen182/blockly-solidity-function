@@ -62,7 +62,8 @@
     <el-dialog title="部署结果" :visible.sync="dialogFormVisible_deploy_result" width="1200px">
         <el-form :model="deploy_property">
             <el-form-item prop="codeResult">
-                <el-input type="textarea" id="deployres" autosize v-model="deploy_property.code" autocomplete="off"></el-input>
+                <el-input type="textarea" id="deployres" autosize v-model="deploy_property.code"
+                          autocomplete="off"></el-input>
             </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -136,13 +137,13 @@
                 deploy_property: {
                     code: ""
                 },
-                showButton:true,
-                code:"",
-                fieldIds:[],
-                contractName:"",
-                contractDesc:"",
-                paramValues:[],
-                extendAgreements:[],
+                showButton: true,
+                code: "",
+                fieldIds: [],
+                contractName: "",
+                contractDesc: "",
+                paramValues: [],
+                extendAgreements: [],
 
             };
         },
@@ -167,10 +168,9 @@
 
                 //tmp:0是合约名，1是合约描述，2是流程id，3是关联的智能合约库
                 this.contractName = tmp[0];
-                if(tmp[3]==="否"){
+                if (tmp[3] === "否") {
                     this.extendAgreements = null;
-                }
-                else{
+                } else {
                     this.extendAgreements = tmp[3].split(',');
                 }
                 this.fieldIds = tmp[2].split(',');
@@ -180,7 +180,7 @@
                 axios.post('http://localhost:9014/api/generate/code', {
                     fileIds: this.fieldIds,
                     contractName: tmp[0],
-                    extendAgreements:this.extendAgreements
+                    extendAgreements: this.extendAgreements
                 }).then(res => {
                     if (res.data.code === 200) {
                         this.showCode_property.code = res.data.data
@@ -227,29 +227,22 @@
                 this.dialogFormVisible_deploy_result = true;
                 this.dialogFormVisible_deploy = false;
                 this.paramValues.length = 0;
-                for(var i=0;i<this.dynamicValidateForm.domains.length;i++){
+                for (var i = 0; i < this.dynamicValidateForm.domains.length; i++) {
                     this.paramValues.push(this.dynamicValidateForm.domains[i].value);
                 }
                 console.log(this.paramValues)
                 //TODO 需要向后端发送数据
-                var that = this;
                 axios.post('http://localhost:9014/api/truffle/code/deploy', {
-                    // private String code;
-                    // private String contractName;
-                    // private String contractDesc;
-                    // private Set<String> fileIds;
-                    // private List<String> paramValues;
-                    // private List<String> extendAgreements;
-                    code:this.code,
-                    contractName:this.contractName,
-                    contractDesc:this.contractDesc,
-                    fileIds:this.fieldIds,
-                    paramValues:this.paramValues,
-                    extendAgreements:this.extendAgreements
-                }).then(function (response) {
+                    code: this.code,
+                    contractName: this.contractName,
+                    contractDesc: this.contractDesc,
+                    fileIds: this.fieldIds,
+                    paramValues: this.paramValues,
+                    extendAgreements: this.extendAgreements
+                }).then(response => {
                     if (response.data.code === 200) {
                         console.log(response.data.data);
-                        that.deploy_property.code = response.data.data;
+                        this.deploy_property.code = response.data.data;
                     } else {
                         alert(response.data.msg)
                     }
@@ -276,8 +269,8 @@
                 var f = this.fieldIds.toString();
                 console.log(f);
                 //从后端获取到参数的个数和参数名
-                axios.get('http://localhost:9014/api/query/constructor',{
-                    params:{
+                axios.get('http://localhost:9014/api/query/constructor', {
+                    params: {
                         "fileIds": f
                     }
                 }).then(res => {
@@ -285,10 +278,9 @@
                     if (res.data.code === 200) {
                         let data = res.data.data;
                         this.dynamicValidateForm.domains.length = 0;
-                        if(data.constructorParamNum==null){
+                        if (data.constructorParamNum == null) {
                             alert("没有构造器或构造器不需要参数，请直接部署");
-                        }
-                        else {
+                        } else {
                             let constructorParamNum = data.constructorParamNum;
                             let paramInfos = data.paramInfos;
                             for (var i = 0; i < constructorParamNum; i++) {
