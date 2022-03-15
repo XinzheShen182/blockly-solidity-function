@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="">
+    <list default="true" id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="fix interface的生成">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +104,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../vue/tabs" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -156,6 +155,7 @@
       <workItem from="1646659443735" duration="6239000" />
       <workItem from="1646703121860" duration="13839000" />
       <workItem from="1646790586699" duration="4695000" />
+      <workItem from="1647180382923" duration="1506000" />
     </task>
     <task id="LOCAL-00001" summary="新增编译和部署功能">
       <created>1643186545630</created>
