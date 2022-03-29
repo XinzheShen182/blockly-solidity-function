@@ -8,7 +8,7 @@ Blockly.Blocks['set_contract_owner'] = {
             .appendField("把合约的拥有者设置为(以太坊账户地址):");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(230);
+        this.setColour(165);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -22,7 +22,7 @@ Blockly.Blocks['destroy_contract'] = {
             .appendField("销毁合约，并将合约内以太坊转移至账户：");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(230);
+        this.setColour(165);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -43,7 +43,7 @@ Blockly.Blocks['get_value'] = {
             .appendField("查询到的内容赋值给变量：");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(230);
+        this.setColour(165);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -64,7 +64,7 @@ Blockly.Blocks['transfer'] = {
             .appendField("转账金额(wei)：");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(75);
+        this.setColour(165);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -79,7 +79,7 @@ Blockly.Blocks['require'] = {
             .appendField("逻辑表达式");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(230);
+        this.setColour(165);
         this.setTooltip("");
         this.setHelpUrl("");
     }
