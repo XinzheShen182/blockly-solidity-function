@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>smart editor</title>
+    <script src="./closure/goog/base.js"></script>
     <script src="./blockly_compressed.js"></script>
     <script src="./blocks_compressed.js"></script>
     <script src="./blocks/my_contract_entity.js" charset="UTF-8"></script>
@@ -160,7 +161,7 @@
                 console.log('topBlocks', topBlocks)
                 for (var i = 0; i < topBlocks.length; i++) {
                     if (topBlocks[i] == contractBlock) {
-                        var code = Blockly.codelabGenerator.blockToCode(topBlocks[i]);
+                        var code = Blockly.codeGenerator.blockToCode(topBlocks[i]);
                         codes.push(code + '\n');
                     }
                 }
@@ -263,7 +264,7 @@
                 console.log('topBlocks', topBlocks)
                 for (var i = 0; i < topBlocks.length; i++) {
                     if (topBlocks[i] == contractBlock) {
-                        var code = Blockly.codelabGenerator.blockToCode(topBlocks[i]);
+                        var code = Blockly.codeGenerator.blockToCode(topBlocks[i]);
                         codes.push(code + '\n');
                     }
                 }

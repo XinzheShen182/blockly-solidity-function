@@ -1,42 +1,46 @@
+'use strict';
+
+goog.provide('Blockly.codeGenerator');
+
 //定义生成器
-Blockly.codelabGenerator = new Blockly.Generator('Solidity');
+Blockly.codeGenerator = new Blockly.Generator('Solidity');
 
 /**
  * Order of operation ENUMs.
  * https://developer.mozilla.org/en/Solidity/Reference/Operators/Operator_Precedence
  */
-Blockly.codelabGenerator.ORDER_ATOMIC = 0;           // 0 "" ...
-Blockly.codelabGenerator.ORDER_NEW = 1.1;            // new
-Blockly.codelabGenerator.ORDER_MEMBER = 1.2;         // . []
-Blockly.codelabGenerator.ORDER_FUNCTION_CALL = 2;    // ()
-Blockly.codelabGenerator.ORDER_INCREMENT = 3;        // ++
-Blockly.codelabGenerator.ORDER_DECREMENT = 3;        // --
-Blockly.codelabGenerator.ORDER_BITWISE_NOT = 4.1;    // ~
-Blockly.codelabGenerator.ORDER_UNARY_PLUS = 4.2;     // +
-Blockly.codelabGenerator.ORDER_UNARY_NEGATION = 4.3; // -
-Blockly.codelabGenerator.ORDER_LOGICAL_NOT = 4.4;    // !
-Blockly.codelabGenerator.ORDER_TYPEOF = 4.5;         // typeof
-Blockly.codelabGenerator.ORDER_VOID = 4.6;           // void
-Blockly.codelabGenerator.ORDER_DELETE = 4.7;         // delete
-Blockly.codelabGenerator.ORDER_DIVISION = 5.1;       // /
-Blockly.codelabGenerator.ORDER_MULTIPLICATION = 5.2; // *
-Blockly.codelabGenerator.ORDER_MODULUS = 5.3;        // %
-Blockly.codelabGenerator.ORDER_SUBTRACTION = 6.1;    // -
-Blockly.codelabGenerator.ORDER_ADDITION = 6.2;       // +
-Blockly.codelabGenerator.ORDER_BITWISE_SHIFT = 7;    // << >> >>>
-Blockly.codelabGenerator.ORDER_RELATIONAL = 8;       // < <= > >=
-Blockly.codelabGenerator.ORDER_IN = 8;               // in
-Blockly.codelabGenerator.ORDER_INSTANCEOF = 8;       // instanceof
-Blockly.codelabGenerator.ORDER_EQUALITY = 9;         // == != === !==
-Blockly.codelabGenerator.ORDER_BITWISE_AND = 10;     // &
-Blockly.codelabGenerator.ORDER_BITWISE_XOR = 11;     // ^
-Blockly.codelabGenerator.ORDER_BITWISE_OR = 12;      // |
-Blockly.codelabGenerator.ORDER_LOGICAL_AND = 13;     // &&
-Blockly.codelabGenerator.ORDER_LOGICAL_OR = 14;      // ||
-Blockly.codelabGenerator.ORDER_CONDITIONAL = 15;     // ?:
-Blockly.codelabGenerator.ORDER_ASSIGNMENT = 16;      // = += -= *= /= %= <<= >>= ...
-Blockly.codelabGenerator.ORDER_COMMA = 17;           // ,
-Blockly.codelabGenerator.ORDER_NONE = 99;            // (...)
+Blockly.codeGenerator.ORDER_ATOMIC = 0;           // 0 "" ...
+Blockly.codeGenerator.ORDER_NEW = 1.1;            // new
+Blockly.codeGenerator.ORDER_MEMBER = 1.2;         // . []
+Blockly.codeGenerator.ORDER_FUNCTION_CALL = 2;    // ()
+Blockly.codeGenerator.ORDER_INCREMENT = 3;        // ++
+Blockly.codeGenerator.ORDER_DECREMENT = 3;        // --
+Blockly.codeGenerator.ORDER_BITWISE_NOT = 4.1;    // ~
+Blockly.codeGenerator.ORDER_UNARY_PLUS = 4.2;     // +
+Blockly.codeGenerator.ORDER_UNARY_NEGATION = 4.3; // -
+Blockly.codeGenerator.ORDER_LOGICAL_NOT = 4.4;    // !
+Blockly.codeGenerator.ORDER_TYPEOF = 4.5;         // typeof
+Blockly.codeGenerator.ORDER_VOID = 4.6;           // void
+Blockly.codeGenerator.ORDER_DELETE = 4.7;         // delete
+Blockly.codeGenerator.ORDER_DIVISION = 5.1;       // /
+Blockly.codeGenerator.ORDER_MULTIPLICATION = 5.2; // *
+Blockly.codeGenerator.ORDER_MODULUS = 5.3;        // %
+Blockly.codeGenerator.ORDER_SUBTRACTION = 6.1;    // -
+Blockly.codeGenerator.ORDER_ADDITION = 6.2;       // +
+Blockly.codeGenerator.ORDER_BITWISE_SHIFT = 7;    // << >> >>>
+Blockly.codeGenerator.ORDER_RELATIONAL = 8;       // < <= > >=
+Blockly.codeGenerator.ORDER_IN = 8;               // in
+Blockly.codeGenerator.ORDER_INSTANCEOF = 8;       // instanceof
+Blockly.codeGenerator.ORDER_EQUALITY = 9;         // == != === !==
+Blockly.codeGenerator.ORDER_BITWISE_AND = 10;     // &
+Blockly.codeGenerator.ORDER_BITWISE_XOR = 11;     // ^
+Blockly.codeGenerator.ORDER_BITWISE_OR = 12;      // |
+Blockly.codeGenerator.ORDER_LOGICAL_AND = 13;     // &&
+Blockly.codeGenerator.ORDER_LOGICAL_OR = 14;      // ||
+Blockly.codeGenerator.ORDER_CONDITIONAL = 15;     // ?:
+Blockly.codeGenerator.ORDER_ASSIGNMENT = 16;      // = += -= *= /= %= <<= >>= ...
+Blockly.codeGenerator.ORDER_COMMA = 17;           // ,
+Blockly.codeGenerator.ORDER_NONE = 99;            // (...)
 
 
 //区分实体类型的map
@@ -48,10 +52,10 @@ var contractName = space_string;
 
 const separator = '￥';
 /**------------------------合约---------------------------------------- */
-Blockly.codelabGenerator['contract'] = function (block) {
-    var value_contract_name = Blockly.codelabGenerator.valueToCode(block, 'CONTRACT_NAME', Blockly.codelabGenerator.ORDER_ATOMIC);
+Blockly.codeGenerator['contract'] = function (block) {
+    var value_contract_name = Blockly.codeGenerator.valueToCode(block, 'CONTRACT_NAME', Blockly.codeGenerator.ORDER_ATOMIC);
     contractName = value_contract_name;
-    var value_contract_desc = Blockly.codelabGenerator.valueToCode(block, 'CONTRACT_DESC', Blockly.codelabGenerator.ORDER_ATOMIC);
+    var value_contract_desc = Blockly.codeGenerator.valueToCode(block, 'CONTRACT_DESC', Blockly.codeGenerator.ORDER_ATOMIC);
     console.log(value_contract_desc)
     var if_use = block.getInputTargetBlock('IF_USE_INHERIT');
     var method_top_block = block.getInputTargetBlock('CONTRACT_TERM');
@@ -65,10 +69,10 @@ Blockly.codelabGenerator['contract'] = function (block) {
     return code;
 };
 // 接口
-Blockly.codelabGenerator['interface'] = function (block) {
-    var value_interface_name = Blockly.codelabGenerator.valueToCode(block, 'INTERFACE_NAME', Blockly.codelabGenerator.ORDER_ATOMIC);
+Blockly.codeGenerator['interface'] = function (block) {
+    var value_interface_name = Blockly.codeGenerator.valueToCode(block, 'INTERFACE_NAME', Blockly.codeGenerator.ORDER_ATOMIC);
     contractName = value_interface_name;
-    var value_interface_desc = Blockly.codelabGenerator.valueToCode(block, 'INTERFACE_DESC', Blockly.codelabGenerator.ORDER_ATOMIC);
+    var value_interface_desc = Blockly.codeGenerator.valueToCode(block, 'INTERFACE_DESC', Blockly.codeGenerator.ORDER_ATOMIC);
     console.log(value_interface_desc)
     var if_use = block.getInputTargetBlock('IF_USE_INHERIT');
     var method_top_block = block.getInputTargetBlock('CONTRACT_TERM');
@@ -84,7 +88,7 @@ Blockly.codelabGenerator['interface'] = function (block) {
 
 /**------------------------实体---------------------------------------- */
 /**实体块的代码生成 */
-Blockly.codelabGenerator['entity'] = function (block) {
+Blockly.codeGenerator['entity'] = function (block) {
     var dropdown_name = block.getFieldValue('NAME');
     var entity_type_string = type_map.get(dropdown_name);
     var code;
@@ -96,7 +100,7 @@ Blockly.codelabGenerator['entity'] = function (block) {
         code = getAllMap(allStatementBlocks);
         console.log('allMapCode:' + code);
     }
-    var value_field_name = Blockly.codelabGenerator.valueToCode(block, 'FIELD_NAME', Blockly.codelabGenerator.ORDER_ATOMIC);
+    var value_field_name = Blockly.codeGenerator.valueToCode(block, 'FIELD_NAME', Blockly.codeGenerator.ORDER_ATOMIC);
     //记录下定义的所有实体块的名字
     allEntity.push(value_field_name);
     code = code + space_string + value_field_name + ';';
@@ -105,50 +109,50 @@ Blockly.codelabGenerator['entity'] = function (block) {
     return code;
 };
 
-Blockly.codelabGenerator['unuse_inherit'] = function (block) {
+Blockly.codeGenerator['unuse_inherit'] = function (block) {
     return "否";
 }
 
-Blockly.codelabGenerator['use_inherit'] = function (block) {
-    var libName = block.getInputTargetBlock('USE');
-    var library_names = getAllStatementBlocks(libName).toString();
+Blockly.codeGenerator['use_inherit'] = function (block) {
+    let libName = block.getInputTargetBlock('USE');
+    let library_names = getAllStatementBlocks(libName).toString();
     return library_names;
 }
 
-Blockly.codelabGenerator['library'] = function (block) {
+Blockly.codeGenerator['library'] = function (block) {
     var smart_contract_library = block.getFieldValue('SMART_CONTRACT_LIBRARY');
     console.log("lib:" + smart_contract_library);
     return smart_contract_library;
 
 }
 
-Blockly.codelabGenerator['map'] = function (block) {
+Blockly.codeGenerator['map'] = function (block) {
     var dropdown_type = block.getFieldValue('TYPE');
     // TODO: Assemble JavaScript into code variable.
     return dropdown_type;
 };
 
 
-/**仅仅含有实体名字的实体块 */
-Blockly.codelabGenerator['entity_only_name'] = function (block) {
-    var value_entity_name = Blockly.codelabGenerator.valueToCode(block, 'ENTITY_NAME', Blockly.codelabGenerator.ORDER_ATOMIC);
-    if (!allEntity.includes(value_entity_name)) {
-        alert('名字为：' + value_entity_name + '的实体之前未定义');
-    }
-    return value_entity_name;
-};
+// /**仅仅含有实体名字的实体块 */
+// Blockly.codelabGenerator['entity_only_name'] = function (block) {
+//     var value_entity_name = Blockly.codelabGenerator.valueToCode(block, 'ENTITY_NAME', Blockly.codelabGenerator.ORDER_ATOMIC);
+//     if (!allEntity.includes(value_entity_name)) {
+//         alert('名字为：' + value_entity_name + '的实体之前未定义');
+//     }
+//     return value_entity_name;
+// };
 
 
 /**-------------------文本块------------------------------------------ */
 /**文本块的代码生成 */
-Blockly.codelabGenerator['text'] = function (block) {
+Blockly.codeGenerator['text'] = function (block) {
     var textValue = block.getFieldValue('TEXT');
-    return [textValue, Blockly.codelabGenerator.ORDER_ATOMIC];
+    return [textValue, Blockly.codeGenerator.ORDER_ATOMIC];
 };
 
 
 /**----------------------方法------------------------------------------ */
-Blockly.codelabGenerator['work_contract_method'] = function (block) {
+Blockly.codeGenerator['work_contract_method'] = function (block) {
     var dropdown_method_type = block.getFieldValue('METHOD_TYPE');
     var define_blocks = block.getInputTargetBlock('RELATED_ENTITY');
     var codes = getAllStatementBlocks(define_blocks);
@@ -234,8 +238,8 @@ Blockly.codelabGenerator['work_contract_method'] = function (block) {
 };
 
 
-Blockly.codelabGenerator['term'] = function (block) {
-    var related_flow_id = Blockly.codelabGenerator.valueToCode(block, 'RELATED_FLOW_ID', Blockly.codelabGenerator.ORDER_ATOMIC);
+Blockly.codeGenerator['term'] = function (block) {
+    var related_flow_id = Blockly.codeGenerator.valueToCode(block, 'RELATED_FLOW_ID', Blockly.codeGenerator.ORDER_ATOMIC);
     // var related_flow_id = block.getFieldValue('RETATED_FLOW_ID');
     console.log('related_flow_id:' + related_flow_id);
     return related_flow_id;
@@ -246,7 +250,7 @@ function getAllStatementBlocks(define_blocks) {
     var blocksCodes = [];
     if (define_blocks)
         do {
-            var tmp = Blockly.codelabGenerator.blockToCode(define_blocks);
+            var tmp = Blockly.codeGenerator.blockToCode(define_blocks);
             blocksCodes.push(tmp);
         } while (define_blocks = define_blocks.getNextBlock());
     return blocksCodes;
