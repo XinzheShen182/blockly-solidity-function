@@ -1,9 +1,9 @@
 //属性类型
 
 //带名字的属性
-Blockly.Blocks['baisc_type'] = {
+Blockly.Blocks['basic_type'] = {
     init: function() {
-        this.appendValueInput("baisc_field")
+        this.appendValueInput("basic_field")
             .setCheck(null)
             .appendField(new Blockly.FieldDropdown([["uint256","uint256"], ["address","address"], ["bool","bool"], ["string","string"]]), "basic_fields");
         this.setPreviousStatement(true, null);
@@ -32,7 +32,7 @@ Blockly.Blocks['special_type'] = {
 };
 
 //只有属性类型
-Blockly.Blocks['baisc_type_no_name'] = {
+Blockly.Blocks['basic_type_no_name'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldDropdown([["uint256","uint256"], ["address","address"], ["bool","bool"], ["string","string"]]), "basic_fields_no_name");
