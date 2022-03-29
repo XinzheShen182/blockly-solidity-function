@@ -7,19 +7,18 @@
 
     <script src="./blockly_compressed.js"></script>
     <script src="./blocks_compressed.js"></script>
-    <script src="./blocks/my_contract_entity.js" charset="UTF-8"></script>
-    <script src="./blocks/basicFunction.js" charset="UTF-8"></script>
-    <script src="./blocks/fieldType.js" charset="UTF-8"></script>
-    <script src="./blocks/functionType.js" charset="UTF-8"></script>
+    <script src="blocks/myGenerate/basicFunction.js" charset="UTF-8"></script>
+    <script src="blocks/myGenerate/fieldType.js" charset="UTF-8"></script>
+    <script src="blocks/myGenerate/functionType.js" charset="UTF-8"></script>
 
     <script src="./msg/js/zh-hans.js"></script>
     <script src="./msg/js/en.js"></script>
 
-    <script src="./generators/generate.js"></script>
-    <script src="./generators/logic.js"></script>
-    <script src="./generators/loops.js"></script>
-    <script src="./generators/math.js"></script>
-    <script src="./generators/basicFunction.js"></script>
+    <script src="generators/solidity.js"></script>
+    <script src="generators/solidity/math.js"></script>
+    <script src="generators/solidity/logic.js"></script>
+    <script src="generators/solidity/loops.js"></script>
+    <script src="generators/myGenerate/basicFunction.js"></script>
 
     <script src="./jquery-3.4.1.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.7/lib/theme-chalk/index.css">
@@ -154,7 +153,7 @@
         console.log(topBlocks)
         for (var i = 0; i < topBlocks.length; i++) {
             if (topBlocks[i] == contractBlock) {
-                var code = Blockly.codeGenerator.blockToCode(topBlocks[i]);
+                var code = Blockly.Solidity.blockToCode(topBlocks[i]);
                 codes.push(code + '\n');
             }
         }
