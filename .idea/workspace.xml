@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="修改拼写错误 删除.vs .vscode">
-      <change afterPath="$PROJECT_DIR$/generators/logic.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generators/math.js" afterDir="false" />
+    <list default="true" id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="增加solidity生成  if">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generators/logic.js" beforeDir="false" afterPath="$PROJECT_DIR$/generators/logic.js" afterDir="false" />
     </list>
     <list id="eb25ce2f-f4fe-4f1d-991d-aefee5cc5634" name="gitignore" comment="gitignore" />
     <option name="SHOW_DIALOG" value="false" />
@@ -284,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648538597011</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="增加solidity生成  if">
+      <created>1648538837166</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1648538837166</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -353,7 +359,8 @@
     <MESSAGE value="修改axios请求" />
     <MESSAGE value="添加函数类型的三个块，修改复用的功能块的颜色" />
     <MESSAGE value="修改拼写错误 删除.vs .vscode" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改拼写错误 删除.vs .vscode" />
+    <MESSAGE value="增加solidity生成  if" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加solidity生成  if" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/blocks/text.js">

@@ -69,6 +69,7 @@ Blockly.Solidity['logic_compare'] = function (block) {
     var argument0 = Blockly.Solidity.valueToCode(block, 'A', order) || '0';
     var argument1 = Blockly.Solidity.valueToCode(block, 'B', order) || '0';
     var code = argument0 + ' ' + operator + ' ' + argument1;
+    console.log('logic_compare' + code);
     return [code, order];
 };
 
