@@ -8,10 +8,13 @@
     <script src="./blocks_compressed.js"></script>
     <script src="./blocks/my_contract_entity.js" charset="UTF-8"></script>
     <script src="./blocks/basicFunction.js" charset="UTF-8"></script>
+    <script src="./blocks/fieldType.js" charset="UTF-8"></script>
+    <script src="./blocks/functionType.js" charset="UTF-8"></script>
     <script src="./msg/js/zn-hans.js"></script>
     <script src="./msg/js/en.js"></script>
     <script src="./generators/generate.js"></script>
     <script src="./jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.7/lib/theme-chalk/index.css">
 </head>
 <body>
 <div id="blocklyDiv" style="height: 850px; width: 1400px;"></div>
@@ -22,23 +25,26 @@
 
 
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-<!--    <category name="合约类型">-->
-<!--        <block type="contract"></block>-->
-<!--        <block type="interface"></block>-->
-<!--    </category>-->
-<!--    <category name="文本">-->
-<!--        <block type="text"></block>-->
-<!--    </category>-->
-<!--    <category name="是否使用继承的合约库">-->
-<!--        <block type="unuse_inherit"></block>-->
-<!--        <block type="use_inherit"></block>-->
-<!--    </category>-->
-<!--    <category name="可继承的合约库">-->
-<!--        <block type="library"></block>-->
-<!--    </category>-->
-<!--    <category name="条款">-->
-<!--        <block type="term"></block>-->
-<!--    </category>-->
+    <category name="函数类型" colour="230">
+        <block type="function"></block>
+        <block type="construct"></block>
+        <block type="event"></block>
+    </category>
+    <category name="基本的复用功能块" colour="165">
+        <block type="set_contract_owner"></block>
+        <block type="get_value"></block>
+        <block type="transfer"></block>
+        <block type="require"></block>
+        <block type="destroy_contract"></block>
+    </category>
+    <category name="属性块" colour="345">
+        <block type="baisc_type"></block>
+        <block type="special_type"></block>
+        <block type="baisc_type_no_name"></block>
+        <block type="nest_struct"></block>
+        <block type="nest_mapping_array"></block>
+    </category>
+
     <category name="Logic" colour="%{BKY_LOGIC_HUE}">
         <category name="If">
             <block type="controls_if"></block>
@@ -49,15 +55,16 @@
                 <mutation elseif="1" else="1"></mutation>
             </block>
         </category>
-        <category name="Boolean" colour="%{BKY_LOGIC_HUE}">
+        <category name="Boolean">
             <block type="logic_compare"></block>
             <block type="logic_operation"></block>
             <block type="logic_negate"></block>
             <block type="logic_boolean"></block>
             <block type="logic_null"></block>
-            <block type="logic_ternary"></block>
+<!--            <block type="logic_ternary"></block>-->
         </category>
     </category>
+
 
     <category name="Loops" colour="%{BKY_LOOPS_HUE}">
         <block type="controls_repeat_ext">
@@ -86,9 +93,10 @@
                 </block>
             </value>
         </block>
-        <block type="controls_forEach"></block>
+<!--        <block type="controls_forEach"></block>-->
         <block type="controls_flow_statements"></block>
     </category>
+
 
     <category name="Math" colour="%{BKY_MATH_HUE}">
         <block type="math_number">
@@ -99,38 +107,26 @@
         <block type="math_trig"></block>
         <block type="math_constant"></block>
         <block type="math_number_property"></block>
-        <block type="math_round"></block>
-        <block type="math_on_list"></block>
+<!--        <block type="math_round"></block>-->
+<!--        <block type="math_on_list"></block>-->
         <block type="math_modulo"></block>
-        <block type="math_constrain">
-            <value name="LOW">
-                <block type="math_number">
-                    <field name="NUM">1</field>
-                </block>
-            </value>
-            <value name="HIGH">
-                <block type="math_number">
-                    <field name="NUM">100</field>
-                </block>
-            </value>
-        </block>
-        <block type="math_random_int">
-            <value name="FROM">
-                <block type="math_number">
-                    <field name="NUM">1</field>
-                </block>
-            </value>
-            <value name="TO">
-                <block type="math_number">
-                    <field name="NUM">100</field>
-                </block>
-            </value>
-        </block>
-        <block type="math_random_float"></block>
-        <block type="math_atan2"></block>
+<!--        <block type="math_random_int">-->
+<!--            <value name="FROM">-->
+<!--                <block type="math_number">-->
+<!--                    <field name="NUM">1</field>-->
+<!--                </block>-->
+<!--            </value>-->
+<!--            <value name="TO">-->
+<!--                <block type="math_number">-->
+<!--                    <field name="NUM">100</field>-->
+<!--                </block>-->
+<!--            </value>-->
+<!--        </block>-->
+<!--        <block type="math_random_float"></block>-->
+<!--        <block type="math_atan2"></block>-->
     </category>
-    <category name="基本的复用功能块" colour="210">
-        <block type="set_contract_owner"></block>
+    <category name="文本" colour="45">
+        <block type="text"></block>
     </category>
 
 </xml>

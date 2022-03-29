@@ -1,7 +1,7 @@
 //函数的类型
 
 //普通函数
-Blockly.Blocks['fucntion'] = {
+Blockly.Blocks['function'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("function");
