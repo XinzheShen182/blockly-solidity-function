@@ -4,20 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="fix interface的生成">
-      <change afterPath="$PROJECT_DIR$/blocks/fieldType.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_7_9_23__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_7_9_23__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_8_15_45__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_8_15_45__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_8_20_40_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_8_20_40__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_8_21_12_[Default_Changelist]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_8_21_12__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_8_21_12__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_8_21_12__Default_Changelist_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_9_14_46__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_9_14_46__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_9_19_46__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_3_9_19_46__Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="修改拼写错误 删除.vs .vscode">
+      <change afterPath="$PROJECT_DIR$/generators/logic.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/generators/math.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
+    <list id="eb25ce2f-f4fe-4f1d-991d-aefee5cc5634" name="gitignore" comment="gitignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,7 +113,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../vue/tabs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/generators" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -132,6 +124,11 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
     <property name="ts.external.directory.path" value="D:\computerSoftware\IDEA\IntelliJ IDEA 2021.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\code\js\blockly\smart-contract-editor-function-edit\generators" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/smart-contract-editor-demo-master/demo/index.html" useBuiltInWebServerPort="true">
@@ -280,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648523273888</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="修改拼写错误 删除.vs .vscode">
+      <created>1648538597011</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1648538597011</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -348,7 +352,8 @@
     <MESSAGE value="完成生成代码展示和部署的交互" />
     <MESSAGE value="修改axios请求" />
     <MESSAGE value="添加函数类型的三个块，修改复用的功能块的颜色" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加函数类型的三个块，修改复用的功能块的颜色" />
+    <MESSAGE value="修改拼写错误 删除.vs .vscode" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改拼写错误 删除.vs .vscode" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/blocks/text.js">
