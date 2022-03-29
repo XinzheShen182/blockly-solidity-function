@@ -9,476 +9,158 @@
     <script src="./blocks/my_contract_entity.js" charset="UTF-8"></script>
     <script src="./blocks/basicFunction.js" charset="UTF-8"></script>
     <script src="./msg/js/zn-hans.js"></script>
+    <script src="./msg/js/en.js"></script>
     <script src="./generators/generate.js"></script>
     <script src="./jquery-3.4.1.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.7/lib/theme-chalk/index.css">
 </head>
 <body>
 <div id="blocklyDiv" style="height: 850px; width: 1400px;"></div>
 
 <p>
-    <!--            <button id="link" onclick="showCode()">Show code</button>-->
-    <!--        <button id="compile" onclick="compile()">compile</button>-->
-    <!--    <button id="deploy" onclick="deploy()">deploy</button>-->
-<div id="app">
-    <el-button @click="showCode_button()">生成代码（showCode）</el-button>
-    <el-button @click="compile_button()">编译（compile）</el-button>
-    <el-button @click="deploy_button()">部署（deploy）</el-button>
-
-    <!--    合约部署参数的弹窗-->
-    <el-dialog title="部署合约构造器参数" :visible.sync="dialogFormVisible_deploy" width="800px">
-        <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="100px" class="demo-dynamic">
-            <el-form-item
-                    v-for="(domain, index) in dynamicValidateForm.domains"
-                    label-width="200px"
-                    :label="domain.name"
-                    :key="domain.key"
-                    :prop="'domains.' + index + '.value'"
-                    :rules="{
-      required: true, message: '参数不能为空', trigger: 'blur'
-    }"
-            >
-                <el-input v-model="domain.value"></el-input>
-            </el-form-item>
-        </el-form>
-        <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogFormVisible_deploy = false">取 消</el-button>
-            <el-button type="primary" @click="dialog_deploy_confirm()">确 定</el-button>
-        </div>
-    </el-dialog>
-
-    <!--编译结果的弹窗-->
-    <el-dialog :title="compile_property.title" :visible.sync="dialogFormVisible_compile" width="1200px">
-        <el-form :model="compile_property">
-            <el-form-item prop="codeResult">
-                <el-input type="textarea" autosize v-model="compile_property.code" autocomplete="off"></el-input>
-            </el-form-item>
-        </el-form>
-        <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogFormVisible_compile = false">取 消</el-button>
-            <el-button type="primary" @click="dialog_compile_confirm()">确 定</el-button>
-        </div>
-    </el-dialog>
-
-    <!--部署结果的弹窗-->
-    <el-dialog title="部署结果" :visible.sync="dialogFormVisible_deploy_result" width="1200px">
-        <el-form :model="deploy_property">
-            <el-form-item prop="codeResult">
-                <el-input type="textarea" id="deployres" autosize v-model="deploy_property.code"
-                          autocomplete="off"></el-input>
-            </el-form-item>
-        </el-form>
-        <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogFormVisible_deploy_result = false">取 消</el-button>
-            <el-button type="primary" @click="dialogFormVisible_deploy_result = false">确 定</el-button>
-        </div>
-    </el-dialog>
-
-    <!--    生成代码结果-->
-    <el-dialog title="生成代码结果" :visible.sync="dialogFormVisible_showCode" width="1200px">
-        <el-form :model="showCode_property">
-            <el-form-item prop="codeResult">
-                <el-input type="textarea" autosize v-model="showCode_property.code" autocomplete="off"></el-input>
-            </el-form-item>
-        </el-form>
-        <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogFormVisible_showCode = false">取 消</el-button>
-            <el-button type="primary" @click="dialog_showCode_confirm()">确定</el-button>
-        </div>
-    </el-dialog>
-</div>
+    <button id="link" onclick="showCode()">Show code</button>
 </p>
 
 
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-    <category name="合约类型">
-        <block type="contract"></block>
-        <block type="interface"></block>
+<!--    <category name="合约类型">-->
+<!--        <block type="contract"></block>-->
+<!--        <block type="interface"></block>-->
+<!--    </category>-->
+<!--    <category name="文本">-->
+<!--        <block type="text"></block>-->
+<!--    </category>-->
+<!--    <category name="是否使用继承的合约库">-->
+<!--        <block type="unuse_inherit"></block>-->
+<!--        <block type="use_inherit"></block>-->
+<!--    </category>-->
+<!--    <category name="可继承的合约库">-->
+<!--        <block type="library"></block>-->
+<!--    </category>-->
+<!--    <category name="条款">-->
+<!--        <block type="term"></block>-->
+<!--    </category>-->
+    <category name="Logic" colour="%{BKY_LOGIC_HUE}">
+        <category name="If">
+            <block type="controls_if"></block>
+            <block type="controls_if">
+                <mutation else="1"></mutation>
+            </block>
+            <block type="controls_if">
+                <mutation elseif="1" else="1"></mutation>
+            </block>
+        </category>
+        <category name="Boolean" colour="%{BKY_LOGIC_HUE}">
+            <block type="logic_compare"></block>
+            <block type="logic_operation"></block>
+            <block type="logic_negate"></block>
+            <block type="logic_boolean"></block>
+            <block type="logic_null"></block>
+            <block type="logic_ternary"></block>
+        </category>
     </category>
-    <category name="文本">
-        <block type="text"></block>
+
+    <category name="Loops" colour="%{BKY_LOOPS_HUE}">
+        <block type="controls_repeat_ext">
+            <value name="TIMES">
+                <block type="math_number">
+                    <field name="NUM">10</field>
+                </block>
+            </value>
+        </block>
+        <block type="controls_whileUntil"></block>
+        <block type="controls_for">
+            <field name="VAR">i</field>
+            <value name="FROM">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+            <value name="TO">
+                <block type="math_number">
+                    <field name="NUM">10</field>
+                </block>
+            </value>
+            <value name="BY">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+        </block>
+        <block type="controls_forEach"></block>
+        <block type="controls_flow_statements"></block>
     </category>
-    <category name="是否使用继承的合约库">
-        <block type="unuse_inherit"></block>
-        <block type="use_inherit"></block>
-    </category>
-    <category name="可继承的合约库">
-        <block type="library"></block>
-    </category>
-    <category name="条款">
-        <block type="term"></block>
+
+    <category name="Math" colour="%{BKY_MATH_HUE}">
+        <block type="math_number">
+            <field name="NUM">123</field>
+        </block>
+        <block type="math_arithmetic"></block>
+        <block type="math_single"></block>
+        <block type="math_trig"></block>
+        <block type="math_constant"></block>
+        <block type="math_number_property"></block>
+        <block type="math_round"></block>
+        <block type="math_on_list"></block>
+        <block type="math_modulo"></block>
+        <block type="math_constrain">
+            <value name="LOW">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+            <value name="HIGH">
+                <block type="math_number">
+                    <field name="NUM">100</field>
+                </block>
+            </value>
+        </block>
+        <block type="math_random_int">
+            <value name="FROM">
+                <block type="math_number">
+                    <field name="NUM">1</field>
+                </block>
+            </value>
+            <value name="TO">
+                <block type="math_number">
+                    <field name="NUM">100</field>
+                </block>
+            </value>
+        </block>
+        <block type="math_random_float"></block>
+        <block type="math_atan2"></block>
     </category>
     <category name="基本的复用功能块" colour="210">
         <block type="set_contract_owner"></block>
     </category>
+
 </xml>
 
 <script src="workspace.js"></script>
 </body>
 
-<!-- 引入vue组件库 -->
-<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
-<script src="https://unpkg.com/element-ui@2.15.7/lib/index.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script>
-    var Main = {
-        data() {
-            return {
-                dynamicValidateForm: {
-                    domains: [],
-                },
-                dialogFormVisible_deploy: false,
-                dialogFormVisible_compile: false,
-                dialogFormVisible_showCode: false,
-                dialogFormVisible_deploy_result: false,
-                compile_property: {
-                    title: "编译结果",
-                    code: "",
-                },
-                showCode_property: {
-                    code: ""
-                },
-                deploy_property: {
-                    code: ""
-                },
-                showButton: true,
-                code: "",
-                fieldIds: [],
-                contractName: "",
-                contractDesc: "",
-                paramValues: [],
-                extendAgreements: [],
-                generateContractTypeEnum:""
+    function showCode() {
 
-            };
-        },
-        methods: {
-            showCode_button() {
-                this.compile_property.code = "";
-                this.dialogFormVisible_showCode = true;
-                // Generate JavaScript code and display it.
-                var topBlocks = workspace.getAllBlocks();
-                var codes = [];
-                var contractBlock = workspace.getTopBlocks()[0];
-                //console.log('contractBlock' + contractBlock.toString());
-                console.log('topBlocks', topBlocks)
-                for (var i = 0; i < topBlocks.length; i++) {
-                    if (topBlocks[i] == contractBlock) {
-                        var code = Blockly.codeGenerator.blockToCode(topBlocks[i]);
-                        codes.push(code + '\n');
-                    }
-                }
-                console.log('code', codes);
-                let tmp = codes[0].replace('\n', '').split('￥');
-
-                //tmp:0是类型，1是合约名，2是合约描述，3是流程id，4是关联的智能合约库
-                this.generateContractTypeEnum = tmp[0];
-                this.contractName = tmp[1];
-                if (tmp[4] === "否") {
-                    this.extendAgreements = null;
-                } else {
-                    this.extendAgreements = tmp[4].split(',');
-                }
-                this.fieldIds = tmp[3].split(',');
-                this.contractDesc = tmp[2];
-                console.log(tmp);
-                // var url = 'http://localhost:9014/api/generate/code?fileIds=' + tmp[1] + '&contractName=' + tmp[0];
-                axios.post('http://localhost:9014/api/generate/code', {
-                    generateContractTypeEnum:this.generateContractTypeEnum,
-                    fileIds: this.fieldIds,
-                    contractName: this.contractName,
-                    extendAgreements: this.extendAgreements
-                }).then(res => {
-                    if (res.data.code === 200) {
-                        this.showCode_property.code = res.data.data
-                        this.code = res.data.data
-                    } else if (res.data.code === 403) {
-                        this.showCode_property.code = res.data.msg
-                    }
-                }).catch(response => {
-                    this.showCode_property.code = "编译失败" + response.data.msg
-                })
-            },
-            compile_button() {
-                this.compile_property.code = "";
-                axios.get('http://localhost:9014/api/truffle/code/compile').then(res => {
-                    console.log(res);
-                    if (res.data.code === 200) {
-                        this.compile_property.code = res.data.data
-                    } else if (res.data.code === 403) {
-                        this.compile_property.code = res.data.msg
-                    }
-                }).catch(response => {
-                    this.compile_property.code = "编译失败" + response.data.msg;
-                })
-                this.dialogFormVisible_compile = true;
-            },
-            dialog_showCode_confirm() {
-                // this.showButton = false;
-                // $.post({
-                //     url: 'http://localhost:9014/api/truffle/code/down',
-                //     data: {
-                //         "code": this.showCode_property.code
-                //     },
-                //     success: function (response) {
-                //         alert(response.msg);
-                //     }
-                // })
-                this.dialogFormVisible_showCode = false;
-            },
-            dialog_compile_confirm() {
-                this.dialogFormVisible_compile = false;
-            },
-            //点击确定后部署结果弹窗
-            dialog_deploy_confirm() {
-                this.dialogFormVisible_deploy_result = true;
-                this.dialogFormVisible_deploy = false;
-                this.paramValues.length = 0;
-                for (var i = 0; i < this.dynamicValidateForm.domains.length; i++) {
-                    this.paramValues.push(this.dynamicValidateForm.domains[i].value);
-                }
-                console.log(this.paramValues)
-                //TODO 需要向后端发送数据
-                axios.post('http://localhost:9014/api/truffle/code/deploy', {
-                    code: this.code,
-                    contractName: this.contractName,
-                    contractDesc: this.contractDesc,
-                    fileIds: this.fieldIds,
-                    paramValues: this.paramValues,
-                    extendAgreements: this.extendAgreements
-                }).then(response => {
-                    if (response.data.code === 200) {
-                        console.log(response.data.data);
-                        this.deploy_property.code = response.data.data;
-                    } else {
-                        alert(response.data.msg)
-                    }
-                }).catch(function (error) {
-                    console.log(error)
-                })
-
-            },
-            deploy_button() {
-                this.dialogFormVisible_deploy = true;
-                var topBlocks = workspace.getAllBlocks();
-                var codes = [];
-                var contractBlock = workspace.getTopBlocks()[0];
-                //console.log('contractBlock' + contractBlock.toString());
-                console.log('topBlocks', topBlocks)
-                for (var i = 0; i < topBlocks.length; i++) {
-                    if (topBlocks[i] == contractBlock) {
-                        var code = Blockly.codeGenerator.blockToCode(topBlocks[i]);
-                        codes.push(code + '\n');
-                    }
-                }
-                console.log('code', codes);
-                let tmp = codes[0].replace('\n', '').split('@');
-                var f = this.fieldIds.toString();
-                console.log(f);
-                //从后端获取到参数的个数和参数名
-                axios.get('http://localhost:9014/api/query/constructor', {
-                    params: {
-                        "fileIds": f
-                    }
-                }).then(res => {
-                    console.log(res);
-                    if (res.data.code === 200) {
-                        let data = res.data.data;
-                        this.dynamicValidateForm.domains.length = 0;
-                        if (data.constructorParamNum == null) {
-                            alert("没有构造器或构造器不需要参数，请直接部署");
-                        } else {
-                            let constructorParamNum = data.constructorParamNum;
-                            let paramInfos = data.paramInfos;
-                            for (var i = 0; i < constructorParamNum; i++) {
-                                this.dynamicValidateForm.domains.push({value: '', name: paramInfos[i]});
-                            }
-                        }
-                    } else if (res.data.code === 403) {
-                        alert(res.data.msg);
-                    }
-                }).catch(response => {
-                    alert(response.data.msg);
-                })
-            },
-            submitForm(formName) {
-                this.$refs[formName].validate((valid) => {
-                    if (valid) {
-                        alert('submit!');
-                    } else {
-                        console.log('error submit!!');
-                        return false;
-                    }
-                });
-            },
-            resetForm(formName) {
-                this.$refs[formName].resetFields();
-            },
-            removeDomain(item) {
-                var index = this.dynamicValidateForm.domains.indexOf(item)
-                if (index !== -1) {
-                    this.dynamicValidateForm.domains.splice(index, 1)
-                }
-            },
-            addDomain() {
-                this.dynamicValidateForm.domains.push({
-                    value: '',
-                    key: Date.now()
-                });
+        // Generate JavaScript code and display it.
+        var topBlocks = workspace.getAllBlocks();
+        var codes = [];
+        var contractBlock = workspace.getTopBlocks()[0];
+        //console.log('contractBlock' + contractBlock.toString());
+        console.log(topBlocks)
+        for (var i = 0; i < topBlocks.length; i++) {
+            if (topBlocks[i] == contractBlock) {
+                var code = Blockly.codelabGenerator.blockToCode(topBlocks[i]);
+                codes.push(code + '\n');
             }
         }
+        console.log(codes);
+        alert(codes);
+        // let tmp = codes[0].replace('\n', '').split('@');
+        // console.log(tmp);
+        // var url = 'http://localhost:9014/api/generate/code?fileIds=' + tmp[1] + '&contractName=' + tmp[0];
+        // var response = sendHttpGet(url);
+        // alert(response);
     }
-    var Ctor = Vue.extend(Main)
-    new Ctor().$mount('#app')
 </script>
-
-<!--<script>-->
-<!--    var mask = document.querySelector('.login-bg');-->
-<!--    var login = document.querySelector('.login');-->
-<!--    var cancel = document.querySelector('#cancel');-->
-<!--    var closeBtn = document.querySelector('#closeBtn');-->
-<!--    var sure = document.querySelector('#sure');-->
-<!--    var link = document.querySelector('#link');-->
-<!--    var textId = document.getElementById("textfield");-->
-<!--    var titleName = document.getElementById("title");-->
-<!--    var compiles = document.getElementById("compile");-->
-<!--    var deploys = document.getElementById("deploy");-->
-<!--    var codeData = "";-->
-
-<!--    var mask2 = document.querySelector('.login-bg2');-->
-<!--    var login2 = document.querySelector('.login2');-->
-<!--    var cancel2 = document.querySelector('#cancel2');-->
-<!--    var closeBtn2 = document.querySelector('#closeBtn2');-->
-<!--    var sure2 = document.querySelector('#sure2');-->
-<!--    var textId2 = document.getElementById("textfield2");-->
-<!--    var titleName2 = document.getElementById("title2");-->
-
-<!--    link.addEventListener('click', function () {-->
-<!--        titleName.innerHTML = "生成的代码展示";-->
-<!--        mask.style.display = 'block';-->
-<!--        login.style.display = 'block';-->
-<!--    })-->
-<!--    cancel.addEventListener('click', function () {-->
-<!--        mask.style.display = 'none';-->
-<!--        login.style.display = 'none';-->
-<!--        textId.innerHTML = "";-->
-<!--        textId2.innerHTML = "";-->
-<!--    })-->
-<!--    cancel2.addEventListener('click', function () {-->
-<!--        mask2.style.display = 'none';-->
-<!--        login2.style.display = 'none';-->
-<!--        textId.innerHTML = "";-->
-<!--        textId2.innerHTML = "";-->
-<!--    })-->
-<!--    compiles.addEventListener('click', function () {-->
-<!--        titleName2.innerHTML = "编译结果";-->
-<!--        mask2.style.display = 'block';-->
-<!--        login2.style.display = 'block';-->
-<!--    })-->
-<!--    deploys.addEventListener('click', function () {-->
-<!--        titleName2.innerHTML = "部署结果";-->
-<!--        mask2.style.display = 'block';-->
-<!--        login2.style.display = 'block';-->
-<!--    })-->
-<!--    sure.addEventListener('click', function () {-->
-<!--        var data = textId.innerHTML;//要复制的内容-->
-<!--        var oInput = document.createElement('input');-->
-<!--        oInput.value = data;-->
-<!--        document.body.appendChild(oInput);-->
-<!--        oInput.select(); // 选择对象-->
-<!--        document.execCommand("Copy"); // 执行浏览器复制命令document.execCommand此命令牛逼-->
-<!--        oInput.className = 'oInput';-->
-<!--        oInput.style.display = 'none';-->
-<!--        alert("复制成功");-->
-<!--    })-->
-
-<!--    sure2.addEventListener('click', function () {-->
-<!--        var data = textId2.innerHTML;//要复制的内容-->
-<!--        var oInput = document.createElement('input');-->
-<!--        oInput.value = data;-->
-<!--        document.body.appendChild(oInput);-->
-<!--        oInput.select(); // 选择对象-->
-<!--        document.execCommand("Copy"); // 执行浏览器复制命令document.execCommand此命令牛逼-->
-<!--        oInput.className = 'oInput';-->
-<!--        oInput.style.display = 'none';-->
-<!--        alert("复制成功");-->
-<!--    })-->
-
-<!--    function showCode() {-->
-
-<!--        // Generate JavaScript code and display it.-->
-<!--        var topBlocks = workspace.getAllBlocks();-->
-<!--        var codes = [];-->
-<!--        var contractBlock = workspace.getTopBlocks()[0];-->
-<!--        //console.log('contractBlock' + contractBlock.toString());-->
-<!--        console.log(topBlocks)-->
-<!--        for (var i = 0; i < topBlocks.length; i++) {-->
-<!--            if (topBlocks[i] == contractBlock) {-->
-<!--                var code = Blockly.codelabGenerator.blockToCode(topBlocks[i]);-->
-<!--                codes.push(code + '\n');-->
-<!--            }-->
-<!--        }-->
-<!--        console.log(codes);-->
-<!--        let tmp = codes[0].replace('\n', '').split('@');-->
-<!--        console.log(tmp);-->
-<!--        var url = 'http://localhost:9014/api/generate/code?fileIds=' + tmp[1] + '&contractName=' + tmp[0];-->
-<!--        var response = sendHttpGet(url);-->
-<!--        // alert(response);-->
-<!--    }-->
-
-<!--    function compile() {-->
-<!--        var url = 'http://localhost:9014/api/truffle/code/compile';-->
-<!--        var response = sendHttpGet(url);-->
-<!--    }-->
-
-<!--    function deploy() {-->
-<!--        var url = 'http://localhost:9014/api/truffle/code/deploy';-->
-<!--        var response = sendHttpGet(url);-->
-<!--    }-->
-
-<!--    function down() {-->
-<!--        //代码;-->
-<!--        var datas = codeData;-->
-<!--        console.log('=========' + datas);-->
-<!--        $.post({-->
-<!--            url: 'http://localhost:9014/api/truffle/code/down',-->
-<!--            data: {-->
-<!--                "code": datas-->
-<!--            },-->
-<!--            success: function (response) {-->
-<!--                alert(response.msg);-->
-<!--            }-->
-<!--        })-->
-<!--    }-->
-
-<!--    function sendHttpGet(url) {-->
-<!--        var httpRequest = new XMLHttpRequest();//第一步：建立所需的对象-->
-<!--        httpRequest.open('GET', url, true);//第二步：打开连接  将请求参数写在url中-->
-<!--        httpRequest.send();//第三步：发送请求  将请求参数写在URL中-->
-<!--        /**-->
-<!--         * 获取数据后的处理程序-->
-<!--         */-->
-<!--        httpRequest.onreadystatechange = function () {-->
-<!--            if (httpRequest.readyState == 4 && httpRequest.status == 200) {-->
-<!--                var json = httpRequest.responseText;//获取到json字符串，还需解析-->
-<!--                console.log('响应结果:' + json);-->
-<!--                let data = eval("(" + json + ")").data;-->
-<!--                console.log(data);-->
-<!--                let code = eval("(" + json + ")").code;-->
-<!--                let msg = eval("(" + json + ")").msg;-->
-<!--                //alert(data);-->
-<!--                if (code == 200) {-->
-<!--                    textId.innerHTML = data;-->
-<!--                    textId2.innerHTML = data;-->
-<!--                    codeData = data;-->
-<!--                } else {-->
-<!--                    textId.innerHTML = msg;-->
-<!--                    textId2.innerHTML = msg;-->
-<!--                }-->
-<!--                return json;-->
-<!--            }-->
-<!--        };-->
-<!--    }-->
-<!--</script>-->
 </html>
