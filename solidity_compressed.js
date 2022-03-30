@@ -70,7 +70,7 @@
         a = Blockly.Variables.allUsedVarModels(a);
         for (d = 0; d < a.length; d++) b.push(this.nameDB_.getName(a[d].getId(),
             Blockly.VARIABLE_CATEGORY_NAME));
-        b.length && (this.definitions_.variables = "var " + b.join(", ") + ";");
+        b.length && (this.definitions_.variables = "uint256 " + b.join(", ") + ";");
         this.isInitialized = !0
     };
     Blockly.Solidity.finish = function (a) {
