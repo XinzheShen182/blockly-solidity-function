@@ -13,43 +13,52 @@
     'use strict';
     Blockly.Solidity = new Blockly.Generator("Solidity");
     Blockly.Solidity.addReservedWords("break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield,enum,implements,interface,let,package,private,protected,public,static,await,null,true,false,arguments," + Object.getOwnPropertyNames(Blockly.utils.global).join(","));
-    Blockly.Solidity.ORDER_ATOMIC = 0;
-    Blockly.Solidity.ORDER_NEW = 1.1;
-    Blockly.Solidity.ORDER_MEMBER = 1.2;
-    Blockly.Solidity.ORDER_FUNCTION_CALL = 2;
-    Blockly.Solidity.ORDER_INCREMENT = 3;
-    Blockly.Solidity.ORDER_DECREMENT = 3;
-    Blockly.Solidity.ORDER_BITWISE_NOT = 4.1;
-    Blockly.Solidity.ORDER_UNARY_PLUS = 4.2;
-    Blockly.Solidity.ORDER_UNARY_NEGATION = 4.3;
-    Blockly.Solidity.ORDER_LOGICAL_NOT = 4.4;
-    Blockly.Solidity.ORDER_TYPEOF = 4.5;
-    Blockly.Solidity.ORDER_VOID = 4.6;
-    Blockly.Solidity.ORDER_DELETE = 4.7;
-    Blockly.Solidity.ORDER_AWAIT = 4.8;
-    Blockly.Solidity.ORDER_EXPONENTIATION = 5;
-    Blockly.Solidity.ORDER_MULTIPLICATION = 5.1;
-    Blockly.Solidity.ORDER_DIVISION = 5.2;
-    Blockly.Solidity.ORDER_MODULUS = 5.3;
-    Blockly.Solidity.ORDER_SUBTRACTION = 6.1;
-    Blockly.Solidity.ORDER_ADDITION = 6.2;
-    Blockly.Solidity.ORDER_BITWISE_SHIFT = 7;
-    Blockly.Solidity.ORDER_RELATIONAL = 8;
-    Blockly.Solidity.ORDER_IN = 8;
-    Blockly.Solidity.ORDER_INSTANCEOF = 8;
-    Blockly.Solidity.ORDER_EQUALITY = 9;
-    Blockly.Solidity.ORDER_BITWISE_AND = 10;
-    Blockly.Solidity.ORDER_BITWISE_XOR = 11;
-    Blockly.Solidity.ORDER_BITWISE_OR = 12;
-    Blockly.Solidity.ORDER_LOGICAL_AND = 13;
-    Blockly.Solidity.ORDER_LOGICAL_OR = 14;
-    Blockly.Solidity.ORDER_CONDITIONAL = 15;
-    Blockly.Solidity.ORDER_ASSIGNMENT = 16;
-    Blockly.Solidity.ORDER_YIELD = 17;
-    Blockly.Solidity.ORDER_COMMA = 18;
-    Blockly.Solidity.ORDER_NONE = 99;
-    Blockly.Solidity.ORDER_OVERRIDES = [[Blockly.Solidity.ORDER_FUNCTION_CALL, Blockly.Solidity.ORDER_MEMBER], [Blockly.Solidity.ORDER_FUNCTION_CALL, Blockly.Solidity.ORDER_FUNCTION_CALL], [Blockly.Solidity.ORDER_MEMBER, Blockly.Solidity.ORDER_MEMBER], [Blockly.Solidity.ORDER_MEMBER, Blockly.Solidity.ORDER_FUNCTION_CALL], [Blockly.Solidity.ORDER_LOGICAL_NOT, Blockly.Solidity.ORDER_LOGICAL_NOT], [Blockly.Solidity.ORDER_MULTIPLICATION, Blockly.Solidity.ORDER_MULTIPLICATION], [Blockly.Solidity.ORDER_ADDITION,
-        Blockly.Solidity.ORDER_ADDITION], [Blockly.Solidity.ORDER_LOGICAL_AND, Blockly.Solidity.ORDER_LOGICAL_AND], [Blockly.Solidity.ORDER_LOGICAL_OR, Blockly.Solidity.ORDER_LOGICAL_OR]];
+    Blockly.Solidity.ORDER_ATOMIC = 0;           // 0 "" ...
+    Blockly.Solidity.ORDER_NEW = 1.1;            // new
+    Blockly.Solidity.ORDER_MEMBER = 1.2;         // . []
+    Blockly.Solidity.ORDER_FUNCTION_CALL = 2;    // ()
+    Blockly.Solidity.ORDER_INCREMENT = 3;        // ++
+    Blockly.Solidity.ORDER_DECREMENT = 3;        // --
+    Blockly.Solidity.ORDER_BITWISE_NOT = 4.1;    // ~
+    Blockly.Solidity.ORDER_UNARY_PLUS = 4.2;     // +
+    Blockly.Solidity.ORDER_UNARY_NEGATION = 4.3; // -
+    Blockly.Solidity.ORDER_LOGICAL_NOT = 4.4;    // !
+    Blockly.Solidity.ORDER_TYPEOF = 4.5;         // typeof
+    Blockly.Solidity.ORDER_VOID = 4.6;           // void
+    Blockly.Solidity.ORDER_DELETE = 4.7;         // delete
+    Blockly.Solidity.ORDER_DIVISION = 5.1;       // /
+    Blockly.Solidity.ORDER_MULTIPLICATION = 5.2; // *
+    Blockly.Solidity.ORDER_MODULUS = 5.3;        // %
+    Blockly.Solidity.ORDER_SUBTRACTION = 6.1;    // -
+    Blockly.Solidity.ORDER_ADDITION = 6.2;       // +
+    Blockly.Solidity.ORDER_BITWISE_SHIFT = 7;    // << >> >>>
+    Blockly.Solidity.ORDER_RELATIONAL = 8;       // < <= > >=
+    Blockly.Solidity.ORDER_IN = 8;               // in
+    Blockly.Solidity.ORDER_INSTANCEOF = 8;       // instanceof
+    Blockly.Solidity.ORDER_EQUALITY = 9;         // == != === !==
+    Blockly.Solidity.ORDER_BITWISE_AND = 10;     // &
+    Blockly.Solidity.ORDER_BITWISE_XOR = 11;     // ^
+    Blockly.Solidity.ORDER_BITWISE_OR = 12;      // |
+    Blockly.Solidity.ORDER_LOGICAL_AND = 13;     // &&
+    Blockly.Solidity.ORDER_LOGICAL_OR = 14;      // ||
+    Blockly.Solidity.ORDER_CONDITIONAL = 15;     // ?:
+    Blockly.Solidity.ORDER_ASSIGNMENT = 16;      // = += -= *= /= %= <<= >>= ...
+    Blockly.Solidity.ORDER_COMMA = 17;           // ,
+    Blockly.Solidity.ORDER_NONE = 99;            // (...)
+
+    Blockly.Solidity.ORDER_OVERRIDES = [
+        [Blockly.Solidity.ORDER_FUNCTION_CALL, Blockly.Solidity.ORDER_MEMBER],
+        [Blockly.Solidity.ORDER_FUNCTION_CALL, Blockly.Solidity.ORDER_FUNCTION_CALL],
+        [Blockly.Solidity.ORDER_MEMBER, Blockly.Solidity.ORDER_MEMBER],
+        [Blockly.Solidity.ORDER_MEMBER, Blockly.Solidity.ORDER_FUNCTION_CALL],
+        [Blockly.Solidity.ORDER_LOGICAL_NOT, Blockly.Solidity.ORDER_LOGICAL_NOT],
+        [Blockly.Solidity.ORDER_MULTIPLICATION, Blockly.Solidity.ORDER_MULTIPLICATION],
+        [Blockly.Solidity.ORDER_ADDITION,
+            Blockly.Solidity.ORDER_ADDITION],
+        [Blockly.Solidity.ORDER_LOGICAL_AND, Blockly.Solidity.ORDER_LOGICAL_AND],
+        [Blockly.Solidity.ORDER_LOGICAL_OR, Blockly.Solidity.ORDER_LOGICAL_OR]
+    ];
+
     Blockly.Solidity.isInitialized = !1;
     Blockly.Solidity.init = function (a) {
         Object.getPrototypeOf(this).init.call(this);
@@ -373,22 +382,69 @@
         b && (c = "!" + c);
         return "while (" + c + ") {\n" + d + "}\n"
     };
-    Blockly.Solidity.controls_for = function (a) {
-        var b = Blockly.Solidity.nameDB_.getName(a.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME),
-            c = Blockly.Solidity.valueToCode(a, "FROM", Blockly.Solidity.ORDER_ASSIGNMENT) || "0",
-            d = Blockly.Solidity.valueToCode(a, "TO", Blockly.Solidity.ORDER_ASSIGNMENT) || "0",
-            e = Blockly.Solidity.valueToCode(a, "BY", Blockly.Solidity.ORDER_ASSIGNMENT) || "1",
-            f = Blockly.Solidity.statementToCode(a, "DO");
-        f = Blockly.Solidity.addLoopTrap(f, a);
-        if (Blockly.isNumber(c) && Blockly.isNumber(d) &&
-            Blockly.isNumber(e)) {
-            var g = Number(c) <= Number(d);
-            a = "for (" + b + " = " + c + "; " + b + (g ? " <= " : " >= ") + d + "; " + b;
-            b = Math.abs(Number(e));
-            a = (1 == b ? a + (g ? "++" : "--") : a + ((g ? " += " : " -= ") + b)) + (") {\n" + f + "}\n")
-        } else a = "", g = c, c.match(/^\w+$/) || Blockly.isNumber(c) || (g = Blockly.Solidity.nameDB_.getDistinctName(b + "_start", Blockly.VARIABLE_CATEGORY_NAME), a += "var " + g + " = " + c + ";\n"), c = d, d.match(/^\w+$/) || Blockly.isNumber(d) || (c = Blockly.Solidity.nameDB_.getDistinctName(b + "_end", Blockly.VARIABLE_CATEGORY_NAME), a += "var " + c +
-            " = " + d + ";\n"), d = Blockly.Solidity.nameDB_.getDistinctName(b + "_inc", Blockly.VARIABLE_CATEGORY_NAME), a += "var " + d + " = ", a = Blockly.isNumber(e) ? a + (Math.abs(e) + ";\n") : a + ("Math.abs(" + e + ");\n"), a = a + ("if (" + g + " > " + c + ") {\n") + (Blockly.Solidity.INDENT + d + " = -" + d + ";\n"), a += "}\n", a += "for (" + b + " = " + g + "; " + d + " >= 0 ? " + b + " <= " + c + " : " + b + " >= " + c + "; " + b + " += " + d + ") {\n" + f + "}\n";
-        return a
+    Blockly.Solidity.controls_for = function (block) {
+        // For loop.
+        var variable0 = Blockly.Solidity.nameDB_.getName(
+            block.getFieldValue('VAR'), Blockly.VARIABLE_CATEGORY_NAME);
+        var argument0 = Blockly.Solidity.valueToCode(block, 'FROM',
+            Blockly.Solidity.ORDER_ASSIGNMENT) || '0';
+        var argument1 = Blockly.Solidity.valueToCode(block, 'TO',
+            Blockly.Solidity.ORDER_ASSIGNMENT) || '0';
+        var increment = Blockly.Solidity.valueToCode(block, 'BY',
+            Blockly.Solidity.ORDER_ASSIGNMENT) || '1';
+        var branch = Blockly.Solidity.statementToCode(block, 'DO');
+        branch = Blockly.Solidity.addLoopTrap(branch, block);
+        var code;
+        if (Blockly.isNumber(argument0) && Blockly.isNumber(argument1) &&
+            Blockly.isNumber(increment)) {
+            // All arguments are simple numbers.
+            var up = Number(argument0) <= Number(argument1);
+            code = 'for (' + variable0 + ' = ' + argument0 + '; ' +
+                variable0 + (up ? ' <= ' : ' >= ') + argument1 + '; ' +
+                variable0;
+            var step = Math.abs(Number(increment));
+            if (step == 1) {
+                code += up ? '++' : '--';
+            } else {
+                code += (up ? ' += ' : ' -= ') + step;
+            }
+            code += ') {\n' + branch + '}\n';
+        } else {
+            code = '';
+            // Cache non-trivial values to variables to prevent repeated look-ups.
+            var startVar = argument0;
+            if (!argument0.match(/^\w+$/) && !Blockly.isNumber(argument0)) {
+                startVar = Blockly.Solidity.nameDB_.getDistinctName(
+                    variable0 + '_start', Blockly.VARIABLE_CATEGORY_NAME);
+                code += 'uint256 ' + startVar + ' = ' + argument0 + ';\n';
+            }
+            var endVar = argument1;
+            if (!argument1.match(/^\w+$/) && !Blockly.isNumber(argument1)) {
+                endVar = Blockly.Solidity.nameDB_.getDistinctName(
+                    variable0 + '_end', Blockly.VARIABLE_CATEGORY_NAME);
+                code += 'uint256 ' + endVar + ' = ' + argument1 + ';\n';
+            }
+            // Determine loop direction at start, in case one of the bounds
+            // changes during loop execution.
+            var incVar = Blockly.Solidity.nameDB_.getDistinctName(
+                variable0 + '_inc', Blockly.VARIABLE_CATEGORY_NAME);
+            code += 'uint256 ' + incVar + ' = ';
+            if (Blockly.isNumber(increment)) {
+                code += Math.abs(increment) + ';\n';
+            } else {
+                code += 'Math.abs(' + increment + ');\n';
+            }
+            code += 'if (' + startVar + ' > ' + endVar + ') {\n';
+            code += Blockly.Solidity.INDENT + incVar + ' = -' + incVar + ';\n';
+            code += '}\n';
+            code += 'for (' + variable0 + ' = ' + startVar + '; ' +
+                incVar + ' >= 0 ? ' +
+                variable0 + ' <= ' + endVar + ' : ' +
+                variable0 + ' >= ' + endVar + '; ' +
+                variable0 + ' += ' + incVar + ') {\n' +
+                branch + '}\n';
+        }
+        return code;
     };
     Blockly.Solidity.controls_forEach = function (a) {
         var b = Blockly.Solidity.nameDB_.getName(a.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME),
@@ -425,18 +481,27 @@
         a = Number(a.getFieldValue("NUM"));
         return [a, 0 <= a ? Blockly.Solidity.ORDER_ATOMIC : Blockly.Solidity.ORDER_UNARY_NEGATION]
     };
-    Blockly.Solidity.math_arithmetic = function (a) {
-        var b = {
-            ADD: [" + ", Blockly.Solidity.ORDER_ADDITION],
-            MINUS: [" - ", Blockly.Solidity.ORDER_SUBTRACTION],
-            MULTIPLY: [" * ", Blockly.Solidity.ORDER_MULTIPLICATION],
-            DIVIDE: [" / ", Blockly.Solidity.ORDER_DIVISION],
-            POWER: [null, Blockly.Solidity.ORDER_NONE]
-        }[a.getFieldValue("OP")], c = b[0];
-        b = b[1];
-        var d = Blockly.Solidity.valueToCode(a, "A", b) || "0";
-        a = Blockly.Solidity.valueToCode(a, "B", b) || "0";
-        return c ? [d + c + a, b] : ["Math.pow(" + d + ", " + a + ")", Blockly.Solidity.ORDER_FUNCTION_CALL]
+    Blockly.Solidity.math_arithmetic = function (block) {
+        var OPERATORS = {
+            'ADD': [' + ', Blockly.Solidity.ORDER_ADDITION],
+            'MINUS': [' - ', Blockly.Solidity.ORDER_SUBTRACTION],
+            'MULTIPLY': [' * ', Blockly.Solidity.ORDER_MULTIPLICATION],
+            'DIVIDE': [' / ', Blockly.Solidity.ORDER_DIVISION],
+            'POWER': [null, Blockly.Solidity.ORDER_COMMA]  // Handle power separately.
+        };
+        var tuple = OPERATORS[block.getFieldValue('OP')];
+        var operator = tuple[0];
+        var order = tuple[1];
+        var argument0 = Blockly.Solidity.valueToCode(block, 'A', order) || '0';
+        var argument1 = Blockly.Solidity.valueToCode(block, 'B', order) || '0';
+        var code;
+        // Power in Solidity requires a special case since it has no operator.
+        if (!operator) {
+            code = 'Math.pow(' + argument0 + ', ' + argument1 + ')';
+            return [code, Blockly.Solidity.ORDER_FUNCTION_CALL];
+        }
+        code = argument0 + operator + argument1;
+        return [code, order];
     };
     Blockly.Solidity.math_single = function (a) {
         var b = a.getFieldValue("OP");
