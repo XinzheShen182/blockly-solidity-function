@@ -8,12 +8,12 @@ Blockly.Blocks['function'] = {
         this.appendValueInput("function_name")
             .setCheck(null)
             .appendField("函数名称");
-        this.appendStatementInput("function_visibility")
-            .setCheck(null)
-            .appendField("函数修饰符");
         this.appendStatementInput("function_params")
             .setCheck(null)
             .appendField("函数参数");
+        this.appendStatementInput("function_visibility")
+            .setCheck(null)
+            .appendField("函数修饰符");
         this.appendStatementInput("function_return")
             .setCheck(null)
             .appendField("函数返回值类型");

@@ -51,8 +51,9 @@ Blockly.Solidity['special_type'] = function (block) {
     var code;
     if(type === "struct"){
         var res="";
+        console.log(fields);
         for(var i=0;i<fields.length;i++){
-            res = fields[i]+";\n";
+            res = res + fields[i]+";\n";
         }
         code = "struct "+ name + "{\n" + res + "}";
     }else if(type === "mapping"){
