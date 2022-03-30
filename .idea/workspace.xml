@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="增加solidity生成  if">
+    <list default="true" id="8db2e0a3-626f-44d1-8f14-ac8ef0832d32" name="Changes" comment="增加solidity生成  if">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/logic.js" beforeDir="false" afterPath="$PROJECT_DIR$/generators/logic.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/myGenerate/basicFunction.js" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/myGenerate/basicFunction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/myGenerate/fieldType.js" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/myGenerate/fieldType.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generators/myGenerate/basicFunction.js" beforeDir="false" afterPath="$PROJECT_DIR$/generators/myGenerate/basicFunction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generators/myGenerate/fieldType.js" beforeDir="false" afterPath="$PROJECT_DIR$/generators/myGenerate/fieldType.js" afterDir="false" />
     </list>
-    <list id="eb25ce2f-f4fe-4f1d-991d-aefee5cc5634" name="gitignore" comment="gitignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +36,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -129,12 +139,16 @@
       <recent name="D:\code\js\blockly\smart-contract-editor-function-edit\generators" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.index.html (1)">
+    <configuration name="index.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/smart-contract-editor-blockly-function-edit/demo/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/smart-contract-editor-demo-master/demo/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.index.html (1)" />
         <item itemvalue="JavaScript Debug.index.html" />
       </list>
     </recent_temporary>
@@ -145,7 +159,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8fc5348d-9cf6-4b5a-a8cf-78528781c885" name="Default Changelist" comment="" />
+      <changelist id="8db2e0a3-626f-44d1-8f14-ac8ef0832d32" name="Changes" comment="增加solidity生成  if" />
       <created>1636079468809</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -170,6 +184,7 @@
       <workItem from="1646790586699" duration="4695000" />
       <workItem from="1647180382923" duration="1506000" />
       <workItem from="1648522808934" duration="723000" />
+      <workItem from="1648605439396" duration="893000" />
     </task>
     <task id="LOCAL-00001" summary="新增编译和部署功能">
       <created>1643186545630</created>
@@ -337,7 +352,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/dev" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

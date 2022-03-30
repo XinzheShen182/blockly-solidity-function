@@ -53,9 +53,6 @@ Blockly.Blocks['transfer'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("转移以太币功能");
-        this.appendValueInput("from_address")
-            .setCheck(null)
-            .appendField("转账账户地址:");
         this.appendValueInput("to_address")
             .setCheck(null)
             .appendField("收款账户地址:");

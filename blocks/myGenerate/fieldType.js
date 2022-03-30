@@ -22,7 +22,7 @@ Blockly.Blocks['special_type'] = {
             .appendField("变量名字：");
         this.appendStatementInput("special_field")
             .setCheck(null)
-            .appendField(new Blockly.FieldDropdown([["mapping","maping"], ["struct","struct"], ["array","array"]]), "special_fields");
+            .appendField(new Blockly.FieldDropdown([["mapping","mapping"], ["struct","struct"], ["array","array"]]), "special_fields");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(345);
