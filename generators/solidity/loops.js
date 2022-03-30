@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileoverview Generating JavaScript for loop blocks.
+ * @fileoverview Generating Solidity for loop blocks.
  * @author fraser@google.com (Neil Fraser)
  */
 'use strict';
@@ -36,7 +36,7 @@ Blockly.Solidity['controls_repeat_ext'] = function (block) {
             'repeat_end', Blockly.VARIABLE_CATEGORY_NAME);
         code += 'var ' + endVar + ' = ' + repeats + ';\n';
     }
-    code += 'for (uint256 ' + loopVar + ' = 0; ' +
+    code += 'for (var ' + loopVar + ' = 0; ' +
         loopVar + ' < ' + endVar + '; ' +
         loopVar + '++) {\n' +
         branch + '}\n';
@@ -94,19 +94,19 @@ Blockly.Solidity['controls_for'] = function (block) {
         if (!argument0.match(/^\w+$/) && !Blockly.isNumber(argument0)) {
             startVar = Blockly.Solidity.nameDB_.getDistinctName(
                 variable0 + '_start', Blockly.VARIABLE_CATEGORY_NAME);
-            code += 'unit256 ' + startVar + ' = ' + argument0 + ';\n';
+            code += 'var ' + startVar + ' = ' + argument0 + ';\n';
         }
         var endVar = argument1;
         if (!argument1.match(/^\w+$/) && !Blockly.isNumber(argument1)) {
             endVar = Blockly.Solidity.nameDB_.getDistinctName(
                 variable0 + '_end', Blockly.VARIABLE_CATEGORY_NAME);
-            code += 'unit256 ' + endVar + ' = ' + argument1 + ';\n';
+            code += 'var ' + endVar + ' = ' + argument1 + ';\n';
         }
         // Determine loop direction at start, in case one of the bounds
         // changes during loop execution.
         var incVar = Blockly.Solidity.nameDB_.getDistinctName(
             variable0 + '_inc', Blockly.VARIABLE_CATEGORY_NAME);
-        code += 'unit256 ' + incVar + ' = ';
+        code += 'var ' + incVar + ' = ';
         if (Blockly.isNumber(increment)) {
             code += Math.abs(increment) + ';\n';
         } else {
