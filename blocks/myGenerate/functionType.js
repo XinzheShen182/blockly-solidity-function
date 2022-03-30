@@ -1,16 +1,16 @@
 //函数的类型
 
 //普通函数
-Blockly.Blocks['function'] = {
+Blockly.Blocks['fucntion'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("function");
         this.appendValueInput("function_name")
             .setCheck(null)
             .appendField("函数名称");
-        this.appendValueInput("function_visibility")
+        this.appendStatementInput("function_visibility")
             .setCheck(null)
-            .appendField("函数可见性");
+            .appendField("函数修饰符");
         this.appendStatementInput("function_params")
             .setCheck(null)
             .appendField("函数参数");
@@ -34,7 +34,7 @@ Blockly.Blocks['construct'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("constructor");
-        this.appendValueInput("constructor_visiblity")
+        this.appendStatementInput("constructor_visiblity")
             .setCheck(null)
             .appendField("可见性");
         this.appendStatementInput("constructor_params")
@@ -63,6 +63,23 @@ Blockly.Blocks['event'] = {
         this.appendStatementInput("event_params")
             .setCheck(null)
             .appendField("事件参数");
+        this.setColour(230);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+//回退函数
+Blockly.Blocks['fall_back'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("fallback");
+        this.appendStatementInput("visibility")
+            .setCheck(null)
+            .appendField("函数修饰符");
+        this.appendStatementInput("code")
+            .setCheck(null)
+            .appendField("代码块");
         this.setColour(230);
         this.setTooltip("");
         this.setHelpUrl("");
