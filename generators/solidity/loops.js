@@ -30,13 +30,14 @@ Blockly.Solidity['controls_repeat_ext'] = function (block) {
     var code = '';
     var loopVar = Blockly.Solidity.nameDB_.getDistinctName(
         'count', Blockly.VARIABLE_CATEGORY_NAME);
+    console.log('loopVar:'+loopVar)
     var endVar = repeats;
     if (!repeats.match(/^\w+$/) && !Blockly.isNumber(repeats)) {
         endVar = Blockly.Solidity.nameDB_.getDistinctName(
             'repeat_end', Blockly.VARIABLE_CATEGORY_NAME);
-        code += 'var ' + endVar + ' = ' + repeats + ';\n';
+        code += 'uint256 ' + endVar + ' = ' + repeats + ';\n';
     }
-    code += 'for (var ' + loopVar + ' = 0; ' +
+    code += 'for (uint256 ' + loopVar + ' = 0; ' +
         loopVar + ' < ' + endVar + '; ' +
         loopVar + '++) {\n' +
         branch + '}\n';

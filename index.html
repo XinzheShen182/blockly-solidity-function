@@ -6,6 +6,12 @@
     <script src="./closure/goog/base.js"></script>
     <script src="./blockly_compressed.js"></script>
     <script src="./blocks_compressed.js"></script>
+    <script src="solidity_compressed.js"></script>
+
+    <script src="blocks/solidity/logic.js" charset="UTF-8"></script>
+    <script src="blocks/solidity/loops.js" charset="UTF-8"></script>
+    <script src="blocks/solidity/math.js" charset="UTF-8"></script>
+
     <script src="blocks/myGenerate/basicFunction.js" charset="UTF-8"></script>
     <script src="blocks/myGenerate/fieldType.js" charset="UTF-8"></script>
     <script src="blocks/myGenerate/functionType.js" charset="UTF-8"></script>
@@ -147,25 +153,22 @@
 <script>
     function showCode() {
 
-        // Generate JavaScript code and display it.
-        var topBlocks = workspace.getAllBlocks();
-        var codes = [];
-        var contractBlock = workspace.getTopBlocks()[0];
-        //console.log('contractBlock' + contractBlock.toString());
-        console.log(topBlocks)
-        for (var i = 0; i < topBlocks.length; i++) {
-            if (topBlocks[i] == contractBlock) {
-                var code = Blockly.Solidity.blockToCode(topBlocks[i]);
-                codes.push(code + '\n');
-            }
-        }
+        var codes = Blockly.Solidity.workspaceToCode(workspace);
+
+        // // Generate JavaScript code and display it.
+        // var topBlocks = workspace.getAllBlocks();
+        // var codes = [];
+        // var contractBlock = workspace.getTopBlocks()[0];
+        // //console.log('contractBlock' + contractBlock.toString());
+        // console.log(topBlocks)
+        // for (var i = 0; i < topBlocks.length; i++) {
+        //     if (topBlocks[i] == contractBlock) {
+        //         var code = Blockly.Solidity.blockToCode(topBlocks[i]);
+        //         codes.push(code + '\n');
+        //     }
+        // }
         console.log(codes);
         alert(codes);
-        // let tmp = codes[0].replace('\n', '').split('@');
-        // console.log(tmp);
-        // var url = 'http://localhost:9014/api/generate/code?fileIds=' + tmp[1] + '&contractName=' + tmp[0];
-        // var response = sendHttpGet(url);
-        // alert(response);
     }
 </script>
 </html>
