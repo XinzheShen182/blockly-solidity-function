@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8db2e0a3-626f-44d1-8f14-ac8ef0832d32" name="Changes" comment="增加solidity生成  if">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/myGenerate/basicFunction.js" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/myGenerate/basicFunction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/myGenerate/fieldType.js" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/myGenerate/fieldType.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/myGenerate/basicFunction.js" beforeDir="false" afterPath="$PROJECT_DIR$/generators/myGenerate/basicFunction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generators/myGenerate/fieldType.js" beforeDir="false" afterPath="$PROJECT_DIR$/generators/myGenerate/fieldType.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +69,7 @@
     <option name="height" value="1281" />
   </component>
   <component name="ProjectId" id="23bKj7f3EadfdLq7cE46abVB5O8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />

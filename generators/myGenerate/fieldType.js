@@ -6,6 +6,7 @@ Blockly.Solidity['basic_type'] = function (block) {
     var field_name = Blockly.Solidity.valueToCode(block, 'basic_field', Blockly.Solidity.ORDER_ATOMIC);
     var type_name = block.getFieldValue('basic_fields');
     var code = type_name + " " + field_name;
+    return code;
 }
 
 //只含属性类型
