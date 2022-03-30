@@ -82,3 +82,120 @@ Blockly.Solidity['function'] = function (block) {
     }
     return code
 }
+
+//构造函数生成
+Blockly.Solidity['construct'] = function (block) {
+    var code;
+    code = "constructor(";
+    //参数
+    var allParamsBlcoks = block.getInputTargetBlock('constructor_params');
+    var allParams = getAllStatementBlocks(allParamsBlcoks);
+    allParams = changeArray(allParams);
+    if(allParams[0]===undefined){
+        code = code + ")"
+    }
+    else if(allParams.length===1){
+        code = code + allParams[0] + ")"
+    }
+    else{
+        code = code +allParams[0];
+        for(var i=1;i<allParams.length;i++){
+            code = code + "," + allParams[i];
+        }
+        code = code +")";
+    }
+    //可见性
+    var allVisiBlocks = block.getInputTargetBlock('constructor_visiblity');
+    var allVisi = getAllStatementBlocks(allVisiBlocks);
+    allVisi = changeArray(allVisi);
+    if(allVisi[0]===undefined){
+    }
+    else{
+        for(var i=0;i<allVisi.length;i++){
+            code = code + allVisi[i];
+        }
+    }
+    //关联的属性
+    var allFieddBlock = block.getInputTargetBlock('constructor_field');
+    var allField = getAllStatementBlocks(allFieddBlock);
+    allField = changeArray(allField);
+    if(allField[0]===undefined){
+    }
+    else{
+        for(var i=0;i<allField.length;i++){
+            if(allField[i].slice(0,7)==="struct "){
+                code = allField[i] + "\n" + code;
+            }
+            else{
+                code =allField[i]+";\n"+code;
+            }
+        }
+    }
+    //代码块
+    code = code + "\n{\n"
+    var allCodeBlocks = block.getInputTargetBlock('constructor_code')
+    var allCode = getAllStatementBlocks(allCodeBlocks);
+    allCode = changeArray(allCode);
+    if(allCode[0]===undefined){
+        code = code + "}"
+    }
+    else{
+        for(var i=0;i<allCode.length;i++){
+            code = code + allCode[i] + ";\n";
+        }
+        code = code + "}";
+    }
+    return code;
+}
+
+//事件生成
+Blockly.Solidity['event'] = function (block) {
+    var code = "event";
+    var name =  Blockly.Solidity.valueToCode(block, 'event_name', Blockly.Solidity.ORDER_ATOMIC);
+    code = code + " " + name;
+    //参数
+    var allParamBlocks = block.getInputTargetBlock('event_params');
+    var allParams = getAllStatementBlocks(allParamBlocks);
+    allParams = changeArray(allParams);
+    if(allParams[0]===undefined){
+        code = code + "();"
+    }
+    else {
+        code = code + "(" + allParams[0];
+        for(var i=1;i<allParams.length;i++){
+            code = code +allParams[i];
+        }
+        code = code + ");";
+    }
+    return code;
+}
+
+//回退函数生成
+Blockly.Solidity['fall_back'] = function (block) {
+    var code = "fallback()"
+    //可见性
+    var allVisiBlocks = block.getInputTargetBlock('visibility');
+    var allVisi = getAllStatementBlocks(allVisiBlocks);
+    allVisi = changeArray(allVisi);
+    if(allVisi[0]===undefined){
+    }
+    else{
+        for(var i=0;i<allVisi.length;i++){
+            code = code + allVisi[i];
+        }
+    }
+    code = code + "\n{\n";
+    var allCodeBlocks = block.getInputTargetBlock('code')
+    var allCode = getAllStatementBlocks(allCodeBlocks);
+    allCode = changeArray(allCode);
+    if(allCode[0]===undefined){
+        code = code + "}"
+    }
+    else{
+        for(var i=0;i<allCode.length;i++){
+            code = code + allCode[i] + ";\n";
+        }
+        code = code + "}";
+    }
+    return code;
+}
