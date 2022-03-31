@@ -6,47 +6,43 @@ goog.require('Blockly.Solidity');
 Blockly.Solidity['function'] = function (block) {
     var code;
     var functionName = Blockly.Solidity.valueToCode(block, 'function_name', Blockly.Solidity.ORDER_ATOMIC);
-    code = "functon "+functionName+"("
+    code = "functon " + functionName + "("
     //加入函数参数
     var allParamBlocks = block.getInputTargetBlock('function_params');
     var allParams = getAllStatementBlocks(allParamBlocks);
     allParams = changeArray(allParams);
-    if(allParams[0]===undefined){
-        code = code +")"
-    }
-    else if(allParams.length===1){
-        code = code + allParams[0]+")"
-    }
-    else{
+    if (allParams[0] === undefined) {
+        code = code + ")"
+    } else if (allParams.length === 1) {
+        code = code + allParams[0] + ")"
+    } else {
         code = code + allParams[0];
-        for(var i=1;i<allParams.length;i++){
-            code = code+","+allParams[i];
+        for (var i = 1; i < allParams.length; i++) {
+            code = code + "," + allParams[i];
         }
-        code = code+")"
+        code = code + ")"
     }
     //函数修饰符
     var allQuaBlocks = block.getInputTargetBlock('function_visibility');
     var allQua = getAllStatementBlocks(allQuaBlocks);
     allQua = changeArray(allQua);
-    if(allQua[0]===undefined){
-    }
-    else{
-        for(var j=0;j<allQua.length;j++){
-            code = code+allQua[j];
+    if (allQua[0] === undefined) {
+    } else {
+        for (var j = 0; j < allQua.length; j++) {
+            code = code + allQua[j];
         }
     }
     //函数返回值
     var returnsBlocks = block.getInputTargetBlock('function_return');
     var returns = getAllStatementBlocks(returnsBlocks);
     returns = changeArray(returns);
-    if(returns[0]===undefined){
-    }
-    else if(returns.length===1){
-        code = code + " returns(" +returns[0] +")";
-    }else{
+    if (returns[0] === undefined) {
+    } else if (returns.length === 1) {
+        code = code + " returns(" + returns[0] + ")";
+    } else {
         code = code + " returns(" + returns[0];
-        for(var i=1;i<returns.length;i++){
-            code = code +","+ returns[i]
+        for (var i = 1; i < returns.length; i++) {
+            code = code + "," + returns[i]
         }
         code = code + ")"
     }
@@ -54,15 +50,13 @@ Blockly.Solidity['function'] = function (block) {
     var allFieLdBlock = block.getInputTargetBlock('fields');
     var allField = getAllStatementBlocks(allFieLdBlock);
     allField = changeArray(allField);
-    if(allField[0]===undefined){
-    }
-    else{
-        for(var i=0;i<allField.length;i++){
-            if(allField[i].slice(0,7)==="struct "){
+    if (allField[0] === undefined) {
+    } else {
+        for (var i = 0; i < allField.length; i++) {
+            if (allField[i].slice(0, 7) === "struct ") {
                 code = allField[i] + "\n" + code;
-            }
-            else{
-                code =allField[i]+";\n"+code;
+            } else {
+                code = allField[i] + ";\n" + code;
             }
         }
     }
@@ -71,14 +65,34 @@ Blockly.Solidity['function'] = function (block) {
     var allCode = getAllStatementBlocks(allCodeBlocks);
     allCode = changeArray(allCode);
     code = code + "\n{\n";
-    if(allCode[0]===undefined){
+    //生成函数变量定义
+    generateVariables();
+    if (allCode[0] === undefined) {
         code = code + "}";
-    }
-    else{
-        for(var i=0;i<allCode.length;i++){
+    } else {
+        for (var i = 0; i < allCode.length; i++) {
             code = code + allCode[i] + "\n";
         }
         code = code + "}";
+    }
+
+    //生成函数变量定义
+    function generateVariables() {
+        //最先声明函数变量
+        var globals = [];
+        var workspace = block.workspace;
+        var variables = Blockly.Variables.allUsedVarModels(workspace) || [];
+        // console.log('variables:', variables);
+        for (var i = 0, variable; variable = variables[i]; i++) {
+            var varName = variable.name;
+            if (block.getVars().indexOf(varName) == -1) {
+                globals.push(Blockly.Solidity.nameDB_.getName(varName,
+                    Blockly.VARIABLE_CATEGORY_NAME));
+            }
+        }
+        globals = globals.length ? Blockly.Solidity.INDENT + "uint256 " + globals.join(", ") + ";\n" : '';
+        code = code + globals;
+        //-----------end---------------------------//
     }
     return code
 }
@@ -91,27 +105,24 @@ Blockly.Solidity['construct'] = function (block) {
     var allParamsBlcoks = block.getInputTargetBlock('constructor_params');
     var allParams = getAllStatementBlocks(allParamsBlcoks);
     allParams = changeArray(allParams);
-    if(allParams[0]===undefined){
+    if (allParams[0] === undefined) {
         code = code + ")"
-    }
-    else if(allParams.length===1){
+    } else if (allParams.length === 1) {
         code = code + allParams[0] + ")"
-    }
-    else{
-        code = code +allParams[0];
-        for(var i=1;i<allParams.length;i++){
+    } else {
+        code = code + allParams[0];
+        for (var i = 1; i < allParams.length; i++) {
             code = code + "," + allParams[i];
         }
-        code = code +")";
+        code = code + ")";
     }
     //可见性
     var allVisiBlocks = block.getInputTargetBlock('constructor_visiblity');
     var allVisi = getAllStatementBlocks(allVisiBlocks);
     allVisi = changeArray(allVisi);
-    if(allVisi[0]===undefined){
-    }
-    else{
-        for(var i=0;i<allVisi.length;i++){
+    if (allVisi[0] === undefined) {
+    } else {
+        for (var i = 0; i < allVisi.length; i++) {
             code = code + allVisi[i];
         }
     }
@@ -119,15 +130,13 @@ Blockly.Solidity['construct'] = function (block) {
     var allFieddBlock = block.getInputTargetBlock('constructor_field');
     var allField = getAllStatementBlocks(allFieddBlock);
     allField = changeArray(allField);
-    if(allField[0]===undefined){
-    }
-    else{
-        for(var i=0;i<allField.length;i++){
-            if(allField[i].slice(0,7)==="struct "){
+    if (allField[0] === undefined) {
+    } else {
+        for (var i = 0; i < allField.length; i++) {
+            if (allField[i].slice(0, 7) === "struct ") {
                 code = allField[i] + "\n" + code;
-            }
-            else{
-                code =allField[i]+";\n"+code;
+            } else {
+                code = allField[i] + ";\n" + code;
             }
         }
     }
@@ -136,11 +145,10 @@ Blockly.Solidity['construct'] = function (block) {
     var allCodeBlocks = block.getInputTargetBlock('constructor_code')
     var allCode = getAllStatementBlocks(allCodeBlocks);
     allCode = changeArray(allCode);
-    if(allCode[0]===undefined){
+    if (allCode[0] === undefined) {
         code = code + "}"
-    }
-    else{
-        for(var i=0;i<allCode.length;i++){
+    } else {
+        for (var i = 0; i < allCode.length; i++) {
             code = code + allCode[i] + "\n";
         }
         code = code + "}";
@@ -151,19 +159,18 @@ Blockly.Solidity['construct'] = function (block) {
 //事件生成
 Blockly.Solidity['event'] = function (block) {
     var code = "event";
-    var name =  Blockly.Solidity.valueToCode(block, 'event_name', Blockly.Solidity.ORDER_ATOMIC);
+    var name = Blockly.Solidity.valueToCode(block, 'event_name', Blockly.Solidity.ORDER_ATOMIC);
     code = code + " " + name;
     //参数
     var allParamBlocks = block.getInputTargetBlock('event_params');
     var allParams = getAllStatementBlocks(allParamBlocks);
     allParams = changeArray(allParams);
-    if(allParams[0]===undefined){
+    if (allParams[0] === undefined) {
         code = code + "();"
-    }
-    else {
+    } else {
         code = code + "(" + allParams[0];
-        for(var i=1;i<allParams.length;i++){
-            code = code +allParams[i];
+        for (var i = 1; i < allParams.length; i++) {
+            code = code + allParams[i];
         }
         code = code + ");";
     }
@@ -177,10 +184,9 @@ Blockly.Solidity['fall_back'] = function (block) {
     var allVisiBlocks = block.getInputTargetBlock('visibility');
     var allVisi = getAllStatementBlocks(allVisiBlocks);
     allVisi = changeArray(allVisi);
-    if(allVisi[0]===undefined){
-    }
-    else{
-        for(var i=0;i<allVisi.length;i++){
+    if (allVisi[0] === undefined) {
+    } else {
+        for (var i = 0; i < allVisi.length; i++) {
             code = code + allVisi[i];
         }
     }
@@ -188,11 +194,10 @@ Blockly.Solidity['fall_back'] = function (block) {
     var allCodeBlocks = block.getInputTargetBlock('code')
     var allCode = getAllStatementBlocks(allCodeBlocks);
     allCode = changeArray(allCode);
-    if(allCode[0]===undefined){
+    if (allCode[0] === undefined) {
         code = code + "}"
-    }
-    else{
-        for(var i=0;i<allCode.length;i++){
+    } else {
+        for (var i = 0; i < allCode.length; i++) {
             code = code + allCode[i] + "\n";
         }
         code = code + "}";

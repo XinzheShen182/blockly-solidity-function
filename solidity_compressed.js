@@ -66,11 +66,12 @@
         this.nameDB_.setVariableMap(a.getVariableMap());
         this.nameDB_.populateVariables(a);
         this.nameDB_.populateProcedures(a);
-        for (var b = [], c = Blockly.Variables.allDeveloperVariables(a), d = 0; d < c.length; d++) b.push(this.nameDB_.getName(c[d], Blockly.Names.DEVELOPER_VARIABLE_TYPE));
-        a = Blockly.Variables.allUsedVarModels(a);
-        for (d = 0; d < a.length; d++) b.push(this.nameDB_.getName(a[d].getId(),
-            Blockly.VARIABLE_CATEGORY_NAME));
-        b.length && (this.definitions_.variables = "uint256 " + b.join(", ") + ";");
+        // 为了function，不需要在最前面声明变量，在function内部声明
+        // for (var b = [], c = Blockly.Variables.allDeveloperVariables(a), d = 0; d < c.length; d++) b.push(this.nameDB_.getName(c[d], Blockly.Names.DEVELOPER_VARIABLE_TYPE));
+        // a = Blockly.Variables.allUsedVarModels(a);
+        // for (d = 0; d < a.length; d++) b.push(this.nameDB_.getName(a[d].getId(),
+        //     Blockly.VARIABLE_CATEGORY_NAME));
+        // b.length && (this.definitions_.variables = "uint256 " + b.join(", ") + ";");
         this.isInitialized = !0
     };
     Blockly.Solidity.finish = function (a) {

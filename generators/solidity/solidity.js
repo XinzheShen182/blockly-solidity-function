@@ -119,35 +119,35 @@ Blockly.Solidity.init = function(workspace) {
         Blockly.Solidity.variableDB_.reset();
     }
 
-    if (!Blockly.Solidity.nameDB_) {
-        Blockly.Solidity.nameDB_ = new Blockly.Names(this.RESERVED_WORDS_);
-    } else {
-        Blockly.Solidity.nameDB_.reset();
-    }
-
-    this.nameDB_.setVariableMap(workspace.getVariableMap());
-    this.nameDB_.populateVariables(workspace);
-    this.nameDB_.populateProcedures(workspace);
-
-    var defvars = [];
-    // Add developer variables (not created or named by the user).
-    var devVarList = Blockly.Variables.allDeveloperVariables(workspace);
-    for (var i = 0; i < devVarList.length; i++) {
-        defvars.push(Blockly.Solidity.nameDB_.getName(devVarList[i],
-            Blockly.Names.DEVELOPER_VARIABLE_TYPE));
-    }
-
-    // Add user variables, but only ones that are being used.
-    var variables = Blockly.Variables.allUsedVarModels(workspace);
-    for (var i = 0; i < variables.length; i++) {
-        defvars.push(Blockly.Solidity.nameDB_.getName(variables[i].getId(),
-            Blockly.VARIABLE_CATEGORY_NAME));
-    }
-
-    // Declare all of the variables.
-    if (defvars.length) {
-        this.definitions_['variables'] = 'uint256 ' + defvars.join(', ') + ';';
-    }
+    // if (!Blockly.Solidity.nameDB_) {
+    //     Blockly.Solidity.nameDB_ = new Blockly.Names(this.RESERVED_WORDS_);
+    // } else {
+    //     Blockly.Solidity.nameDB_.reset();
+    // }
+    //
+    // this.nameDB_.setVariableMap(workspace.getVariableMap());
+    // this.nameDB_.populateVariables(workspace);
+    // this.nameDB_.populateProcedures(workspace);
+    //
+    // var defvars = [];
+    // // Add developer variables (not created or named by the user).
+    // var devVarList = Blockly.Variables.allDeveloperVariables(workspace);
+    // for (var i = 0; i < devVarList.length; i++) {
+    //     defvars.push(Blockly.Solidity.nameDB_.getName(devVarList[i],
+    //         Blockly.Names.DEVELOPER_VARIABLE_TYPE));
+    // }
+    //
+    // // Add user variables, but only ones that are being used.
+    // var variables = Blockly.Variables.allUsedVarModels(workspace);
+    // for (var i = 0; i < variables.length; i++) {
+    //     defvars.push(Blockly.Solidity.nameDB_.getName(variables[i].getId(),
+    //         Blockly.VARIABLE_CATEGORY_NAME));
+    // }
+    //
+    // // Declare all of the variables.
+    // if (defvars.length) {
+    //     this.definitions_['variables'] = 'uint256 ' + defvars.join(', ') + ';';
+    // }
 
     // var defvars = [];
     // var variables = workspace.getAllVariables();
