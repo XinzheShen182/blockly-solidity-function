@@ -76,7 +76,7 @@ Blockly.Solidity['function'] = function (block) {
     }
     else{
         for(var i=0;i<allCode.length;i++){
-            code = code + allCode[i] + ";\n";
+            code = code + allCode[i] + "\n";
         }
         code = code + "}";
     }
@@ -141,7 +141,7 @@ Blockly.Solidity['construct'] = function (block) {
     }
     else{
         for(var i=0;i<allCode.length;i++){
-            code = code + allCode[i] + ";\n";
+            code = code + allCode[i] + "\n";
         }
         code = code + "}";
     }
@@ -193,7 +193,7 @@ Blockly.Solidity['fall_back'] = function (block) {
     }
     else{
         for(var i=0;i<allCode.length;i++){
-            code = code + allCode[i] + ";\n";
+            code = code + allCode[i] + "\n";
         }
         code = code + "}";
     }
