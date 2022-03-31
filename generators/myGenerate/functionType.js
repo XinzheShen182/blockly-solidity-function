@@ -66,7 +66,7 @@ Blockly.Solidity['function'] = function (block) {
     allCode = changeArray(allCode);
     code = code + "\n{\n";
     //生成函数变量定义
-    generateVariables();
+    code += generateVariables(block);
     if (allCode[0] === undefined) {
         code = code + "}";
     } else {
@@ -76,25 +76,27 @@ Blockly.Solidity['function'] = function (block) {
         code = code + "}";
     }
 
-    //生成函数变量定义
-    function generateVariables() {
-        //最先声明函数变量
-        var globals = [];
-        var workspace = block.workspace;
-        var variables = Blockly.Variables.allUsedVarModels(workspace) || [];
-        // console.log('variables:', variables);
-        for (var i = 0, variable; variable = variables[i]; i++) {
-            var varName = variable.name;
-            if (block.getVars().indexOf(varName) == -1) {
-                globals.push(Blockly.Solidity.nameDB_.getName(varName,
-                    Blockly.VARIABLE_CATEGORY_NAME));
-            }
-        }
-        globals = globals.length ? Blockly.Solidity.INDENT + "uint256 " + globals.join(", ") + ";\n" : '';
-        code = code + globals;
-        //-----------end---------------------------//
-    }
+
     return code
+}
+
+//生成函数变量定义
+function generateVariables(block) {
+    //最先声明函数变量
+    var globals = [];
+    var workspace = block.workspace;
+    var variables = Blockly.Variables.allUsedVarModels(workspace) || [];
+    // console.log('variables:', variables);
+    for (var i = 0, variable; variable = variables[i]; i++) {
+        var varName = variable.name;
+        if (block.getVars().indexOf(varName) == -1) {
+            globals.push(Blockly.Solidity.nameDB_.getName(varName,
+                Blockly.VARIABLE_CATEGORY_NAME));
+        }
+    }
+    globals = globals.length ? Blockly.Solidity.INDENT + "uint256 " + globals.join(", ") + ";\n" : '';
+    return globals
+    //-----------end---------------------------//
 }
 
 //构造函数生成
