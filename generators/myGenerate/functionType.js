@@ -62,20 +62,24 @@ Blockly.Solidity['function'] = function (block) {
     }
     //函数语句
     var allCodeBlocks = block.getInputTargetBlock('code')
-    var allCode = getAllStatementBlocks(allCodeBlocks);
-    allCode = changeArray(allCode);
+    // var allCode = getAllStatementBlocks(allCodeBlocks);
+    var allCode = Blockly.Solidity.statementToCode(block, 'code');
+    console.log('allCode', allCode);
+    // allCode = changeArray(allCode);
     code = code + "\n{\n";
     //生成函数变量定义
     code += generateVariables(block);
-    if (allCode[0] === undefined) {
-        code = code + "}";
+    if (allCode === undefined) {
+        code += "}";
     } else {
-        for (var i = 0; i < allCode.length; i++) {
-            code = code + allCode[i] + "\n";
-        }
-        code = code + "}";
+        code += allCode + "}";
     }
-
+    // else {
+    //     for (var i = 0; i < allCode.length; i++) {
+    //         code = code + allCode[i] + "\n";
+    //     }
+    //     code = code + "}";
+    // }
 
     return code
 }

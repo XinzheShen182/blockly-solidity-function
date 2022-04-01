@@ -370,6 +370,7 @@
         c = Blockly.Solidity.addLoopTrap(c, a);
         a = "";
         var d = Blockly.Solidity.nameDB_.getDistinctName("count", Blockly.VARIABLE_CATEGORY_NAME), e = b;
+        console.log('loopVar:'+d)
         b.match(/^\w+$/) || Blockly.isNumber(b) || (e = Blockly.Solidity.nameDB_.getDistinctName("repeat_end", Blockly.VARIABLE_CATEGORY_NAME),
             a += "uint256 " + e + " = " + b + ";\n");
         return a + ("for (uint256 " + d + " = 0; " + d + " < " + e + "; " + d + "++) {\n" + c + "}\n")

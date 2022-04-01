@@ -74,11 +74,14 @@ Blockly.Solidity['text'] = function (block) {
 /**获取所有statement的block的代码 */
 function getAllStatementBlocks(define_blocks) {
     var blocksCodes = [];
-    if (define_blocks)
+    if (define_blocks){
         do {
             var tmp = Blockly.Solidity.blockToCode(define_blocks);
+            console.log('define_blocks:',define_blocks);
+            console.log('define_blocks_code:',tmp)
             blocksCodes.push(tmp);
         } while (define_blocks = define_blocks.getNextBlock());
+    }
     return blocksCodes;
 }
 
