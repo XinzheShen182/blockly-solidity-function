@@ -148,18 +148,19 @@ Blockly.Solidity['construct'] = function (block) {
     }
     //代码块
     code = code + "\n{\n"
-    var allCodeBlocks = block.getInputTargetBlock('constructor_code')
-    var allCode = getAllStatementBlocks(allCodeBlocks);
-    allCode = changeArray(allCode);
-    if (allCode[0] === undefined) {
-        code = code + "}"
+    // var allCodeBlocks = block.getInputTargetBlock('constructor_code')
+    // var allCode = getAllStatementBlocks(allCodeBlocks);
+    var allCode = Blockly.Solidity.statementToCode(block, 'constructor_code');
+    // allCode = changeArray(allCode);
+    code = code + "\n{\n";
+    //生成函数变量定义
+    code += generateVariables(block);
+    if (allCode === undefined) {
+        code += "}";
     } else {
-        for (var i = 0; i < allCode.length; i++) {
-            code = code + allCode[i] + "\n";
-        }
-        code = code + "}";
+        code += allCode + "}";
     }
-    return code;
+    return code
 }
 
 //事件生成
