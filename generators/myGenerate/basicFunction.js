@@ -31,8 +31,9 @@ Blockly.Solidity['transfer'] = function (block) {
 }
 
 Blockly.Solidity['require'] = function (block) {
-    var conditionCode = Blockly.Solidity.valueToCode(block, 'IF0' , Blockly.Solidity.ORDER_NONE);
+    var conditionCode = Blockly.Solidity.valueToCode(block, 'logic_expression' , Blockly.Solidity.ORDER_NONE);
     var code = "require("+conditionCode+");";
+    return code;
 }
 
 /**文本块的代码生成 */

@@ -64,15 +64,15 @@ Blockly.Solidity['function'] = function (block) {
     var allCodeBlocks = block.getInputTargetBlock('code')
     // var allCode = getAllStatementBlocks(allCodeBlocks);
     var allCode = Blockly.Solidity.statementToCode(block, 'code');
-    console.log('allCode', allCode);
+    console.log('allCode'+allCode);
     // allCode = changeArray(allCode);
     code = code + "\n{\n";
     //生成函数变量定义
     code += generateVariables(block);
     if (allCode === undefined) {
-        code += "}";
+        code += "\n}";
     } else {
-        code += allCode + "}";
+        code += allCode + "\n}";
     }
     // else {
     //     for (var i = 0; i < allCode.length; i++) {
@@ -158,7 +158,7 @@ Blockly.Solidity['construct'] = function (block) {
     if (allCode === undefined) {
         code += "}";
     } else {
-        code += allCode + "}";
+        code += allCode + "\n}";
     }
     return code
 }
@@ -197,17 +197,19 @@ Blockly.Solidity['fall_back'] = function (block) {
             code = code + allVisi[i];
         }
     }
+    //代码块
+    code = code + "\n{\n"
+    // var allCodeBlocks = block.getInputTargetBlock('constructor_code')
+    // var allCode = getAllStatementBlocks(allCodeBlocks);
+    var allCode = Blockly.Solidity.statementToCode(block, 'code');
+    // allCode = changeArray(allCode);
     code = code + "\n{\n";
-    var allCodeBlocks = block.getInputTargetBlock('code')
-    var allCode = getAllStatementBlocks(allCodeBlocks);
-    allCode = changeArray(allCode);
-    if (allCode[0] === undefined) {
-        code = code + "}"
+    //生成函数变量定义
+    code += generateVariables(block);
+    if (allCode === undefined) {
+        code += "}";
     } else {
-        for (var i = 0; i < allCode.length; i++) {
-            code = code + allCode[i] + "\n";
-        }
-        code = code + "}";
+        code += allCode + "\n}";
     }
     return code;
 }
