@@ -72,7 +72,7 @@ Blockly.Solidity['function'] = function (block) {
     if (allCode === undefined) {
         code += "\n}";
     } else {
-        code += allCode + "\n}";
+        code += allCode + "}";
     }
     // else {
     //     for (var i = 0; i < allCode.length; i++) {
@@ -158,7 +158,7 @@ Blockly.Solidity['construct'] = function (block) {
     if (allCode === undefined) {
         code += "}";
     } else {
-        code += allCode + "\n}";
+        code += allCode + "}";
     }
     return code
 }
@@ -209,7 +209,7 @@ Blockly.Solidity['fall_back'] = function (block) {
     if (allCode === undefined) {
         code += "}";
     } else {
-        code += allCode + "\n}";
+        code += allCode + "}";
     }
     return code;
 }
