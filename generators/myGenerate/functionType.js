@@ -152,7 +152,6 @@ Blockly.Solidity['construct'] = function (block) {
     // var allCode = getAllStatementBlocks(allCodeBlocks);
     var allCode = Blockly.Solidity.statementToCode(block, 'constructor_code');
     // allCode = changeArray(allCode);
-    code = code + "\n{\n";
     //生成函数变量定义
     code += generateVariables(block);
     if (allCode === undefined) {
