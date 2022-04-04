@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>smart editor</title>
+    <!--    element-->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.7/lib/theme-chalk/index.css">
 
     <script src="./closure/goog/base.js"></script>
     <script src="./blockly_compressed.js"></script>
@@ -40,11 +42,42 @@
     </tr>
 </table>
 
-<p>
 <!--    <button id="link" onclick="showCode()">Show code</button>-->
-    <button onclick="BlocklyStorage.backupOnUnload()">Save Blocks</button>
-</p>
+<button onclick="BlocklyStorage.backupOnUnload()">Save Blocks</button>
+<div id="app">
+    <!--            action="https://jsonplaceholder.typicode.com/posts/"-->
+    <el-upload
+            class="upload-demo"
+            ref="uploadDemo"
+            action="https://jsonplaceholder.typicode.com/posts/"
+            :on-preview="handlePreview"
+            :on-remove="handleRemove"
+            :before-remove="beforeRemove"
+            :http-request="uploadBpmn"
+            multiple
+            :limit="3"
+            :on-exceed="handleExceed"
+            :file-list="fileList">
+        <el-button size="small" type="primary">点击上传</el-button>
+        <!--                <div slot="tip" class="el-upload__tip">请上传想要保存的流程图</div>-->
+    </el-upload>
+    <!--            <el-button type="primary" round v-on:click="dialogTest()">测试弹窗</el-button>-->
 
+    <el-dialog
+            title="流程图的Id"
+            :visible.sync="dialogVisible_flow"
+            width="30%">
+        <el-input v-model="dialog_data" type="textarea" autocomplete="off"></el-input>
+        <span slot="footer" class="dialog-footer">
+                                <el-button @click="dialogVisible_flow = false">取 消</el-button>
+                                <el-button type="primary"
+                                           v-clipboard:copy="dialog_data"
+                                           @click="dialogVisible_flow = false;">
+                                    复制流程图ID
+                                </el-button>
+                            </span>
+    </el-dialog>
+</div>
 
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
     <category name="函数类型" colour="230">
@@ -165,6 +198,11 @@
 <script src="workspace.js"></script>
 </body>
 
+<!-- 引入组件库 -->
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui@2.15.7/lib/index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/vue-clipboard2/0.3.3/vue-clipboard.js"></script>
 
 <script>
     //恢复工作区的块
@@ -188,5 +226,85 @@
         document.getElementById('textarea').value = codes;
         // alert(codes);
     }
+</script>
+
+<script>
+    var Main = {
+        data() {
+            return {
+                fileList: [],
+                dialogVisible_flow: false,
+                dialog_data: ""
+            };
+        },
+        mounted() {
+            window.dialog = this.dialogTest;    // 方法赋值给window
+        },
+        methods: {
+            uploadBpmn(param) {
+                //设置alert弹窗样式不显示 域名
+                (function () {
+                    window.alert = function (name) {
+                        var iframe = document.createElement("IFRAME");
+                        iframe.style.display = "none";
+                        iframe.setAttribute("src", 'data:text/plain');
+                        document.documentElement.appendChild(iframe);
+                        window.frames[0].window.alert(name);
+                        iframe.parentNode.removeChild(iframe);
+                    }
+                })();
+                const formData = new FormData()
+                console.log(param.file);
+                // formData.append('file', param.file)
+                //
+                // const config = {
+                //     headers: {"Content-Type": "multipart/form-data"}
+                // };
+                // axios.post("http://localhost:9014/api/bpmn/upload", formData, config).then(res => {
+                //     console.log(res);
+                //     if (res.data.code === 200) {
+                //         this.dialogVisible_flow = true;
+                //         this.dialog_data = res.data.data
+                //         // alert("上传的bpmn流程图id\n" + res.data.data)
+                //         this.$refs.uploadDemo.clearFiles();
+                //     } else if (res.data.code === 403) {
+                //         alert(res.data.msg)
+                //         this.$refs.uploadDemo.clearFiles();
+                //     }
+                // }).catch(response => {
+                //     console.log('图片上传失败')
+                // });
+            },
+            async dialogTest(data) {
+                this.dialog_data = data;
+                this.dialogVisible_flow = true;
+            },
+            copyFileId() {
+                console.log("执行复制");
+                var e = document.createElement("input");
+                console.log(this.dialog_data)
+                e.value = this.dialog_data;
+                console.log(e);
+                e.select(); // 选择对象
+                document.execCommand("Copy"); // 执行浏览器复制命令
+                this.dialogVisible_flow = false;
+            },
+            handleRemove(file, fileList) {
+                console.log(file, fileList);
+            },
+            handlePreview(file) {
+                console.log(file);
+            },
+            handleExceed(files, fileList) {
+                this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+            },
+            beforeRemove(file, fileList) {
+                return this.$confirm(`确定移除 ${file.name}？`);
+            }
+        }
+    }
+    Vue.use(VueClipboard)
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app')
 </script>
 </html>
