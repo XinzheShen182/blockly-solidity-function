@@ -206,7 +206,7 @@
 
 <script>
     //恢复工作区的块
-    setTimeout(BlocklyStorage.restoreBlocks, 0);
+    // setTimeout(BlocklyStorage.restoreBlocks, 0);
 
     function showCode() {
         var codes = Blockly.Solidity.workspaceToCode(workspace);
@@ -225,6 +225,28 @@
         console.log(codes);
         document.getElementById('textarea').value = codes;
         // alert(codes);
+    }
+    function saveWorkspace(){
+        // const formData = new FormData();
+        // formData.append('file', param.file)
+        //
+        // const config = {
+        //     headers: {"Content-Type": "multipart/form-data"}
+        // };
+        // axios.post("http://localhost:9014/api/bpmn/upload", formData, config).then(res => {
+        //     console.log(res);
+        //     if (res.data.code === 200) {
+        //         this.dialogVisible_flow = true;
+        //         this.dialog_data = res.data.data
+        //         // alert("上传的bpmn流程图id\n" + res.data.data)
+        //         this.$refs.uploadDemo.clearFiles();
+        //     } else if (res.data.code === 403) {
+        //         alert(res.data.msg)
+        //         this.$refs.uploadDemo.clearFiles();
+        //     }
+        // }).catch(response => {
+        //     console.log('图片上传失败')
+        // });
     }
 </script>
 
@@ -253,27 +275,16 @@
                         iframe.parentNode.removeChild(iframe);
                     }
                 })();
-                const formData = new FormData()
-                console.log(param.file);
-                // formData.append('file', param.file)
-                //
-                // const config = {
-                //     headers: {"Content-Type": "multipart/form-data"}
-                // };
-                // axios.post("http://localhost:9014/api/bpmn/upload", formData, config).then(res => {
-                //     console.log(res);
-                //     if (res.data.code === 200) {
-                //         this.dialogVisible_flow = true;
-                //         this.dialog_data = res.data.data
-                //         // alert("上传的bpmn流程图id\n" + res.data.data)
-                //         this.$refs.uploadDemo.clearFiles();
-                //     } else if (res.data.code === 403) {
-                //         alert(res.data.msg)
-                //         this.$refs.uploadDemo.clearFiles();
-                //     }
-                // }).catch(response => {
-                //     console.log('图片上传失败')
-                // });
+                let data = param.file;
+                console.log(data);
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    var xml = Blockly.Xml.textToDom(event.target.result);
+                    console.log(xml)
+                    Blockly.Xml.clearWorkspaceAndLoadFromXml(xml, workspace);
+                };
+
+                reader.readAsText(data);
             },
             async dialogTest(data) {
                 this.dialog_data = data;
