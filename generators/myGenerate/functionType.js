@@ -196,8 +196,23 @@ Blockly.Solidity['fall_back'] = function (block) {
             code = code + allVisi[i];
         }
     }
+
+    //关联的属性
+    var allFieddBlock = block.getInputTargetBlock('constructor_field');
+    var allField = getAllStatementBlocks(allFieddBlock);
+    allField = changeArray(allField);
+    if (allField[0] === undefined) {
+    } else {
+        for (var i = 0; i < allField.length; i++) {
+            if (allField[i].slice(0, 7) === "struct ") {
+                code = allField[i] + "\n" + code;
+            } else {
+                code = allField[i] + ";\n" + code;
+            }
+        }
+    }
+
     //代码块
-    code = code + "\n{\n"
     // var allCodeBlocks = block.getInputTargetBlock('constructor_code')
     // var allCode = getAllStatementBlocks(allCodeBlocks);
     var allCode = Blockly.Solidity.statementToCode(block, 'code');

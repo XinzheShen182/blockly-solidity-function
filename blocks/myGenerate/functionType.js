@@ -77,6 +77,9 @@ Blockly.Blocks['fall_back'] = {
         this.appendStatementInput("visibility")
             .setCheck(null)
             .appendField("函数修饰符");
+        this.appendStatementInput("constructor_field")
+            .setCheck(null)
+            .appendField("关联的属性");
         this.appendStatementInput("code")
             .setCheck(null)
             .appendField("代码块");
