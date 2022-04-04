@@ -66,6 +66,15 @@
         this.nameDB_.setVariableMap(a.getVariableMap());
         this.nameDB_.populateVariables(a);
         this.nameDB_.populateProcedures(a);
+
+        function myUpdateFunction(event) {
+            var code = Blockly.Solidity.workspaceToCode(workspace);
+            console.log('eventCode:' + code);
+            document.getElementById('textarea').value = code;
+        }
+
+        workspace.addChangeListener(myUpdateFunction);
+
         // 为了function，不需要在最前面声明变量，在function内部声明
         // for (var b = [], c = Blockly.Variables.allDeveloperVariables(a), d = 0; d < c.length; d++) b.push(this.nameDB_.getName(c[d], Blockly.Names.DEVELOPER_VARIABLE_TYPE));
         // a = Blockly.Variables.allUsedVarModels(a);
