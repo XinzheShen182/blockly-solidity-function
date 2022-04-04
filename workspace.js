@@ -21,6 +21,7 @@ var options = {
 /* Inject your workspace */
 var workspace = Blockly.inject('blocklyDiv', options);
 
+//实时的更新生成的代码
 function myUpdateFunction(event) {
     var code = Blockly.Solidity.workspaceToCode(workspace);
     // console.log('eventCode:'+code)
@@ -33,8 +34,8 @@ workspace.addChangeListener(myUpdateFunction);
 
 /* Load Workspace Blocks from XML to workspace. Remove all code below if no blocks to load */
 
-/* TODO: Change workspace blocks XML ID if necessary. Can export workspace blocks XML from Workspace Factory. */
-var workspaceBlocks = document.getElementById("workspaceBlocks");
-
-/* Load blocks to workspace. */
-Blockly.Xml.domToWorkspace(workspaceBlocks, workspace);
+// /* TODO: Change workspace blocks XML ID if necessary. Can export workspace blocks XML from Workspace Factory. */
+// var workspaceBlocks = document.getElementById("workspaceBlocks");
+//
+// /* Load blocks to workspace. */
+// Blockly.Xml.domToWorkspace(workspaceBlocks, workspace);

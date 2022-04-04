@@ -169,14 +169,11 @@
 
 
 <script>
-
-    // var demoWorkspace = Blockly.inject('blocklyDiv',
-    //     {media: '../../media/',
-    //         toolbox: document.getElementById('toolbox')});
+    //恢复工作区的块
     setTimeout(BlocklyStorage.restoreBlocks, 0);
+
     function showCode() {
         var codes = Blockly.Solidity.workspaceToCode(workspace);
-
         // // Generate JavaScript code and display it.
         // var topBlocks = workspace.getAllBlocks();
         // var codes = [];
