@@ -19,7 +19,17 @@ var options = {
 };
 
 /* Inject your workspace */
-var workspace = Blockly.inject(blocklyDiv, options);
+var workspace = Blockly.inject('blocklyDiv', options);
+
+function myUpdateFunction(event) {
+    var code = Blockly.Solidity.workspaceToCode(workspace);
+    // console.log('eventCode:'+code)
+    if (!(code===undefined)){
+        document.getElementById('textarea').value = code;
+    }
+}
+
+workspace.addChangeListener(myUpdateFunction);
 
 /* Load Workspace Blocks from XML to workspace. Remove all code below if no blocks to load */
 
