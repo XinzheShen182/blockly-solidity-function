@@ -64,13 +64,13 @@ Blockly.Solidity['function'] = function (block) {
     var allCodeBlocks = block.getInputTargetBlock('code')
     // var allCode = getAllStatementBlocks(allCodeBlocks);
     var allCode = Blockly.Solidity.statementToCode(block, 'code');
-    console.log('allCode', allCode);
+    console.log('allCode'+allCode);
     // allCode = changeArray(allCode);
     code = code + "\n{\n";
     //生成函数变量定义
     code += generateVariables(block);
     if (allCode === undefined) {
-        code += "}";
+        code += "\n}";
     } else {
         code += allCode + "}";
     }
@@ -152,7 +152,6 @@ Blockly.Solidity['construct'] = function (block) {
     // var allCode = getAllStatementBlocks(allCodeBlocks);
     var allCode = Blockly.Solidity.statementToCode(block, 'constructor_code');
     // allCode = changeArray(allCode);
-    code = code + "\n{\n";
     //生成函数变量定义
     code += generateVariables(block);
     if (allCode === undefined) {
@@ -197,17 +196,34 @@ Blockly.Solidity['fall_back'] = function (block) {
             code = code + allVisi[i];
         }
     }
-    code = code + "\n{\n";
-    var allCodeBlocks = block.getInputTargetBlock('code')
-    var allCode = getAllStatementBlocks(allCodeBlocks);
-    allCode = changeArray(allCode);
-    if (allCode[0] === undefined) {
-        code = code + "}"
+
+    //关联的属性
+    var allFieddBlock = block.getInputTargetBlock('constructor_field');
+    var allField = getAllStatementBlocks(allFieddBlock);
+    allField = changeArray(allField);
+    if (allField[0] === undefined) {
     } else {
-        for (var i = 0; i < allCode.length; i++) {
-            code = code + allCode[i] + "\n";
+        for (var i = 0; i < allField.length; i++) {
+            if (allField[i].slice(0, 7) === "struct ") {
+                code = allField[i] + "\n" + code;
+            } else {
+                code = allField[i] + ";\n" + code;
+            }
         }
-        code = code + "}";
+    }
+
+    //代码块
+    // var allCodeBlocks = block.getInputTargetBlock('constructor_code')
+    // var allCode = getAllStatementBlocks(allCodeBlocks);
+    var allCode = Blockly.Solidity.statementToCode(block, 'code');
+    // allCode = changeArray(allCode);
+    code = code + "\n{\n";
+    //生成函数变量定义
+    code += generateVariables(block);
+    if (allCode === undefined) {
+        code += "}";
+    } else {
+        code += allCode + "}";
     }
     return code;
 }
