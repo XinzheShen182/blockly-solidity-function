@@ -411,6 +411,22 @@
                 code += (up ? ' += ' : ' -= ') + step;
             }
             code += ') {\n' + branch + '}\n';
+        } //for(i=1;i<=s;i++)  情况
+        else if ((!Blockly.isNumber(argument0) || !Blockly.isNumber(argument1)) &&
+            Blockly.isNumber(increment)) {
+            var step = Number(increment);
+            var up = step >= 0;
+            console.log('up:'+up);
+            // All arguments are simple numbers.
+            code = 'for (' + variable0 + ' = ' + argument0 + '; ' +
+                variable0 + (up ? ' <= ' : ' >= ') + argument1 + '; ' +
+                variable0;
+            if (step == 1 || step == -1) {
+                code += up ? '++' : '--';
+            } else {
+                code += (up ? ' += ' : ' -= ') + step;
+            }
+            code += ') {\n' + branch + '}\n';
         } else {
             code = '';
             // Cache non-trivial values to variables to prevent repeated look-ups.

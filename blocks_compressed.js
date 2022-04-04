@@ -776,9 +776,11 @@
         args0: [{type: "field_variable", name: "VAR", variable: null}, {
             type: "input_value",
             name: "FROM",
-            check: "Number",
+            check: ["Number", "String"],
             align: "RIGHT"
-        }, {type: "input_value", name: "TO", check: "Number", align: "RIGHT"}, {
+        }, {
+            type: "input_value", name: "TO", check: ["Number", "String"], align: "RIGHT"
+        }, {
             type: "input_value", name: "BY",
             check: "Number", align: "RIGHT"
         }],

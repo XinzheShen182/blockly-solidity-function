@@ -30,7 +30,7 @@ Blockly.Solidity['controls_repeat_ext'] = function (block) {
     var code = '';
     var loopVar = Blockly.Solidity.nameDB_.getDistinctName(
         'count', Blockly.VARIABLE_CATEGORY_NAME);
-    console.log('loopVar:'+loopVar)
+    console.log('loopVar:' + loopVar)
     var endVar = repeats;
     if (!repeats.match(/^\w+$/) && !Blockly.isNumber(repeats)) {
         endVar = Blockly.Solidity.nameDB_.geDistinctName(
@@ -83,6 +83,22 @@ Blockly.Solidity['controls_for'] = function (block) {
             variable0;
         var step = Math.abs(Number(increment));
         if (step == 1) {
+            code += up ? '++' : '--';
+        } else {
+            code += (up ? ' += ' : ' -= ') + step;
+        }
+        code += ') {\n' + branch + '}\n';
+    }
+    //for(i=1;i<=s;i++)  情况
+    else if ((!Blockly.isNumber(argument0) || !Blockly.isNumber(argument1)) &&
+        Blockly.isNumber(increment)) {
+        var up = step < 0;
+        // All arguments are simple numbers.
+        var step = Number(increment);
+        code = 'for (' + variable0 + ' = ' + argument0 + '; ' +
+            variable0 + (up ? ' <= ' : ' >= ') + argument1 + '; ' +
+            variable0;
+        if (step == 1 || step == -1) {
             code += up ? '++' : '--';
         } else {
             code += (up ? ' += ' : ' -= ') + step;
