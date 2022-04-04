@@ -41,34 +41,38 @@
         </td>
     </tr>
 </table>
+<ul class="buttons">
+    <li>
+        <!--    <button id="link" onclick="showCode()">Show code</button>-->
+        <button onclick="BlocklyStorage.backupOnUnload()">Save Blocks</button>
+    </li>
+    <li>
 
-<!--    <button id="link" onclick="showCode()">Show code</button>-->
-<button onclick="BlocklyStorage.backupOnUnload()">Save Blocks</button>
-<div id="app">
-    <!--            action="https://jsonplaceholder.typicode.com/posts/"-->
-    <el-upload
-            class="upload-demo"
-            ref="uploadDemo"
-            action="https://jsonplaceholder.typicode.com/posts/"
-            :on-preview="handlePreview"
-            :on-remove="handleRemove"
-            :before-remove="beforeRemove"
-            :http-request="uploadBpmn"
-            multiple
-            :limit="3"
-            :on-exceed="handleExceed"
-            :file-list="fileList">
-        <el-button size="small" type="primary">点击上传</el-button>
-        <!--                <div slot="tip" class="el-upload__tip">请上传想要保存的流程图</div>-->
-    </el-upload>
-    <!--            <el-button type="primary" round v-on:click="dialogTest()">测试弹窗</el-button>-->
+        <div id="app">
+            <!--            action="https://jsonplaceholder.typicode.com/posts/"-->
+            <el-upload
+                    class="upload-demo"
+                    ref="uploadDemo"
+                    action="https://jsonplaceholder.typicode.com/posts/"
+                    :on-preview="handlePreview"
+                    :on-remove="handleRemove"
+                    :before-remove="beforeRemove"
+                    :http-request="uploadBpmn"
+                    multiple
+                    :limit="3"
+                    :on-exceed="handleExceed"
+                    :file-list="fileList">
+                <el-button size="small" type="primary">点击上传</el-button>
+                <!--                <div slot="tip" class="el-upload__tip">请上传想要保存的流程图</div>-->
+            </el-upload>
+            <!--            <el-button type="primary" round v-on:click="dialogTest()">测试弹窗</el-button>-->
 
-    <el-dialog
-            title="流程图的Id"
-            :visible.sync="dialogVisible_flow"
-            width="30%">
-        <el-input v-model="dialog_data" type="textarea" autocomplete="off"></el-input>
-        <span slot="footer" class="dialog-footer">
+            <el-dialog
+                    title="流程图的Id"
+                    :visible.sync="dialogVisible_flow"
+                    width="30%">
+                <el-input v-model="dialog_data" type="textarea" autocomplete="off"></el-input>
+                <span slot="footer" class="dialog-footer">
                                 <el-button @click="dialogVisible_flow = false">取 消</el-button>
                                 <el-button type="primary"
                                            v-clipboard:copy="dialog_data"
@@ -76,8 +80,10 @@
                                     复制流程图ID
                                 </el-button>
                             </span>
-    </el-dialog>
-</div>
+            </el-dialog>
+        </div>
+    </li>
+</ul>
 
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
     <category name="函数类型" colour="230">
@@ -226,7 +232,8 @@
         document.getElementById('textarea').value = codes;
         // alert(codes);
     }
-    function saveWorkspace(){
+
+    function saveWorkspace() {
         // const formData = new FormData();
         // formData.append('file', param.file)
         //
@@ -318,4 +325,15 @@
     var Ctor = Vue.extend(Main)
     new Ctor().$mount('#app')
 </script>
+<style>
+    .buttons {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+</style>
 </html>
