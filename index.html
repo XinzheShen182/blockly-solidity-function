@@ -43,10 +43,10 @@
 </table>
 <ul class="buttons">
     <div id="app">
-    <li style="display: inline-block;float: left">
-        <el-button size="small" type="primary" @click="dialogFormVisible = true">Save Blocks</el-button>
-    </li>
-    <li style="display: inline-block;float: left;margin-left: 30px">
+        <li style="display: inline-block;float: left">
+            <el-button size="small" type="primary" @click="dialogFormVisible = true">Save Blocks</el-button>
+        </li>
+        <li style="display: inline-block;float: left;margin-left: 30px">
             <!--            action="https://jsonplaceholder.typicode.com/posts/"-->
             <el-upload
                     class="upload-demo"
@@ -63,34 +63,19 @@
                 <el-button size="small" type="primary">点击上传</el-button>
                 <!--                <div slot="tip" class="el-upload__tip">请上传想要保存的流程图</div>-->
             </el-upload>
-            <!--            <el-button type="primary" round v-on:click="dialogTest()">测试弹窗</el-button>-->
-<!--            <el-dialog-->
-<!--                    title="流程图的Id"-->
-<!--                    :visible.sync="dialogVisible_flow"-->
-<!--                    width="30%">-->
-<!--                <el-input v-model="dialog_data" type="textarea" autocomplete="off"></el-input>-->
-<!--                <span slot="footer" class="dialog-footer">-->
-<!--                                <el-button @click="dialogVisible_flow = false">取 消</el-button>-->
-<!--                                <el-button type="primary"-->
-<!--                                           v-clipboard:copy="dialog_data"-->
-<!--                                           @click="dialogVisible_flow = false;">-->
-<!--                                    复制流程图ID-->
-<!--                                </el-button>-->
-<!--                            </span>-->
-<!--            </el-dialog>-->
+            <el-dialog title="保存工作区" :visible.sync="dialogFormVisible">
+                <el-form :model="form">
+                    <el-form-item label="文件名称" :label-width="formLabelWidth">
+                        <el-input v-model="form.name" autocomplete="off"></el-input>
+                    </el-form-item>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                    <el-button @click="dialogFormVisible = false">取 消</el-button>
+                    <el-button type="primary" @click="saveWorkspace()">确 定</el-button>
+                </div>
+            </el-dialog>
+        </li>
 
-    </li>
-        <el-dialog title="保存工作区" :visible.sync="dialogFormVisible">
-            <el-form :model="form">
-                <el-form-item label="文件名称" :label-width="formLabelWidth">
-                    <el-input v-model="form.name" autocomplete="off"></el-input>
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click="dialogFormVisible = false">取 消</el-button>
-                <el-button type="primary" @click="saveWorkspace()">确 定</el-button>
-            </div>
-        </el-dialog>
     </div>
 </ul>
 
@@ -243,18 +228,15 @@
         // alert(codes);
     }
 
-
 </script>
 
 <script>
-    const axios = require("axios");
     var Main = {
         data() {
             return {
                 fileList: [],
                 dialogVisible_flow: false,
                 dialog_data: "",
-                dialogTableVisible: false,
                 dialogFormVisible: false,
                 form: {
                     name: '',
@@ -316,44 +298,43 @@
                 return this.$confirm(`确定移除 ${file.name}？`);
             },
             saveWorkspace() {
-                console.log(this.form);
-                this.dialogFormVisible = false;
                 var file_name = this.form.name;
                 var xml = BlocklyStorage.backupOnUnload();
-                //文件名和文件内容，string
-                this.axios.post('http://localhost:9014/api/',{
-                    fileName:file_name,
+                console.log(fileName+"==="+xml);
+                this.dialogFormVisible = false;
+                this.axios.post('http://',{
+                    fileName : file_name,
                     fileContent : xml
-                }).then(res=>{
-                    if (res.data.code === 200) {
+                }).then(res => {
+                    if(res.data.code===200){
                         alert("保存成功")
-                    } else if (res.data.code === 403) {
-                        alert(res.data.msg)
+                    }else if(res.data.code === 400){
+                        alert(res.data.msg);
                     }
-                }).catch(response => {
-                    console.log('保存失败')
+                }).catch(rees=>{
+                    console.log("保存失败")
                 })
-        // const formData = new FormData();
-        // formData.append('file', param.file)
-        //
-        // const config = {
-        //     headers: {"Content-Type": "multipart/form-data"}
-        // };
-        // axios.post("http://localhost:9014/api/bpmn/upload", formData, config).then(res => {
-        //     console.log(res);
-        //     if (res.data.code === 200) {
-        //         this.dialogVisible_flow = true;
-        //         this.dialog_data = res.data.data
-        //         // alert("上传的bpmn流程图id\n" + res.data.data)
-        //         this.$refs.uploadDemo.clearFiles();
-        //     } else if (res.data.code === 403) {
-        //         alert(res.data.msg)
-        //         this.$refs.uploadDemo.clearFiles();
-        //     }
-        // }).catch(response => {
-        //     console.log('图片上传失败')
-        // });
-    }
+                // const formData = new FormData();
+                // formData.append('file', param.file)
+                //
+                // const config = {
+                //     headers: {"Content-Type": "multipart/form-data"}
+                // };
+                // axios.post("http://localhost:9014/api/bpmn/upload", formData, config).then(res => {
+                //     console.log(res);
+                //     if (res.data.code === 200) {
+                //         this.dialogVisible_flow = true;
+                //         this.dialog_data = res.data.data
+                //         // alert("上传的bpmn流程图id\n" + res.data.data)
+                //         this.$refs.uploadDemo.clearFiles();
+                //     } else if (res.data.code === 403) {
+                //         alert(res.data.msg)
+                //         this.$refs.uploadDemo.clearFiles();
+                //     }
+                // }).catch(response => {
+                //     console.log('图片上传失败')
+                // });
+            }
         }
     }
     Vue.use(VueClipboard)
