@@ -42,10 +42,15 @@
     </tr>
 </table>
 <ul class="buttons">
+    <li style="display: inline-block;float: left">
+        <a id="xml-download-block" href title="save blocks">
+            save blocks
+        </a>
+    </li>
     <div id="app">
-        <li style="display: inline-block;float: left">
-            <el-button size="small" type="primary" @click="dialogFormVisible = true">Save Blocks</el-button>
-        </li>
+<!--        <li style="display: inline-block;float: left">-->
+<!--            <el-button size="small" type="primary" @click="dialogFormVisible = true">Save Blocks</el-button>-->
+<!--        </li>-->
         <li style="display: inline-block;float: left;margin-left: 30px">
             <!--            action="https://jsonplaceholder.typicode.com/posts/"-->
             <el-upload
@@ -209,6 +214,13 @@
     //恢复工作区的块
     // setTimeout(BlocklyStorage.restoreBlocks, 0);
 
+    $('#xml-download-block').click(function () {
+        var xml = Blockly.Xml.workspaceToDom(workspace);
+        let data = Blockly.Xml.domToText(xml);
+        console.log('downloadXml:' + data);
+        setEncoded($('#xml-download-block'), "blocks.xml", data);
+    })
+
     function showCode() {
         var codes = Blockly.Solidity.workspaceToCode(workspace);
         // // Generate JavaScript code and display it.
@@ -226,6 +238,20 @@
         console.log(codes);
         document.getElementById('textarea').value = codes;
         // alert(codes);
+    }
+
+    function setEncoded(link, name, data) {
+        //编码为URI格式
+        var encodedData = encodeURIComponent(data);
+
+        if (data) {
+            link.addClass('active').attr({
+                'href': 'data:application/blocks-xml;charset=UTF-8,' + encodedData,
+                'download': name
+            });
+        } else {
+            link.removeClass('active');
+        }
     }
 
 </script>
@@ -275,6 +301,12 @@
                 this.dialog_data = data;
                 this.dialogVisible_flow = true;
             },
+            saveBlocks() {
+                var xml = Blockly.Xml.workspaceToDom(workspace);
+                let data = Blockly.Xml.domToText(xml);
+                console.log('downloadXml:' + data);
+                setEncoded($('#xml-download-block'), "blocks.xml", data);
+            },
             copyFileId() {
                 console.log("执行复制");
                 var e = document.createElement("input");
@@ -300,18 +332,18 @@
             saveWorkspace() {
                 var file_name = this.form.name;
                 var xml = BlocklyStorage.backupOnUnload();
-                console.log(fileName+"==="+xml);
+                console.log(fileName + "===" + xml);
                 this.dialogFormVisible = false;
-                this.axios.post('http://',{
-                    fileName : file_name,
-                    fileContent : xml
+                this.axios.post('http://', {
+                    fileName: file_name,
+                    fileContent: xml
                 }).then(res => {
-                    if(res.data.code===200){
+                    if (res.data.code === 200) {
                         alert("保存成功")
-                    }else if(res.data.code === 400){
+                    } else if (res.data.code === 400) {
                         alert(res.data.msg);
                     }
-                }).catch(rees=>{
+                }).catch(rees => {
                     console.log("保存失败")
                 })
                 // const formData = new FormData();
