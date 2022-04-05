@@ -31,24 +31,22 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.7/lib/theme-chalk/index.css">
 </head>
 <body>
-<table width="100%">
+<table>
     <tr>
         <td width="1400px">
-            <div id="blocklyDiv" style="height: 850px; width: 1400px;"></div>
+            <div id="blocklyDiv" style="height: 850px; width: 100%;"></div>
         </td>
         <td>
-            <textarea id="textarea" style="width:96%;height:800px;float:right"></textarea>
+            <textarea id="textarea" style="width:100%;height:800px;float:right"></textarea>
         </td>
     </tr>
 </table>
 <ul class="buttons">
-    <li>
-        <!--    <button id="link" onclick="showCode()">Show code</button>-->
-        <button onclick="BlocklyStorage.backupOnUnload()">Save Blocks</button>
+    <div id="app">
+    <li style="display: inline-block;float: left">
+        <el-button size="small" type="primary" onclick="BlocklyStorage.backupOnUnload()">Save Blocks</el-button>
     </li>
-    <li>
-
-        <div id="app">
+    <li style="display: inline-block;float: left;margin-left: 30px">
             <!--            action="https://jsonplaceholder.typicode.com/posts/"-->
             <el-upload
                     class="upload-demo"
@@ -66,23 +64,23 @@
                 <!--                <div slot="tip" class="el-upload__tip">请上传想要保存的流程图</div>-->
             </el-upload>
             <!--            <el-button type="primary" round v-on:click="dialogTest()">测试弹窗</el-button>-->
+<!--            <el-dialog-->
+<!--                    title="流程图的Id"-->
+<!--                    :visible.sync="dialogVisible_flow"-->
+<!--                    width="30%">-->
+<!--                <el-input v-model="dialog_data" type="textarea" autocomplete="off"></el-input>-->
+<!--                <span slot="footer" class="dialog-footer">-->
+<!--                                <el-button @click="dialogVisible_flow = false">取 消</el-button>-->
+<!--                                <el-button type="primary"-->
+<!--                                           v-clipboard:copy="dialog_data"-->
+<!--                                           @click="dialogVisible_flow = false;">-->
+<!--                                    复制流程图ID-->
+<!--                                </el-button>-->
+<!--                            </span>-->
+<!--            </el-dialog>-->
 
-            <el-dialog
-                    title="流程图的Id"
-                    :visible.sync="dialogVisible_flow"
-                    width="30%">
-                <el-input v-model="dialog_data" type="textarea" autocomplete="off"></el-input>
-                <span slot="footer" class="dialog-footer">
-                                <el-button @click="dialogVisible_flow = false">取 消</el-button>
-                                <el-button type="primary"
-                                           v-clipboard:copy="dialog_data"
-                                           @click="dialogVisible_flow = false;">
-                                    复制流程图ID
-                                </el-button>
-                            </span>
-            </el-dialog>
-        </div>
     </li>
+    </div>
 </ul>
 
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
@@ -135,6 +133,7 @@
             <!--            <block type="logic_ternary"></block>-->
         </category>
     </category>
+
 
     <category name="Loops" colour="%{BKY_LOOPS_HUE}">
         <block type="controls_repeat_ext">
@@ -325,15 +324,4 @@
     var Ctor = Vue.extend(Main)
     new Ctor().$mount('#app')
 </script>
-<style>
-    .buttons {
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-
-        padding: 0;
-        margin: 0;
-        list-style: none;
-    }
-</style>
 </html>
