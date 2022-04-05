@@ -21,7 +21,6 @@ BlocklyStorage.backupBlocks_ = function (workspace) {
     if ('localStorage' in window) {
         //要保存的内容
         var xml = Blockly.Xml.workspaceToDom(workspace);
-        console.log(xml);
         // Gets the current URL, not including the hash.
         var url = window.location.href.split('#')[0];
         window.localStorage.setItem(url, Blockly.Xml.domToText(xml));
@@ -34,14 +33,14 @@ BlocklyStorage.backupBlocks_ = function (workspace) {
  */
 BlocklyStorage.backupOnUnload = function (opt_workspace) {
     var workspace = opt_workspace || Blockly.getMainWorkspace();
-    alert("已保存")
     //要保存的内容
     var xml = Blockly.Xml.workspaceToDom(workspace);
     //console.log(xml)
-    window.addEventListener('unload',
-        function () {
-            BlocklyStorage.backupBlocks_(workspace);
-        }, false);
+    // window.addEventListener('unload',
+    //     function () {
+    //         BlocklyStorage.backupBlocks_(workspace);
+    //         }, false);
+    return Blockly.Xml.domToText(xml);
 };
 
 /**
