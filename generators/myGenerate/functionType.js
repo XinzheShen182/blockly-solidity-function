@@ -50,16 +50,18 @@ Blockly.Solidity['function'] = function (block) {
     var allFieLdBlock = block.getInputTargetBlock('fields');
     var allField = getAllStatementBlocks(allFieLdBlock);
     allField = changeArray(allField);
+    var tmpVariety = "";
     if (allField[0] === undefined) {
     } else {
         for (var i = 0; i < allField.length; i++) {
             if (allField[i].slice(0, 7) === "struct ") {
-                code = allField[i] + "\n" + code;
+                tmpVariety = tmpVariety + allField[i] + "\n";
             } else {
-                code = allField[i] + ";\n" + code;
+                tmpVariety = tmpVariety + allField[i] + ";\n";
             }
         }
     }
+    code = tmpVariety + code;
     //函数语句
     var allCodeBlocks = block.getInputTargetBlock('code')
     // var allCode = getAllStatementBlocks(allCodeBlocks);
@@ -136,16 +138,18 @@ Blockly.Solidity['construct'] = function (block) {
     var allFieddBlock = block.getInputTargetBlock('constructor_field');
     var allField = getAllStatementBlocks(allFieddBlock);
     allField = changeArray(allField);
+    var tmpVariety="";
     if (allField[0] === undefined) {
     } else {
         for (var i = 0; i < allField.length; i++) {
             if (allField[i].slice(0, 7) === "struct ") {
-                code = allField[i] + "\n" + code;
+                tmpVariety =tmpVariety + allField[i] + "\n";
             } else {
-                code = allField[i] + ";\n" + code;
+                tmpVariety = tmpVariety + allField[i] + ";\n";
             }
         }
     }
+    code = tmpVariety +code;
     //代码块
     code = code + "\n{\n"
     // var allCodeBlocks = block.getInputTargetBlock('constructor_code')
@@ -201,17 +205,18 @@ Blockly.Solidity['fall_back'] = function (block) {
     var allFieddBlock = block.getInputTargetBlock('constructor_field');
     var allField = getAllStatementBlocks(allFieddBlock);
     allField = changeArray(allField);
+    var tmpVariety = "";
     if (allField[0] === undefined) {
     } else {
         for (var i = 0; i < allField.length; i++) {
             if (allField[i].slice(0, 7) === "struct ") {
-                code = allField[i] + "\n" + code;
+                tmpVariety = tmpVariety + allField[i] + "\n";
             } else {
-                code = allField[i] + ";\n" + code;
+                tmpVariety = tmpVariety + allField[i] + ";\n";
             }
         }
     }
-
+    code = tmpVariety + code;
     //代码块
     // var allCodeBlocks = block.getInputTargetBlock('constructor_code')
     // var allCode = getAllStatementBlocks(allCodeBlocks);
