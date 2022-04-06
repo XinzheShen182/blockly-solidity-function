@@ -44,15 +44,15 @@
     </tr>
 </table>
 <ul style="width: 100%;height: 5%;">
-    <li style="display: inline-block;float: left">
-        <a id="xml-download-block" href title="save blocks">
-            save blocks
-        </a>
-    </li>
+<!--    <li style="display: inline-block;float: left">-->
+<!--        <a id="xml-download-block" href title="save blocks">-->
+<!--            save blocks-->
+<!--        </a>-->
+<!--    </li>-->
     <div id="app">
-<!--        <li style="display: inline-block;float: left">-->
-<!--            <el-button size="small" type="primary" @click="dialogFormVisible = true">Save Blocks</el-button>-->
-<!--        </li>-->
+        <li style="display: inline-block;float: left">
+            <el-button size="small" type="primary" @click="saveBlocks()">Save Blocks</el-button>
+        </li>
         <li style="display: inline-block;float: left;margin-left: 30px">
             <!--            action="https://jsonplaceholder.typicode.com/posts/"-->
             <el-upload
@@ -225,18 +225,6 @@
 
     function showCode() {
         var codes = Blockly.Solidity.workspaceToCode(workspace);
-        // // Generate JavaScript code and display it.
-        // var topBlocks = workspace.getAllBlocks();
-        // var codes = [];
-        // var contractBlock = workspace.getTopBlocks()[0];
-        // //console.log('contractBlock' + contractBlock.toString());
-        // console.log(topBlocks)
-        // for (var i = 0; i < topBlocks.length; i++) {
-        //     if (topBlocks[i] == contractBlock) {
-        //         var code = Blockly.Solidity.blockToCode(topBlocks[i]);
-        //         codes.push(code + '\n');
-        //     }
-        // }
         console.log(codes);
         document.getElementById('textarea').value = codes;
         // alert(codes);
@@ -306,8 +294,12 @@
             saveBlocks() {
                 var xml = Blockly.Xml.workspaceToDom(workspace);
                 let data = Blockly.Xml.domToText(xml);
-                console.log('downloadXml:' + data);
-                setEncoded($('#xml-download-block'), "blocks.xml", data);
+                // console.log('downloadXml:' + data);
+                const a = document.createElement('a'); // 创建a标签
+                var encodedData = encodeURIComponent(data);
+                a.setAttribute('href','data:application/blocks-xml;charset=UTF-8,' + encodedData);
+                a.setAttribute('download','blocks.xml');
+                a.click();// 自执行点击事件
             },
             copyFileId() {
                 console.log("执行复制");
