@@ -1,0 +1,135 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+    <block type="construct" id="+!Z*4mG4kO.#I8O$gZsO" x="211" y="8">
+        <statement name="constructor_visiblity">
+            <block type="function_visibility" id="1?Ru|aV*B!MRJZ^oK+8u">
+                <field name="function_visib">public</field>
+            </block>
+        </statement>
+        <statement name="constructor_params">
+            <block type="basic_type" id="^W^pD?kUH.Vdc6B_t*/F">
+                <field name="basic_fields">address</field>
+                <value name="basic_field">
+                    <block type="text" id="Yuv|{(wrK^JqMjO@/VPg">
+                        <field name="TEXT">ifSuccessfulSendTo</field>
+                    </block>
+                </value>
+                <next>
+                    <block type="basic_type" id="sj]Vf-kY6P/DT],~06d|">
+                        <field name="basic_fields">uint256</field>
+                        <value name="basic_field">
+                            <block type="text" id="-cE5#hny.cif21d{SqNw">
+                                <field name="TEXT">fundingGoalInEthers</field>
+                            </block>
+                        </value>
+                        <next>
+                            <block type="basic_type" id=";+TAJd09({9*I*S(]N0R">
+                                <field name="basic_fields">uint256</field>
+                                <value name="basic_field">
+                                    <block type="text" id="7CO*MO@,X.l0{d41_b%q">
+                                        <field name="TEXT">durationInMinutes</field>
+                                    </block>
+                                </value>
+                            </block>
+                        </next>
+                    </block>
+                </next>
+            </block>
+        </statement>
+        <statement name="constructor_field">
+            <block type="basic_type" id="A06.XWrB$m,e/E;W3W5a">
+                <field name="basic_fields">uint256</field>
+                <value name="basic_field">
+                    <block type="text" id="XnWijjX+=]47ScYmQT^D">
+                        <field name="TEXT">chairman</field>
+                    </block>
+                </value>
+                <next>
+                    <block type="basic_type" id="K%ErUd8Ny,yp7m^JlefS">
+                        <field name="basic_fields">address</field>
+                        <value name="basic_field">
+                            <block type="text" id="NF~+xxjC:jEN]sV!bb@p">
+                                <field name="TEXT">beneficiary</field>
+                            </block>
+                        </value>
+                        <next>
+                            <block type="basic_type" id="4/o1^WdN@%_k^^D*6O8K">
+                                <field name="basic_fields">uint256</field>
+                                <value name="basic_field">
+                                    <block type="text" id="HVPXLDAi1!!{tX:XQ+t*">
+                                        <field name="TEXT">fundingGoal</field>
+                                    </block>
+                                </value>
+                                <next>
+                                    <block type="basic_type" id="FqOU[A]Zv312ojpgvK75">
+                                        <field name="basic_fields">uint256</field>
+                                        <value name="basic_field">
+                                            <block type="text" id=":LrBM8M%qa5-Xu*,,_h2">
+                                                <field name="TEXT">deadline</field>
+                                            </block>
+                                        </value>
+                                    </block>
+                                </next>
+                            </block>
+                        </next>
+                    </block>
+                </next>
+            </block>
+        </statement>
+        <statement name="constructor_code">
+            <block type="assignment" id="klN(%++dV|jW5LB{myt%">
+                <value name="left">
+                    <block type="text" id="~-y6,+^4pFkNo2+GwCV5">
+                        <field name="TEXT">chairman</field>
+                    </block>
+                </value>
+                <value name="right">
+                    <block type="text" id="87GckDr)Uari]`|!;W|(">
+                        <field name="TEXT">msg.sender</field>
+                    </block>
+                </value>
+                <next>
+                    <block type="assignment" id="uvjUqbuJP(|%/K@xV{/W">
+                        <value name="left">
+                            <block type="text" id="bo766+4gCw_OY18Mgta5">
+                                <field name="TEXT">beneficiary</field>
+                            </block>
+                        </value>
+                        <value name="right">
+                            <block type="text" id="0C|PHDk(It|{i?E~(gx]">
+                                <field name="TEXT">ifSuccessfulSendTo</field>
+                            </block>
+                        </value>
+                        <next>
+                            <block type="assignment" id="5SJ7_)V?zFgNj@l;KF+E">
+                                <value name="left">
+                                    <block type="text" id="GeHtKMZ^KJq}v6_uD^Z^">
+                                        <field name="TEXT">fundingGoal</field>
+                                    </block>
+                                </value>
+                                <value name="right">
+                                    <block type="text" id="4II/3|7;J7eLN5M^4~d`">
+                                        <field name="TEXT">fundingGoalInEthers</field>
+                                    </block>
+                                </value>
+                                <next>
+                                    <block type="assignment" id="hdXhRkro|q:[|?3AfQfi">
+                                        <value name="left">
+                                            <block type="text" id="*oLS24ClDse@czW:u=|@">
+                                                <field name="TEXT">deadline</field>
+                                            </block>
+                                        </value>
+                                        <value name="right">
+                                            <block type="text" id="D+39R?8ezz!Av{mgm5,=">
+                                                <field name="TEXT">block.timestamp + durationInMinutes*1 minutes</field>
+                                            </block>
+                                        </value>
+                                    </block>
+                                </next>
+                            </block>
+                        </next>
+                    </block>
+                </next>
+            </block>
+        </statement>
+    </block>
+</xml>

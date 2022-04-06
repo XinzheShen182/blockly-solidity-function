@@ -1,0 +1,182 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+    <block type="fall_back" id="^_ECS}U67CLxAm^DCQti" x="184" y="45">
+        <statement name="visibility">
+            <block type="function_visibility" id="SEo/r%|%:nLIMsG096(4">
+                <field name="function_visib">external</field>
+                <next>
+                    <block type="function_type" id="0*t[cgx@T!C|7SO#=z;B">
+                        <field name="function_ty">payable</field>
+                    </block>
+                </next>
+            </block>
+        </statement>
+        <statement name="constructor_field">
+            <block type="basic_type" id="Dj`HWKj|i^gu4-$^?-5=">
+                <field name="basic_fields">bool</field>
+                <value name="basic_field">
+                    <block type="text" id="`($GDnllh0_L;Vhy}}0d">
+                        <field name="TEXT">crowdsaleClosed</field>
+                    </block>
+                </value>
+                <next>
+                    <block type="special_type" id="0q-;;_NKWD!o|]s(A_:F">
+                        <field name="special_fields">mapping</field>
+                        <value name="NAME">
+                            <block type="text" id="W0D,-zu4Y1dqLUCCHI)M">
+                                <field name="TEXT">balanceOf</field>
+                            </block>
+                        </value>
+                        <statement name="special_field">
+                            <block type="basic_type_no_name" id="d#Lf[6iAC4B)NBmJ@Ymj">
+                                <field name="basic_fields_no_name">address</field>
+                                <next>
+                                    <block type="basic_type_no_name" id="pOHQay%KJA[;=p1z=hXP">
+                                        <field name="basic_fields_no_name">uint256</field>
+                                    </block>
+                                </next>
+                            </block>
+                        </statement>
+                        <next>
+                            <block type="basic_type" id=",G9t~A;mu62LcEEWwa}M">
+                                <field name="basic_fields">uint256</field>
+                                <value name="basic_field">
+                                    <block type="text" id="D1QrN|0lqb,SJ4.xx|b]">
+                                        <field name="TEXT">shareHolderNum</field>
+                                    </block>
+                                </value>
+                                <next>
+                                    <block type="special_type" id="oX-M;wKF_h[G0P_7s_T2">
+                                        <field name="special_fields">mapping</field>
+                                        <value name="NAME">
+                                            <block type="text" id="#c/]Zp{{xr)g,y,LBPUx">
+                                                <field name="TEXT">shareHolder</field>
+                                            </block>
+                                        </value>
+                                        <statement name="special_field">
+                                            <block type="basic_type_no_name" id="JUvX7pHlo1fEH!YlSfDE">
+                                                <field name="basic_fields_no_name">uint256</field>
+                                                <next>
+                                                    <block type="basic_type_no_name" id="Sg}E,sL+v3]v[Eg-f1h[">
+                                                        <field name="basic_fields_no_name">address</field>
+                                                    </block>
+                                                </next>
+                                            </block>
+                                        </statement>
+                                        <next>
+                                            <block type="basic_type" id="R*MxFy#oXnCaof,OdJ;x">
+                                                <field name="basic_fields">uint256</field>
+                                                <value name="basic_field">
+                                                    <block type="text" id="z]v]5e6N*I;W+(Fvmpw3">
+                                                        <field name="TEXT">amountRaised</field>
+                                                    </block>
+                                                </value>
+                                            </block>
+                                        </next>
+                                    </block>
+                                </next>
+                            </block>
+                        </next>
+                    </block>
+                </next>
+            </block>
+        </statement>
+        <statement name="code">
+            <block type="require" id="(b7R=EB.CjgSA)^rdDTL">
+                <value name="logic_expression">
+                    <block type="logic_compare" id="Im5hLHq?yv923K`=Rlw2">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                            <block type="text" id="YbAwDmP)F.c-.1qyiY28">
+                                <field name="TEXT">crowdsaleClosed</field>
+                            </block>
+                        </value>
+                        <value name="B">
+                            <block type="text" id="`?8:PpF~egNV4tpGr7`q">
+                                <field name="TEXT">false</field>
+                            </block>
+                        </value>
+                    </block>
+                </value>
+                <next>
+                    <block type="assignment" id="yh,}%2,iULxq#zB.uLIl">
+                        <value name="left">
+                            <block type="text" id="fa/O;nR]C%Y.tNz2.|Nr">
+                                <field name="TEXT">uint256 amount</field>
+                            </block>
+                        </value>
+                        <value name="right">
+                            <block type="text" id="]m!TUt.h+:hR4Lb((EGH">
+                                <field name="TEXT">msg.value</field>
+                            </block>
+                        </value>
+                        <next>
+                            <block type="assignment" id="~fe7Ukb/dhnw$qs]s-aK">
+                                <value name="left">
+                                    <block type="text" id="ir4W|m.*UM%GHd_J?IqM">
+                                        <field name="TEXT">balanceOf[msg.sender]</field>
+                                    </block>
+                                </value>
+                                <value name="right">
+                                    <block type="text" id="~a$PHbC,DR]ku^*aeGxq">
+                                        <field name="TEXT">balanceOf[msg.sender]+amount</field>
+                                    </block>
+                                </value>
+                                <next>
+                                    <block type="ordinary" id="[)U:d]b=Ui]=F]Gug^;s">
+                                        <value name="statement">
+                                            <block type="text" id="(jP[2Cw_DN8qFz1HrL+!">
+                                                <field name="TEXT">shareHolderNum++</field>
+                                            </block>
+                                        </value>
+                                        <next>
+                                            <block type="assignment" id="A%6u}%0L06WX3eUJ3P(f">
+                                                <value name="left">
+                                                    <block type="text" id="XHU/X]lhYRaWI|=]nNv3">
+                                                        <field name="TEXT">shareHolder[shareHolderNum]</field>
+                                                    </block>
+                                                </value>
+                                                <value name="right">
+                                                    <block type="text" id=",b@JNapR6=RK:%)90|=k">
+                                                        <field name="TEXT">msg.sender</field>
+                                                    </block>
+                                                </value>
+                                                <next>
+                                                    <block type="assignment" id="8%PIx[By4xP!mrQ+${PB">
+                                                        <value name="left">
+                                                            <block type="text" id=",qo7EKZwfos,k$Z=;CJ(">
+                                                                <field name="TEXT">amountRaised</field>
+                                                            </block>
+                                                        </value>
+                                                        <value name="right">
+                                                            <block type="text" id="S|ZG)-w:#pE:JZHMcxaU">
+                                                                <field name="TEXT">amountRaised+amount</field>
+                                                            </block>
+                                                        </value>
+                                                        <next>
+                                                            <block type="transfer" id="~@wHV/WQ(hYcDb[yXX-Z">
+                                                                <value name="to_address">
+                                                                    <block type="text" id="xduMZ5|OvPU^_s6Bt#%?">
+                                                                        <field name="TEXT">this</field>
+                                                                    </block>
+                                                                </value>
+                                                                <value name="money">
+                                                                    <block type="text" id="VL@fX(Ym{bYxuyO0EIwJ">
+                                                                        <field name="TEXT">amount</field>
+                                                                    </block>
+                                                                </value>
+                                                            </block>
+                                                        </next>
+                                                    </block>
+                                                </next>
+                                            </block>
+                                        </next>
+                                    </block>
+                                </next>
+                            </block>
+                        </next>
+                    </block>
+                </next>
+            </block>
+        </statement>
+    </block>
+</xml>

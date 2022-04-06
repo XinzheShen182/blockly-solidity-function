@@ -1,0 +1,130 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+    <block type="function" id="Q1]pF}gqsh}4Y|1CRg5:" x="146" y="15">
+        <value name="function_name">
+            <block type="text" id="{QSb4oGsJA{J^l$BKnXG">
+                <field name="TEXT">checkGoalReached</field>
+            </block>
+        </value>
+        <statement name="function_visibility">
+            <block type="function_visibility" id="%{A[jocA}kwzFCxn@A%(">
+                <field name="function_visib">public</field>
+            </block>
+        </statement>
+        <statement name="fields">
+            <block type="basic_type" id="1A)9|ob-cK+}hi;}DY{q">
+                <field name="basic_fields">uint256</field>
+                <value name="basic_field">
+                    <block type="text" id="D{+{Rzjm0#0}P^2]9Ywe">
+                        <field name="TEXT">deadline</field>
+                    </block>
+                </value>
+                <next>
+                    <block type="basic_type" id="oT3e}zK{V?BcJ,d}9^6V">
+                        <field name="basic_fields">uint256</field>
+                        <value name="basic_field">
+                            <block type="text" id="+MNDOr.cByC#|;WGE{W1">
+                                <field name="TEXT">amountRaised</field>
+                            </block>
+                        </value>
+                        <next>
+                            <block type="basic_type" id="yCoL226#nxH?,B58VH)2">
+                                <field name="basic_fields">uint256</field>
+                                <value name="basic_field">
+                                    <block type="text" id="}dfG?J7K$LUDeakSR038">
+                                        <field name="TEXT">fundingGoal</field>
+                                    </block>
+                                </value>
+                                <next>
+                                    <block type="basic_type" id=":MfK`L7c]uL`t~HvGI`M">
+                                        <field name="basic_fields">bool</field>
+                                        <value name="basic_field">
+                                            <block type="text" id="/anZ:=lg,U~x{CobBkDY">
+                                                <field name="TEXT">fundingGoalReached</field>
+                                            </block>
+                                        </value>
+                                        <next>
+                                            <block type="basic_type" id="*J9M$fra9f+V;HlSdB=q">
+                                                <field name="basic_fields">bool</field>
+                                                <value name="basic_field">
+                                                    <block type="text" id="{3qjWZ-ei]i%lEumEVeP">
+                                                        <field name="TEXT">crowdsaleClosed</field>
+                                                    </block>
+                                                </value>
+                                            </block>
+                                        </next>
+                                    </block>
+                                </next>
+                            </block>
+                        </next>
+                    </block>
+                </next>
+            </block>
+        </statement>
+        <statement name="code">
+            <block type="require" id="`P1!UsNTp!PP*!RnRuHC">
+                <value name="logic_expression">
+                    <block type="logic_compare" id="WBKMtCT=n3cCn3K|K5xm">
+                        <field name="OP">GTE</field>
+                        <value name="A">
+                            <block type="text" id="KH}W^HyKL8^A%Ca(}93_">
+                                <field name="TEXT">block.timestamp</field>
+                            </block>
+                        </value>
+                        <value name="B">
+                            <block type="text" id="w{u;P2t,|wFvI;v7/m)P">
+                                <field name="TEXT">deadline</field>
+                            </block>
+                        </value>
+                    </block>
+                </value>
+                <next>
+                    <block type="controls_if" id="/!!-r]E9BdDrZeik%|II">
+                        <value name="IF0">
+                            <block type="logic_compare" id="3@JS[qh@wr_bEs{|eeG?">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                    <block type="text" id="5uE^zbW99!1_=`c:Bh9.">
+                                        <field name="TEXT">amountRaised</field>
+                                    </block>
+                                </value>
+                                <value name="B">
+                                    <block type="text" id="5tt,9+1N|/My1zA70V1?">
+                                        <field name="TEXT">fundingGoal</field>
+                                    </block>
+                                </value>
+                            </block>
+                        </value>
+                        <statement name="DO0">
+                            <block type="assignment" id="sve|n)O6}Cgd8B4etiil">
+                                <value name="left">
+                                    <block type="text" id="o5VX97:)4+=EmWn~HtKo">
+                                        <field name="TEXT">fundingGoalReached</field>
+                                    </block>
+                                </value>
+                                <value name="right">
+                                    <block type="text" id="!%vh^lKr)S+{ucS%B2eh">
+                                        <field name="TEXT">true</field>
+                                    </block>
+                                </value>
+                                <next>
+                                    <block type="assignment" id="1EJO+i$%MEUF%fVy`g]b">
+                                        <value name="left">
+                                            <block type="text" id="cavaV=LDZ~UA@Q%htf}I">
+                                                <field name="TEXT">fundingGoalReached</field>
+                                            </block>
+                                        </value>
+                                        <value name="right">
+                                            <block type="text" id="NV%@x[96j-Cl/y1Uq$t~">
+                                                <field name="TEXT">true</field>
+                                            </block>
+                                        </value>
+                                    </block>
+                                </next>
+                            </block>
+                        </statement>
+                    </block>
+                </next>
+            </block>
+        </statement>
+    </block>
+</xml>
