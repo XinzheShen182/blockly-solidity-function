@@ -8,7 +8,7 @@ Blockly.Blocks['basic_type'] = {
             .appendField(new Blockly.FieldDropdown([["uint256","uint256"], ["address","address"], ["bool","bool"], ["string","string"]]), "basic_fields");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(345);
+        this.setColour(270);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -25,7 +25,7 @@ Blockly.Blocks['special_type'] = {
             .appendField(new Blockly.FieldDropdown([["mapping","mapping"], ["struct","struct"], ["array","array"]]), "special_fields");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(345);
+        this.setColour(270);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -38,7 +38,7 @@ Blockly.Blocks['basic_type_no_name'] = {
             .appendField(new Blockly.FieldDropdown([["uint256","uint256"], ["address","address"], ["bool","bool"], ["string","string"]]), "basic_fields_no_name");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(345);
+        this.setColour(270);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -52,7 +52,7 @@ Blockly.Blocks['nest_struct'] = {
             .appendField("struct");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(345);
+        this.setColour(270);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -66,7 +66,7 @@ Blockly.Blocks['nest_mapping_array'] = {
             .appendField(new Blockly.FieldDropdown([["mapping","mapping"], ["array","array"]]), "nest_type");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(345);
+        this.setColour(270);
         this.setTooltip("");
         this.setHelpUrl("");
     }
