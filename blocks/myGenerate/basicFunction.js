@@ -1,6 +1,6 @@
 //基本的复用功能块
 
-let block_color = 165;
+let basic_function_block_color = 165;
 //把合约的拥有者设置为(以太坊账户地址)
 Blockly.Blocks['set_contract_owner'] = {
     init: function () {
@@ -9,7 +9,7 @@ Blockly.Blocks['set_contract_owner'] = {
             .appendField("Set Contract Owner");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(block_color);
+        this.setColour(basic_function_block_color);
         this.setTooltip("把合约的拥有者设置为(以太坊账户地址):");
         this.setHelpUrl("");
     }
@@ -23,7 +23,7 @@ Blockly.Blocks['destroy_contract'] = {
             .appendField("Destroy contract And Transfer ETH To:");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(block_color);
+        this.setColour(basic_function_block_color);
         this.setTooltip("销毁合约，并将合约内以太坊转移至账户：");
         this.setHelpUrl("");
     }
@@ -44,7 +44,7 @@ Blockly.Blocks['get_value'] = {
             .appendField("Assign the query result to the Variable：");//查询到的结果赋值给变量
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(block_color);
+        this.setColour(basic_function_block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -62,7 +62,7 @@ Blockly.Blocks['transfer'] = {
             .appendField("Transfer Amount");//转账金额(wei)：
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(block_color);
+        this.setColour(basic_function_block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -77,7 +77,7 @@ Blockly.Blocks['require'] = {
             .appendField("Logic Expression");//逻辑表达式
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(block_color);
+        this.setColour(basic_function_block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }

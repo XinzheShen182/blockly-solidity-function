@@ -1,5 +1,5 @@
 //函数的类型
-let block_color = 230;
+let function_type_block_color = 230;
 //普通函数
 Blockly.Blocks['function'] = {
     init: function () {
@@ -23,7 +23,7 @@ Blockly.Blocks['function'] = {
         this.appendStatementInput("code")
             .setCheck(null)
             .appendField("code");//代码块
-        this.setColour(block_color);
+        this.setColour(function_type_block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -46,7 +46,7 @@ Blockly.Blocks['construct'] = {
         this.appendStatementInput("constructor_code")
             .setCheck(null)
             .appendField("code");//代码块
-        this.setColour(block_color);
+        this.setColour(function_type_block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -63,7 +63,7 @@ Blockly.Blocks['event'] = {
         this.appendStatementInput("event_params")
             .setCheck(null)
             .appendField("Parameters");//事件参数
-        this.setColour(block_color);
+        this.setColour(function_type_block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -83,7 +83,7 @@ Blockly.Blocks['fall_back'] = {
         this.appendStatementInput("code")
             .setCheck(null)
             .appendField("Code");//代码块
-        this.setColour(block_color);
+        this.setColour(function_type_block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }

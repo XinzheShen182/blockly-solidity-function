@@ -1,3 +1,4 @@
+let function_statement_block_color = 30;
 Blockly.Blocks['ordinary'] = {
     init: function () {
         this.appendValueInput("statement")
@@ -5,7 +6,7 @@ Blockly.Blocks['ordinary'] = {
             .appendField("Other Statements");//其他语句
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(30);
+        this.setColour(function_statement_block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -23,7 +24,7 @@ Blockly.Blocks['assignment'] = {
             .appendField("To");//右值
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(30);
+        this.setColour(function_statement_block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }

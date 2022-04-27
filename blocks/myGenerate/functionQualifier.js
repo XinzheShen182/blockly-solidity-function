@@ -1,5 +1,5 @@
 //函数的修饰词
-
+let function_qualifier_block_color=0;
 //函数可见性
 Blockly.Blocks['function_visibility'] = {
     init: function() {
@@ -7,7 +7,7 @@ Blockly.Blocks['function_visibility'] = {
             .appendField(new Blockly.FieldDropdown([["public","public"], ["private","private"], ["internal","internal"], ["external","external"]]), "function_visib");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(0);
+        this.setColour(function_qualifier_block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -20,7 +20,7 @@ Blockly.Blocks['function_type'] = {
             .appendField(new Blockly.FieldDropdown([["pure","pure"], ["view","view"], ["payable","payable"]]), "function_ty");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(0);
+        this.setColour(function_qualifier_block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }

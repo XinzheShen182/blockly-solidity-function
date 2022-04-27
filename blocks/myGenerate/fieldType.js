@@ -1,5 +1,5 @@
 //属性类型
-let block_color = 270;
+let field_type_block_color = 270;
 //带名字的属性
 Blockly.Blocks['basic_type'] = {
     init: function () {
@@ -13,7 +13,7 @@ Blockly.Blocks['basic_type'] = {
             .appendField(new Blockly.FieldDropdown([["uint256", "uint256"], ["address", "address"], ["bool", "bool"], ["string", "string"]]), "basic_fields");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(block_color);
+        this.setColour(field_type_block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -43,7 +43,7 @@ Blockly.Blocks['special_type'] = {
             .appendField();
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(block_color);
+        this.setColour(field_type_block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -56,7 +56,7 @@ Blockly.Blocks['basic_type_no_name'] = {
             .appendField(new Blockly.FieldDropdown([["uint256", "uint256"], ["address", "address"], ["bool", "bool"], ["string", "string"]]), "basic_fields_no_name");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(block_color);
+        this.setColour(field_type_block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -70,7 +70,7 @@ Blockly.Blocks['nest_struct'] = {
             .appendField("struct");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(block_color);
+        this.setColour(field_type_block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -84,7 +84,7 @@ Blockly.Blocks['nest_mapping_array'] = {
             .appendField(new Blockly.FieldDropdown([["mapping", "mapping"], ["array", "array"]]), "nest_type");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(block_color);
+        this.setColour(field_type_block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }
