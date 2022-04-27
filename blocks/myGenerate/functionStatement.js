@@ -1,8 +1,8 @@
 Blockly.Blocks['ordinary'] = {
-    init: function() {
+    init: function () {
         this.appendValueInput("statement")
             .setCheck(null)
-            .appendField("其他语句");
+            .appendField("Other Statements");//其他语句
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(30);
@@ -12,15 +12,15 @@ Blockly.Blocks['ordinary'] = {
 };
 
 Blockly.Blocks['assignment'] = {
-    init: function() {
+    init: function () {
         this.appendDummyInput()
-            .appendField("赋值语句");
+            .appendField("Assignment");//赋值语句
         this.appendValueInput("left")
             .setCheck(null)
-            .appendField("左值");
+            .appendField("From");//左值
         this.appendValueInput("right")
             .setCheck(null)
-            .appendField("右值");
+            .appendField("To");//右值
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(30);

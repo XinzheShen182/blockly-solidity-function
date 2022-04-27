@@ -125,7 +125,7 @@ Blockly.Solidity['construct'] = function (block) {
         code = code + ")";
     }
     //可见性
-    var allVisiBlocks = block.getInputTargetBlock('constructor_visiblity');
+    var allVisiBlocks = block.getInputTargetBlock('constructor_visibility');
     var allVisi = getAllStatementBlocks(allVisiBlocks);
     allVisi = changeArray(allVisi);
     if (allVisi[0] === undefined) {

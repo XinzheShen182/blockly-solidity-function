@@ -1,29 +1,29 @@
 //函数的类型
-
+let block_color = 230;
 //普通函数
 Blockly.Blocks['function'] = {
-    init: function() {
+    init: function () {
         this.appendDummyInput()
-            .appendField("function");
+            .appendField("Function");
         this.appendValueInput("function_name")
             .setCheck(null)
-            .appendField("函数名称");
+            .appendField("Name");//函数名称
         this.appendStatementInput("function_params")
             .setCheck(null)
-            .appendField("函数参数");
+            .appendField("Parameters");//函数参数
         this.appendStatementInput("function_visibility")
             .setCheck(null)
-            .appendField("函数修饰符");
+            .appendField("Modifiers");//函数修饰符
         this.appendStatementInput("function_return")
             .setCheck(null)
-            .appendField("函数返回值类型");
+            .appendField("Return Value Type");//函数返回值类型
         this.appendStatementInput("fields")
             .setCheck(null)
-            .appendField("关联的属性");
+            .appendField("Related Fields");//关联的属性
         this.appendStatementInput("code")
             .setCheck(null)
-            .appendField("代码块");
-        this.setColour(230);
+            .appendField("code");//代码块
+        this.setColour(block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -31,22 +31,22 @@ Blockly.Blocks['function'] = {
 
 //构造函数
 Blockly.Blocks['construct'] = {
-    init: function() {
+    init: function () {
         this.appendDummyInput()
-            .appendField("constructor");
-        this.appendStatementInput("constructor_visiblity")
+            .appendField("Constructor");
+        this.appendStatementInput("constructor_visibility")
             .setCheck(null)
-            .appendField("可见性");
+            .appendField("Visibility");//可见性
         this.appendStatementInput("constructor_params")
             .setCheck(null)
-            .appendField("构造器参数");
+            .appendField("Parameters");//构造器参数
         this.appendStatementInput("constructor_field")
             .setCheck(null)
-            .appendField("关联的属性");
+            .appendField("Related Fields");//关联的属性
         this.appendStatementInput("constructor_code")
             .setCheck(null)
-            .appendField("代码块");
-        this.setColour(230);
+            .appendField("code");//代码块
+        this.setColour(block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -54,16 +54,16 @@ Blockly.Blocks['construct'] = {
 
 //事件
 Blockly.Blocks['event'] = {
-    init: function() {
+    init: function () {
         this.appendDummyInput()
-            .appendField("event");
+            .appendField("Event");
         this.appendValueInput("event_name")
             .setCheck(null)
-            .appendField("事件名称");
+            .appendField("Name");//事件名称
         this.appendStatementInput("event_params")
             .setCheck(null)
-            .appendField("事件参数");
-        this.setColour(230);
+            .appendField("Parameters");//事件参数
+        this.setColour(block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }
@@ -71,19 +71,19 @@ Blockly.Blocks['event'] = {
 
 //回退函数
 Blockly.Blocks['fall_back'] = {
-    init: function() {
+    init: function () {
         this.appendDummyInput()
-            .appendField("fallback");
+            .appendField("Fallback");
         this.appendStatementInput("visibility")
             .setCheck(null)
-            .appendField("函数修饰符");
+            .appendField("Modifiers");//函数修饰符
         this.appendStatementInput("constructor_field")
             .setCheck(null)
-            .appendField("关联的属性");
+            .appendField("Related Fields");//关联的属性
         this.appendStatementInput("code")
             .setCheck(null)
-            .appendField("代码块");
-        this.setColour(230);
+            .appendField("Code");//代码块
+        this.setColour(block_color);
         this.setTooltip("");
         this.setHelpUrl("");
     }

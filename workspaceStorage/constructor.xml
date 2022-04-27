@@ -1,6 +1,6 @@
 <xml xmlns="https://developers.google.com/blockly/xml">
     <block type="construct" id="+!Z*4mG4kO.#I8O$gZsO" x="211" y="8">
-        <statement name="constructor_visiblity">
+        <statement name="constructor_visibility">
             <block type="function_visibility" id="1?Ru|aV*B!MRJZ^oK+8u">
                 <field name="function_visib">public</field>
             </block>
